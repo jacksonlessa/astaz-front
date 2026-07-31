@@ -12,4 +12,12 @@ Sempre gerar links de WhatsApp com `getWhatsAppUrl()` de `src/lib/site.ts`. Nunc
 
 ## Tom de voz
 
-Português formal, elegante e direto, coerente com um serviço de transporte executivo premium. Evite gírias, exclamações excessivas ou emojis. Veja `siteConfig.description`, `brandAttributes` e `faqItems` em `src/lib/site.ts` como referência de tom.
+A fonte oficial do tom de voz e da personalidade da marca é [Manifesto.md](../../Manifesto.md) — consulte-o (seções 8 a 11) antes de escrever ou revisar qualquer copy nova. `siteConfig.description`, `brandAttributes` e `faqItems` em `src/lib/site.ts` são exemplos já aplicados desse tom.
+
+Resumo acionável do Manifesto:
+
+- **Personalidade**: profissional, elegante, próxima, tranquila, segura.
+- **Utilizar**: linguagem clara, frases objetivas, informações organizadas, comunicação cordial e profissional.
+- **Evitar**: excesso de emojis, linguagem de promoção/urgência artificial, termos muito informais, mensagens genéricas de aplicativo, argumento baseado só em preço.
+- **Emojis**: não usar em excesso; só pontualmente se contribuírem para humanizar, nunca substituindo organização ou clareza.
+- **Teste antes de publicar** (regra final do Manifesto): "Isso transmite profissionalismo, elegância, proximidade, tranquilidade e segurança?" — se a resposta for não, a copy não representa a Astaz.
