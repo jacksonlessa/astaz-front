@@ -36,6 +36,13 @@ yarn-error.log*
 # vercel
 .vercel
 
+# Claude Code - arquivos pessoais (gitignored)
+.claude/settings.local.json
+CLAUDE.local.md
+
+# Claude Code - arquivos do time (commitados):
+# .claude/settings.json, commands/, rules/, skills/, agents/, CLAUDE.md
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

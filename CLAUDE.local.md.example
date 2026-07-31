@@ -1,0 +1,13 @@
+# CLAUDE.local.md (exemplo)
+
+Copie este arquivo para `CLAUDE.local.md` (já está no `.gitignore`) para adicionar
+preferências pessoais que não devem ser compartilhadas com o time.
+
+Exemplos do que colocar aqui:
+
+- Porta local diferente de 3000, se você já usa essa porta para outro projeto
+- Atalhos ou aliases pessoais que você usa neste projeto
+- Notas pessoais de trabalho em progresso que não fazem sentido no CLAUDE.md do time
+- Preferências de estilo de resposta específicas suas (ex.: nível de detalhe nos resumos)
+
+Este arquivo é carregado junto com o `CLAUDE.md` do projeto, mas não é commitado.
