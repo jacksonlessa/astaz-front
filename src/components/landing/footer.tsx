@@ -1,4 +1,7 @@
+import Link from "next/link";
+
 import { getWhatsAppUrl, navLinks, siteConfig } from "@/lib/site";
+import { routes } from "@/lib/routes";
 import { WhatsAppIconButton } from "@/components/ui/whatsapp-button";
 
 export function Footer() {
@@ -9,8 +12,8 @@ export function Footer() {
       <div className="container-wide mx-auto px-5 py-12 sm:px-8 lg:px-12">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           <div className="sm:col-span-2 lg:col-span-1">
-            <a
-              href="#"
+            <Link
+              href={routes.home}
               className="inline-block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-secondary"
               aria-label={`${siteConfig.name} — página inicial`}
             >
@@ -20,7 +23,7 @@ export function Footer() {
               <span className="mt-1 block text-xs font-medium uppercase tracking-[0.3em] text-neutral">
                 {siteConfig.tagline}
               </span>
-            </a>
+            </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-neutral">
               Transporte executivo com requinte, discrição e pontualidade para
               quem exige o melhor em cada trajeto, com sede em Balneário
@@ -35,12 +38,12 @@ export function Footer() {
             <ul className="mt-4 space-y-3">
               {navLinks.map((link) => (
                 <li key={link.href}>
-                  <a
+                  <Link
                     href={link.href}
                     className="text-sm text-neutral transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-secondary rounded-sm"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

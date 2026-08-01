@@ -38,4 +38,5 @@ export type SitemapEntry = {
  */
 export const publishedRoutes: readonly SitemapEntry[] = [
   { path: routes.home, changeFrequency: "monthly", priority: 1 },
+  { path: routes.servicos, changeFrequency: "monthly", priority: 0.8 },
 ] as const;

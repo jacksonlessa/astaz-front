@@ -1,3 +1,5 @@
+import { routes } from "@/lib/routes";
+
 export const siteConfig = {
   name: "ASTAZ",
   tagline: "Transporte Executivo",
@@ -69,12 +71,20 @@ export function getWhatsAppUrl(message?: string) {
   return `https://wa.me/${siteConfig.phoneRaw}?text=${text}`;
 }
 
+/**
+ * Navegação principal.
+ *
+ * As âncoras são absolutas (`/#frota`, e não `#frota`) porque o site deixou de
+ * ser uma página só: a partir de `/servicos`, uma âncora relativa não
+ * encontraria a seção e o link morreria. Conforme as páginas da Fase 1 forem
+ * publicadas, cada âncora vira uma rota própria.
+ */
 export const navLinks = [
-  { href: "#servicos", label: "Serviços" },
-  { href: "#experiencia", label: "Experiência" },
-  { href: "#frota", label: "Frota" },
-  { href: "#como-funciona", label: "Como funciona" },
-  { href: "#faq", label: "FAQ" },
+  { href: routes.servicos, label: "Serviços" },
+  { href: "/#experiencia", label: "Experiência" },
+  { href: "/#frota", label: "Frota" },
+  { href: "/#como-funciona", label: "Como funciona" },
+  { href: "/#faq", label: "FAQ" },
 ] as const;
 
 export const brandAttributes = [
