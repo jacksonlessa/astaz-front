@@ -3,8 +3,33 @@
 **URL**: `/destinos/beto-carrero`
 **Intenção de busca**: famílias e grupos hospedados em BC que vão ao parque, em
 Penha
-**Status**: ⬜ vazio
+**Status**: 🟡 parcial — página publicada com a política de espera confirmada;
+**faltam distância e tempo de trajeto**
 **Prioridade**: 🔴 alta, com pico em férias escolares e feriados prolongados
+
+---
+
+## Respostas já fornecidas pela Astaz
+
+**Política de espera** (o ponto que decide a venda):
+
+> O motorista pode tanto ficar esperando quanto voltar em um horário agendado
+> — tudo combinado no momento do orçamento.
+
+**Veículos**: van executiva para até 7 passageiros, uma mala grande por
+passageiro. Sedã e SUV atendem até 3.
+
+**Cadeirinha**: disponível mediante solicitação na reserva.
+
+### Lacuna que enfraquece a página
+
+**Distância e tempo de trajeto de Balneário Camboriú até Penha não foram
+informados** e por isso não aparecem na página. É justamente o dado que a
+página de Navegantes tem e que a diferencia de um texto genérico — sem ele,
+esta página é mais fraca que poderia ser.
+
+Também em aberto: melhor horário de saída para evitar fila na entrada, ponto de
+embarque e desembarque no parque, horário-limite de retorno.
 
 ---
 

@@ -17,7 +17,7 @@ import { getDestino, publishedDestinos } from "@/lib/content/destinos";
 import { destinoPath, routes } from "@/lib/routes";
 import { breadcrumbSchema, faqSchema } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
-import { fleetCategories } from "@/lib/site";
+import { categoriasFrota } from "@/lib/content/frota";
 
 type PageProps = { params: Promise<{ slug: string }> };
 
@@ -156,7 +156,7 @@ export default async function DestinoPage({ params }: PageProps) {
                 Veículos para esta rota
               </SectionHeading>
               <div className="mt-8 grid gap-6 sm:grid-cols-3">
-                {fleetCategories.map((categoria) => (
+                {categoriasFrota.map((categoria) => (
                   <article
                     key={categoria.title}
                     className="rounded-2xl border border-border-subtle bg-surface p-6"
@@ -164,6 +164,10 @@ export default async function DestinoPage({ params }: PageProps) {
                     <h3 className="font-display text-xl text-foreground">
                       {categoria.title}
                     </h3>
+                    <p className="mt-2 text-xs uppercase tracking-[0.15em] text-primary">
+                      {categoria.passageiros} passageiros ·{" "}
+                      {categoria.malasGrandes} malas
+                    </p>
                     <p className="mt-3 text-sm leading-relaxed text-neutral">
                       {categoria.description}
                     </p>
@@ -171,9 +175,15 @@ export default async function DestinoPage({ params }: PageProps) {
                 ))}
               </div>
               <p className="mt-6 max-w-3xl text-sm leading-relaxed text-neutral-dark">
-                A escolha do veículo considera o número de passageiros e o
-                volume de bagagem. Informe esses dados no contato e indicamos a
-                opção mais adequada.
+                Considere uma mala grande por passageiro. Cadeirinha e bebê
+                conforto estão disponíveis mediante solicitação na reserva.{" "}
+                <Link
+                  href={routes.frota}
+                  className="text-primary underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 rounded-sm"
+                >
+                  Conheça a frota
+                </Link>
+                .
               </p>
             </section>
 

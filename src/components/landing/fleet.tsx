@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { fleetCategories } from "@/lib/site";
+import { categoriasFrota } from "@/lib/content/frota";
 import {
   SectionDescription,
   SectionHeading,
@@ -42,7 +42,7 @@ export function Fleet() {
         </div>
 
         <div className="grid gap-8 lg:grid-cols-3">
-          {fleetCategories.map((category, index) => (
+          {categoriasFrota.map((category, index) => (
             <article
               key={category.title}
               className="group flex flex-col overflow-hidden rounded-2xl border border-border-subtle bg-surface transition-all duration-500 hover:border-primary/30"

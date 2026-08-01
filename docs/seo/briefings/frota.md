@@ -2,8 +2,33 @@
 
 **URL**: `/frota`
 **Intenção de busca**: quem já decidiu contratar e está avaliando qual veículo
-**Status**: ⬜ vazio
+**Status**: 🟡 parcial — capacidades e modelos confirmados; faltam ano dos
+veículos, acessibilidade, rotina de manutenção e **fotos reais**
 **Prioridade**: 🟡 média em tráfego, **alta em conversão**
+
+---
+
+## Respostas já fornecidas pela Astaz
+
+| Categoria | Modelos | Passageiros | Malas grandes |
+| --- | --- | --- | --- |
+| Sedã Executivo | Nissan Sentra | 3 | 3 |
+| SUV Premium | AION V *(principal)* · Jeep Commander | 3 | 3 |
+| Van Executiva | Sprinter | 7 | 7 |
+
+Regra de bagagem informada: **uma mala grande por passageiro**.
+
+**Cadeirinha e bebê conforto**: disponíveis mediante solicitação na reserva.
+
+### Ainda em aberto
+
+- Ano dos veículos
+- **O AION V é elétrico?** Se sim, é um diferencial forte e alinhado ao
+  Manifesto — condução silenciosa reforça discrição e tranquilidade. Não foi
+  publicado por falta de confirmação
+- Acessibilidade para cadeirante ou mobilidade reduzida
+- Rotina de manutenção e higienização
+- **Fotos reais de cada veículo** — hoje a página usa imagens de banco
 
 ---
 

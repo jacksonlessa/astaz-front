@@ -45,4 +45,10 @@ export const publishedRoutes: readonly SitemapEntry[] = [
     changeFrequency: "monthly",
     priority: 0.9,
   },
+  {
+    path: destinoPath("beto-carrero"),
+    changeFrequency: "monthly",
+    priority: 0.9,
+  },
+  { path: routes.frota, changeFrequency: "monthly", priority: 0.7 },
 ] as const;

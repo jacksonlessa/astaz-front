@@ -96,7 +96,7 @@ export function getWhatsAppUrl(message?: string) {
 export const navLinks = [
   { href: routes.servicos, label: "Serviços" },
   { href: routes.destinos, label: "Destinos" },
-  { href: "/#frota", label: "Frota" },
+  { href: routes.frota, label: "Frota" },
   { href: "/#como-funciona", label: "Como funciona" },
   { href: "/#faq", label: "FAQ" },
 ] as const;
@@ -143,23 +143,7 @@ export const services = [
   },
 ] as const;
 
-export const fleetCategories = [
-  {
-    title: "Sedã Executivo",
-    description:
-      "Elegância discreta para deslocamentos individuais ou em dupla, com acabamento refinado e ambiente silencioso.",
-  },
-  {
-    title: "SUV Premium",
-    description:
-      "Amplitude e presença para grupos pequenos, viagens com bagagem extra ou trajetos que pedem mais conforto.",
-  },
-  {
-    title: "Van Executiva",
-    description:
-      "Capacidade ampliada sem abrir mão do padrão executivo — ideal para equipes, comitivas e transfers em grupo.",
-  },
-] as const;
+// A frota vive em `src/lib/content/frota.ts`, com modelos e capacidades.
 
 export const journeySteps = [
   {

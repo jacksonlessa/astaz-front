@@ -172,6 +172,112 @@ export const destinos: readonly Destino[] = [
     ],
     published: true,
   },
+  {
+    slug: "beto-carrero",
+    title: "Transfer de Balneário Camboriú ao Beto Carrero World",
+    breadcrumbLabel: "Beto Carrero World",
+    whatsappMessage:
+      "Olá, ASTAZ! Gostaria de um orçamento para transfer de Balneário Camboriú ao Beto Carrero World.",
+    metaTitle: "Transfer para o Beto Carrero World",
+    metaDescription:
+      "Transfer executivo de Balneário Camboriú ao Beto Carrero World, em Penha: van para até 7 passageiros, cadeirinha sob solicitação e volta no seu horário.",
+    intro:
+      "Um dia no parque cansa mais do que se imagina. O transfer resolve a parte que ninguém quer administrar no fim da tarde: estacionamento, trânsito de volta e a estrada com a família exausta.",
+    summary:
+      "Ida e volta para o parque, em Penha, com o motorista aguardando no local ou retornando no horário combinado.",
+    // TODO: substituir por foto real da van no parque ou embarque da família.
+    image:
+      "https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1600&q=80",
+    imageAlt: "Veículo executivo em estrada ao amanhecer",
+    imageIsPlaceholder: true,
+    routeFacts: [
+      {
+        label: "Volta",
+        value: "No seu horário",
+        note: "Motorista aguardando no local ou retorno agendado",
+      },
+      {
+        label: "Van executiva",
+        value: "7 passageiros",
+        note: "Uma mala grande por passageiro",
+      },
+      {
+        label: "Cadeirinha",
+        value: "Sob solicitação",
+        note: "Informe as idades no momento da reserva",
+      },
+      {
+        label: "Atendimento",
+        value: "24 horas",
+        note: "Mediante agendamento",
+      },
+    ],
+    blocks: [
+      {
+        type: "highlight",
+        title: "Duas formas de organizar a volta",
+        body: "O motorista pode aguardar no local durante toda a permanência no parque, ou retornar em um horário combinado com você. As duas opções são definidas junto com o orçamento, antes do dia — você não decide isso com a família cansada na saída do parque.",
+      },
+      {
+        type: "prose",
+        title: "Por que ir de transfer",
+        paragraphs: [
+          "Quem vai ao Beto Carrero costuma chegar cedo e sair no fim da tarde. Entre uma coisa e outra são muitas horas em pé, e a estrada de volta acontece exatamente quando o cansaço aparece.",
+          "Com o transfer, o trajeto até Penha e o retorno a Balneário Camboriú ficam por nossa conta, incluindo o estacionamento — que em dia de alta ocupação é uma preocupação a menos.",
+          "Para famílias com crianças pequenas, cadeirinha e bebê conforto ficam disponíveis mediante solicitação no momento da reserva. Basta informar as idades para prepararmos o veículo.",
+        ],
+      },
+      {
+        type: "steps",
+        title: "Como funciona",
+        items: [
+          {
+            title: "Você informa o grupo e a data",
+            description:
+              "Número de passageiros, idades das crianças e o dia da visita. Com isso definimos o veículo adequado.",
+          },
+          {
+            title: "Combinamos o formato da volta",
+            description:
+              "Motorista aguardando no local ou retorno em horário agendado. A escolha é feita junto com o orçamento.",
+          },
+          {
+            title: "Buscamos você em Balneário Camboriú",
+            description:
+              "No endereço combinado, no horário planejado para chegar ao parque sem correria.",
+          },
+          {
+            title: "O retorno acontece como o combinado",
+            description:
+              "Sem procurar carro no estacionamento e sem dirigir depois de um dia inteiro em pé.",
+          },
+        ],
+      },
+    ],
+    faq: [
+      {
+        question: "O motorista fica esperando durante o dia no parque?",
+        answer:
+          "Pode ficar. O motorista aguarda no local durante toda a permanência, ou retorna em um horário combinado com você. As duas opções são definidas junto com o orçamento.",
+      },
+      {
+        question: "Vocês têm cadeirinha para crianças?",
+        answer:
+          "Sim. Cadeirinha e bebê conforto estão disponíveis mediante solicitação no momento da reserva. Informe as idades das crianças para prepararmos o veículo.",
+      },
+      {
+        question: "Quantas pessoas cabem no transfer para o Beto Carrero?",
+        answer:
+          "A van executiva atende até 7 passageiros, considerando uma mala grande por pessoa. Para grupos menores, sedã e SUV atendem até 3 passageiros.",
+      },
+      {
+        question: "Preciso agendar com antecedência?",
+        answer:
+          "Recomendamos o agendamento com antecedência para garantir disponibilidade, especialmente em férias escolares e feriados prolongados. Para solicitações de última hora, consulte nossa equipe.",
+      },
+    ],
+    published: true,
+  },
 ];
 
 export function getDestino(slug: string) {
