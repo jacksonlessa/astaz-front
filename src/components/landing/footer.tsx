@@ -26,8 +26,8 @@ export function Footer() {
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-neutral">
               Transporte executivo com requinte, discrição e pontualidade para
-              quem exige o melhor em cada trajeto, com sede em Balneário
-              Camboriú.
+              quem exige o melhor em cada trajeto, atendendo Balneário Camboriú
+              e o litoral de Santa Catarina.
             </p>
           </div>
 

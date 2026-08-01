@@ -211,11 +211,10 @@ export default async function DestinoPage({ params }: PageProps) {
 
             <div className="mt-16 rounded-2xl border border-border-subtle bg-surface p-8 sm:p-12">
               <SectionHeading as="h2" className="!text-2xl sm:!text-3xl">
-                Agende seu transfer
+                {destino.cta.title}
               </SectionHeading>
               <SectionDescription className="mt-4">
-                Informe a data, o horário e o número do voo. Nossa equipe retorna
-                com a confirmação e todos os detalhes da recepção.
+                {destino.cta.body}
               </SectionDescription>
               <div className="mt-8">
                 <WhatsAppButton message={destino.whatsappMessage}>

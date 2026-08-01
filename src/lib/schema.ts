@@ -1,5 +1,6 @@
+import { servicos } from "@/lib/content/servicos";
 import { absoluteUrl } from "@/lib/seo";
-import { businessInfo, faqItems, services, siteConfig } from "@/lib/site";
+import { businessInfo, faqItems, siteConfig } from "@/lib/site";
 
 export type JsonLdObject = Record<string, unknown>;
 
@@ -54,15 +55,17 @@ export function localBusinessSchema(): JsonLdObject {
       name,
     })),
     sameAs: [...businessInfo.sameAs],
+    // Deriva de `content/servicos.ts`, a mesma fonte que monta `/servicos`.
+    // O catálogo lido pelo Google precisa ser o mesmo que o visitante vê.
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "Serviços de transporte executivo",
-      itemListElement: services.map((service) => ({
+      itemListElement: servicos.map((servico) => ({
         "@type": "Offer",
         itemOffered: {
           "@type": "Service",
-          name: service.title,
-          description: service.description,
+          name: servico.title,
+          description: servico.summary,
         },
       })),
     },

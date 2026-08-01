@@ -1,5 +1,7 @@
 import Image from "next/image";
+import Link from "next/link";
 import { services } from "@/lib/site";
+import { destinoPath, routes } from "@/lib/routes";
 import {
   SectionDescription,
   SectionHeading,
@@ -52,6 +54,23 @@ export function Services() {
               </div>
             </article>
           ))}
+        </div>
+
+        <div className="mt-12 flex flex-wrap gap-x-8 gap-y-4">
+          <Link
+            href={destinoPath("aeroporto-navegantes")}
+            className="inline-flex items-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-primary-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-secondary rounded-sm"
+          >
+            Transfer para o Aeroporto de Navegantes
+            <span aria-hidden="true">→</span>
+          </Link>
+          <Link
+            href={routes.destinos}
+            className="inline-flex items-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-primary-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-secondary rounded-sm"
+          >
+            Todos os destinos
+            <span aria-hidden="true">→</span>
+          </Link>
         </div>
       </div>
     </section>

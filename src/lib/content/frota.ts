@@ -29,7 +29,7 @@ export const categoriasFrota: readonly CategoriaFrota[] = [
     passageiros: 3,
     malasGrandes: 3,
     description:
-      "Elegância discreta para deslocamentos individuais ou em dupla, com acabamento refinado e ambiente silencioso.",
+      "Elegância discreta para deslocamentos individuais ou em dupla, com espaço para uma mala grande por passageiro.",
     indicadoPara:
       "Deslocamentos executivos, reuniões e transfers com bagagem de mão ou uma mala por passageiro.",
   },

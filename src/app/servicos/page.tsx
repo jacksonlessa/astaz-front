@@ -19,8 +19,13 @@ import { siteConfig } from "@/lib/site";
 export const metadata = buildMetadata({
   title: "Serviços de Transporte Executivo",
   description:
-    "Conheça os serviços da Astaz em Balneário Camboriú: transfer aeroporto, transporte corporativo, eventos, casamentos, motorista particular e city tour.",
+    "Transporte executivo em Balneário Camboriú para aeroportos, agendas corporativas, eventos e casamentos, com motorista particular e city tour.",
   path: routes.servicos,
+  // Enquanto nenhuma página de serviço estiver publicada, este hub não linka
+  // nenhuma filha e apenas reformula a seção de serviços da home — uma URL
+  // indexável sem função própria. `follow` permanece, para o Google seguir os
+  // links de navegação. Remover o noIndex assim que a primeira filha existir.
+  noIndex: true,
 });
 
 export default function ServicosPage() {
@@ -66,7 +71,7 @@ export default function ServicosPage() {
             <div className="max-w-2xl">
               <SectionLabel>Serviços</SectionLabel>
               <SectionHeading as="h1" id="servicos-heading" className="mt-4">
-                O que a Astaz faz
+                Serviços de transporte executivo
               </SectionHeading>
               <SectionDescription className="mt-4">
                 Transporte executivo em {siteConfig.baseCity} e no litoral
@@ -106,7 +111,7 @@ export default function ServicosPage() {
 
             <div className="mt-16 rounded-2xl border border-border-subtle bg-surface p-8 sm:p-12">
               <SectionHeading as="h2" className="!text-2xl sm:!text-3xl">
-                Não encontrou o que precisa?
+                Roteiros sob demanda
               </SectionHeading>
               <SectionDescription className="mt-4">
                 Roteiros com múltiplas paradas, agendas fora do padrão e

@@ -18,7 +18,7 @@ import { buildMetadata } from "@/lib/seo";
 export const metadata = buildMetadata({
   title: "Frota Executiva",
   description:
-    "Conheça a frota da Astaz: sedã, SUV e van executiva, com capacidade de passageiros, bagagem e cadeirinha sob solicitação.",
+    "Sedã, SUV e van executiva na frota da Astaz: até 7 passageiros, uma mala grande por pessoa e cadeirinha sob solicitação.",
   path: routes.frota,
 });
 
@@ -65,7 +65,7 @@ export default function FrotaPage() {
             <div className="max-w-2xl">
               <SectionLabel>Frota</SectionLabel>
               <SectionHeading as="h1" id="frota-heading" className="mt-4">
-                Os veículos que conduzem você
+                A frota que leva você
               </SectionHeading>
               <SectionDescription className="mt-4">
                 Três categorias, escolhidas pelo número de passageiros e pelo
@@ -140,7 +140,7 @@ export default function FrotaPage() {
 
             <div className="mt-16 rounded-2xl border border-border-subtle bg-surface p-8 sm:p-12">
               <SectionHeading as="h2" className="!text-2xl sm:!text-3xl">
-                Na dúvida sobre o veículo?
+                Ajudamos a escolher o veículo
               </SectionHeading>
               <SectionDescription className="mt-4">
                 Informe quantas pessoas viajam e quantas malas levam. Indicamos

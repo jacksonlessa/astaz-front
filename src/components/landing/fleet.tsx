@@ -1,5 +1,7 @@
 import Image from "next/image";
+import Link from "next/link";
 import { categoriasFrota } from "@/lib/content/frota";
+import { routes } from "@/lib/routes";
 import {
   SectionDescription,
   SectionHeading,
@@ -67,6 +69,16 @@ export function Fleet() {
               </div>
             </article>
           ))}
+        </div>
+
+        <div className="mt-12 text-center">
+          <Link
+            href={routes.frota}
+            className="inline-flex items-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-primary-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-secondary rounded-sm"
+          >
+            Ver capacidade de passageiros e bagagem
+            <span aria-hidden="true">→</span>
+          </Link>
         </div>
       </div>
     </section>

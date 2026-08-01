@@ -50,6 +50,12 @@ export type Destino = {
   blocks: readonly DestinoBlock[];
   /** Vira schema `FAQPage` — só entra aqui o que é exibido na página. */
   faq: readonly { question: string; answer: string }[];
+  /**
+   * CTA final, específico do destino. Existe porque um texto genérico aqui
+   * produz erro factual: pedir "número do voo" numa página de parque temático
+   * é a assinatura de template com nome trocado.
+   */
+  cta: { title: string; body: string };
   /** Enquanto false, a rota não é gerada e não entra no sitemap. */
   published: boolean;
 };
@@ -63,7 +69,7 @@ export const destinos: readonly Destino[] = [
       "Olá, ASTAZ! Gostaria de um orçamento para transfer entre o Aeroporto de Navegantes e Balneário Camboriú.",
     metaTitle: "Transfer Aeroporto Navegantes a Balneário Camboriú",
     metaDescription:
-      "Transfer executivo entre o Aeroporto de Navegantes e Balneário Camboriú: 40 km, cerca de 40 minutos, com monitoramento de voo e atendimento 24 horas.",
+      "Transfer executivo do Aeroporto de Navegantes a Balneário Camboriú: 40 km em cerca de 40 minutos, com monitoramento de voo e atendimento agendado 24 horas.",
     intro:
       "São 40 quilômetros entre o Aeroporto de Navegantes e Balneário Camboriú. O que muda a experiência não é a distância — é chegar ao desembarque e encontrar o motorista já esperando, sem procurar por ninguém.",
     summary:
@@ -125,7 +131,7 @@ export const destinos: readonly Destino[] = [
         paragraphs: [
           "O percurso leva cerca de 40 minutos em condições normais. Entre dezembro e março, nos horários de maior movimento, pode chegar a uma hora e meia.",
           "Nos dias úteis, o trânsito costuma ser mais intenso no início da manhã e no fim da tarde, principalmente nos acessos norte e sul de Itajaí.",
-          "Aplicativos de navegação calculam a distância, mas não antecipam obras, acidentes ou congestionamentos na BR-101. Nossa equipe acompanha essas condições antes da saída para definir o melhor horário — é o tipo de ajuste que só quem roda a região todos os dias consegue fazer.",
+          "Aplicativos de navegação calculam a distância, mas não antecipam obras, acidentes ou congestionamentos na BR-101. Nossa equipe acompanha essas condições antes da saída para definir o melhor horário de partida.",
         ],
       },
       {
@@ -170,6 +176,10 @@ export const destinos: readonly Destino[] = [
           "São 40 quilômetros, percorridos em cerca de 40 minutos em condições normais de trânsito. Entre dezembro e março, nos horários de pico da BR-101, o trajeto pode chegar a uma hora e meia.",
       },
     ],
+    cta: {
+      title: "Agende seu transfer",
+      body: "Informe a data, o horário e o número do voo. Nossa equipe retorna com a confirmação e todos os detalhes da recepção.",
+    },
     published: true,
   },
   {
@@ -180,9 +190,9 @@ export const destinos: readonly Destino[] = [
       "Olá, ASTAZ! Gostaria de um orçamento para transfer de Balneário Camboriú ao Beto Carrero World.",
     metaTitle: "Transfer para o Beto Carrero World",
     metaDescription:
-      "Transfer executivo de Balneário Camboriú ao Beto Carrero World, em Penha: van para até 7 passageiros, cadeirinha sob solicitação e volta no seu horário.",
+      "Transfer executivo de Balneário Camboriú ao Beto Carrero World, em Penha: van para até 7 passageiros, cadeirinha sob solicitação e volta combinada.",
     intro:
-      "Um dia no parque cansa mais do que se imagina. O transfer resolve a parte que ninguém quer administrar no fim da tarde: estacionamento, trânsito de volta e a estrada com a família exausta.",
+      "O parque ocupa o dia inteiro, e a volta costuma ser a parte menos planejada. Com o transfer, estacionamento, trânsito e estrada ficam por nossa conta — a família só precisa aproveitar o passeio.",
     summary:
       "Ida e volta para o parque, em Penha, com o motorista aguardando no local ou retornando no horário combinado.",
     // TODO: substituir por foto real da van no parque ou embarque da família.
@@ -216,14 +226,14 @@ export const destinos: readonly Destino[] = [
       {
         type: "highlight",
         title: "Duas formas de organizar a volta",
-        body: "O motorista pode aguardar no local durante toda a permanência no parque, ou retornar em um horário combinado com você. As duas opções são definidas junto com o orçamento, antes do dia — você não decide isso com a família cansada na saída do parque.",
+        body: "O motorista pode aguardar no local durante toda a permanência no parque, ou retornar em um horário combinado com você. As duas opções são definidas junto com o orçamento, antes do dia — nada fica para ser resolvido na saída do parque.",
       },
       {
         type: "prose",
         title: "Por que ir de transfer",
         paragraphs: [
           "Quem vai ao Beto Carrero costuma chegar cedo e sair no fim da tarde. Entre uma coisa e outra são muitas horas em pé, e a estrada de volta acontece exatamente quando o cansaço aparece.",
-          "Com o transfer, o trajeto até Penha e o retorno a Balneário Camboriú ficam por nossa conta, incluindo o estacionamento — que em dia de alta ocupação é uma preocupação a menos.",
+          "Com o transfer, o trajeto até Penha e o retorno a Balneário Camboriú ficam por nossa conta — e não há carro para estacionar em dia de parque cheio.",
           "Para famílias com crianças pequenas, cadeirinha e bebê conforto ficam disponíveis mediante solicitação no momento da reserva. Basta informar as idades para prepararmos o veículo.",
         ],
       },
@@ -249,7 +259,7 @@ export const destinos: readonly Destino[] = [
           {
             title: "O retorno acontece como o combinado",
             description:
-              "Sem procurar carro no estacionamento e sem dirigir depois de um dia inteiro em pé.",
+              "Sem procurar o carro no estacionamento e sem encarar a estrada no fim do dia.",
           },
         ],
       },
@@ -276,6 +286,10 @@ export const destinos: readonly Destino[] = [
           "Recomendamos o agendamento com antecedência para garantir disponibilidade, especialmente em férias escolares e feriados prolongados. Para solicitações de última hora, consulte nossa equipe.",
       },
     ],
+    cta: {
+      title: "Agende o transfer para o parque",
+      body: "Informe a data da visita, quantas pessoas viajam e as idades das crianças. Definimos junto com você o formato da volta e retornamos com o orçamento.",
+    },
     published: true,
   },
 ];
