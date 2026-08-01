@@ -47,27 +47,48 @@ não voltarem.
 
 ---
 
-## Conflito ainda em aberto: `/servicos/transporte-executivo` × home
+## Conflito resolvido: `/servicos/transporte-executivo` × home
 
-**Este precisa da sua decisão antes da Fase 1.**
+A home tem como título `ASTAZ | Transporte Executivo em Balneário Camboriú`.
+Uma página `/servicos/transporte-executivo` disputaria a mesma busca — e
+perderia, porque a home concentra os links externos e a autoridade do domínio.
 
-A home já tem como título `ASTAZ | Transporte Executivo em Balneário Camboriú`.
-Uma página `/servicos/transporte-executivo` com o mesmo foco disputaria
-exatamente a mesma busca — e perderia, porque a home concentra os links
-externos e a autoridade do domínio.
+**Decisão**: `/servicos` vira **hub** e não existe `/servicos/transporte-executivo`
+separado. O termo genérico continua sendo da home; o hub organiza e distribui
+para os serviços específicos.
 
-Três saídas:
+O ângulo "motorista à disposição" virou `/servicos/motorista-particular`, que é
+intenção distinta e está cadastrado como serviço no GBP (junto de "Táxi
+Executivo").
 
-1. **Não criar a página.** A home cobre. Menos trabalho, zero risco.
-2. **Transformar em hub.** `/servicos` vira a página que lista todos os
-   serviços e linka para cada um; não existe `/servicos/transporte-executivo`
-   separado.
-3. **Repropor para outra intenção.** Ex.: *motorista particular por diária* ou
-   *transporte executivo com motorista à disposição* — buscas relacionadas mas
-   distintas, que a home não atende bem.
+---
 
-Recomendação: **opção 2**, com a 3 depois, se o Search Console mostrar demanda
-para "motorista particular".
+## Serviços do GBP → páginas do site
+
+O Google Business Profile tem **19 serviços cadastrados**; o site terá **6
+páginas**. Isso não é inconsistência: no GBP, serviço funciona como etiqueta de
+palavra-chave e quantidade ajuda. No site, cada página precisa responder uma
+intenção que nenhuma outra cobre — quantidade prejudica.
+
+O mapa vive em `src/lib/content/servicos.ts`, no campo `gbpServices`, para
+garantir que nenhuma etiqueta do perfil fique sem página correspondente.
+
+| Página do site | Etiquetas do GBP que absorve |
+| --- | --- |
+| `/servicos/transfer-aeroporto` | Serviço de transporte para aeroporto · Transfer Aeroporto · Transfer para Aeroporto de Navegantes · Transfer para Aeroporto de Florianópolis · Transporte para Aeroportos · Recepção em Aeroportos |
+| `/servicos/transporte-corporativo` | Transporte Corporativo · Transporte para Reuniões · Transporte para Empresas · Empresa de transporte |
+| `/servicos/transporte-eventos` | Transporte para Eventos · Transporte para Congressos · Transporte para Feiras · Transporte para Shows |
+| `/servicos/transporte-casamentos` | Transporte para Casamentos |
+| `/servicos/motorista-particular` | Motorista Particular · Táxi Executivo · Transporte Executivo |
+| `/servicos/city-tour` | — *(não cadastrado no GBP; vale adicionar)* |
+| `/destinos/beto-carrero` | Transfer para Beto Carrero |
+
+**Congressos e feiras** aparecem em corporativo e em eventos. A divisão
+adotada: `/servicos/transporte-eventos` fica com congressos, feiras e shows;
+`/servicos/transporte-corporativo` fica com a agenda executiva do dia a dia
+(reuniões, visitas técnicas, deslocamentos entre compromissos).
+
+**Ação no GBP**: adicionar "City Tour" à lista de serviços.
 
 ---
 
@@ -86,10 +107,12 @@ Orçamento de caracteres: **título ≤ 52** (o template do layout acrescenta
 | `/frota` | frota / veículos disponíveis | Nossa Frota Executiva | 🟡 média | Fase 1 |
 | `/contato` | contato, orçamento | Contato e Orçamento | 🟡 média | Fase 1 |
 | `/sobre` | quem é a astaz *(confiança, E-E-A-T)* | Sobre a Astaz | 🟢 baixa | Fase 1 |
+| `/servicos` | hub — o que a empresa faz | Serviços de Transporte Executivo | 🟡 média | ✅ publicada |
 | `/destinos` | hub de destinos | Destinos Atendidos | 🟡 média | Fase 2 |
-| `/servicos` | hub de serviços | Serviços | 🟡 média | Fase 2 |
+| `/eventos` | hub de eventos sazonais | Transporte para Eventos em SC | 🟢 baixa | Fase 3 |
 | `/servicos/transporte-corporativo` | transporte corporativo bc | Transporte Corporativo em Balneário Camboriú | 🟡 média | Fase 2 |
-| `/servicos/transporte-eventos` | transporte para eventos bc | Transporte para Eventos | 🟢 baixa | Fase 2 |
+| `/servicos/motorista-particular` | motorista particular / à disposição | Motorista Particular à Disposição | 🟡 média | Fase 2 |
+| `/servicos/transporte-eventos` | transporte para eventos e congressos | Transporte para Eventos e Congressos | 🟢 baixa | Fase 2 |
 | `/servicos/transporte-casamentos` | carro para casamento bc | Transporte para Casamentos | 🟢 baixa | Fase 2 |
 | `/servicos/city-tour` | city tour balneário camboriú | City Tour em Balneário Camboriú | 🟢 baixa | Fase 2 |
 | `/destinos/itajai` | transporte executivo itajaí | Transporte Executivo e Transfer em Itajaí | 🟡 média | Fase 2 |
@@ -112,14 +135,13 @@ contrário, cortar.
 
 ### Cobertura vs. GBP
 
-A área de cobertura do Google Business Profile hoje é: Balneário Camboriú,
-Camboriú, Itajaí, Navegantes, Itapema, Brusque, Blumenau, Joinville, São
-Francisco do Sul, Florianópolis.
+Área de cobertura atual, espelhada em `businessInfo.areaServed`: Balneário
+Camboriú, Camboriú, Itajaí, Navegantes, Itapema, Bombinhas, Penha, Brusque,
+Blumenau, Joinville, São Francisco do Sul, Florianópolis. ✅ site e GBP alinhados.
 
-**Bombinhas e Penha não estão no GBP**, mas estão previstas como páginas de
-destino — e `/destinos/beto-carrero` fica em Penha. Antes de publicar essas
-páginas, **adicionar Penha, Bombinhas e Porto Belo à área de cobertura do
-GBP**, para o site e o perfil contarem a mesma história.
+**Regra**: nenhuma cidade pode ser citada como atendida numa página se não
+estiver em `areaServed` — e nada entra em `areaServed` antes de entrar no GBP.
+Site e perfil precisam contar a mesma história.
 
 ---
 
