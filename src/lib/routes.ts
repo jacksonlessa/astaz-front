@@ -1,0 +1,41 @@
+/**
+ * Registro central de rotas do site.
+ *
+ * Toda URL interna deve sair daqui — nav, footer, breadcrumbs e sitemap
+ * consomem este arquivo, então renomear uma rota é uma mudança em um lugar só.
+ */
+
+export const routes = {
+  home: "/",
+  servicos: "/servicos",
+  destinos: "/destinos",
+  frota: "/frota",
+  sobre: "/sobre",
+  contato: "/contato",
+  faq: "/faq",
+} as const;
+
+export function servicoPath(slug: string) {
+  return `${routes.servicos}/${slug}`;
+}
+
+export function destinoPath(slug: string) {
+  return `${routes.destinos}/${slug}`;
+}
+
+export type SitemapEntry = {
+  path: string;
+  changeFrequency: "daily" | "weekly" | "monthly" | "yearly";
+  priority: number;
+};
+
+/**
+ * Rotas que já existem e devem ser indexadas.
+ *
+ * O `sitemap.ts` é gerado exclusivamente a partir desta lista — uma página só
+ * entra aqui depois de existir de fato, para o sitemap nunca apontar para 404.
+ * Ao publicar uma página nova, adicione a entrada aqui no mesmo commit.
+ */
+export const publishedRoutes: readonly SitemapEntry[] = [
+  { path: routes.home, changeFrequency: "monthly", priority: 1 },
+] as const;

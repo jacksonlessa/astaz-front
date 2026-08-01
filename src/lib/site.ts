@@ -12,6 +12,58 @@ export const siteConfig = {
   url: "https://astaz.com.br",
 } as const;
 
+/**
+ * Dados cadastrais usados no JSON-LD.
+ *
+ * ESPELHO DO GOOGLE BUSINESS PROFILE — este objeto não é um lugar para
+ * "melhorar" a informação. Cada campo deve bater literalmente com o que está
+ * cadastrado no GBP; divergência de NAP (Name, Address, Phone) entre site e
+ * perfil enfraquece o ranking local em vez de reforçá-lo. Ao alterar algo no
+ * GBP, altere aqui no mesmo dia (e vice-versa).
+ *
+ * A Astaz é um *service-area business*: atende no local do cliente, sem
+ * endereço público. Por isso não há `streetAddress` nem `geo` — declarar um
+ * endereço físico aqui contradiria o GBP. A cobertura é expressa por
+ * `areaServed`.
+ */
+export const businessInfo = {
+  /** Nome exato no GBP. Difere de `siteConfig.name`, que é a marca visual. */
+  businessName: "Astaz Transporte Executivo",
+  /** Razão social do CNPJ, se houver. Omitido do schema enquanto for null. */
+  legalName: null as string | null,
+  /** Categoria principal no GBP. */
+  category: "Serviço de transporte",
+  addressLocality: "Balneário Camboriú",
+  addressRegion: "SC",
+  addressCountry: "BR",
+  /** GBP: aberto 24 horas, todos os dias. */
+  openingHours: "Mo-Su 00:00-23:59",
+  priceRange: "$$$",
+  /** Perfis oficiais — confirmam ao Google que site, GBP e Instagram são a mesma entidade. */
+  sameAs: [
+    "https://www.instagram.com/astaz.executivo/",
+    "https://share.google/JPyd0UggtIlpBakXY",
+  ],
+  /**
+   * Área de cobertura. Espelha exatamente a lista do GBP, na mesma ordem
+   * geográfica. Antes de adicionar uma cidade aqui, adicione-a no GBP.
+   */
+  areaServed: [
+    "Balneário Camboriú",
+    "Camboriú",
+    "Itajaí",
+    "Navegantes",
+    "Itapema",
+    "Bombinhas",
+    "Penha",
+    "Brusque",
+    "Blumenau",
+    "Joinville",
+    "São Francisco do Sul",
+    "Florianópolis",
+  ],
+} as const;
+
 export function getWhatsAppUrl(message?: string) {
   const text = encodeURIComponent(message ?? siteConfig.whatsappMessage);
   return `https://wa.me/${siteConfig.phoneRaw}?text=${text}`;
