@@ -3,8 +3,13 @@ import { routes } from "@/lib/routes";
 export const siteConfig = {
   name: "ASTAZ",
   tagline: "Transporte Executivo",
+  /**
+   * Meta description da home. Não confundir com `businessInfo.description`:
+   * esta é a linha que aparece no resultado de busca e obedece ao limite de
+   * 120–158 caracteres documentado em `seo.ts`.
+   */
   description:
-    "Transporte executivo em Balneário Camboriú, com transfers para os aeroportos de Navegantes, Florianópolis, Joinville e Curitiba.",
+    "Transporte executivo em Balneário Camboriú: transfers para os aeroportos de Navegantes, Florianópolis, Joinville e Curitiba, corporativo e eventos.",
   baseCity: "Balneário Camboriú, SC",
   airports: ["Navegantes", "Florianópolis", "Joinville", "Curitiba"],
   phone: "+55 47 99726-9700",
@@ -35,6 +40,15 @@ export const businessInfo = {
   legalName: null as string | null,
   /** Categoria principal no GBP. */
   category: "Serviço de transporte",
+  /**
+   * Descrição cadastrada no GBP (limite de 750 caracteres), reaproveitada como
+   * `description` do LocalBusiness no JSON-LD. Aqui em texto corrido; no GBP o
+   * mesmo texto está quebrado em parágrafos. Ao editar a descrição do perfil,
+   * atualize esta string no mesmo dia — divergência entre site e GBP confunde
+   * o Google sobre qual é a entidade.
+   */
+  description:
+    "A Astaz Transporte Executivo atende Balneário Camboriú e região com transfers para os aeroportos de Navegantes, Florianópolis, Joinville e Curitiba. Também realizamos deslocamentos corporativos, transporte para eventos e ocasiões especiais e roteiros sob demanda com múltiplas paradas, sempre sob agendamento. Trabalhamos com veículos executivos, motoristas profissionais e acompanhamento de cada viagem, do primeiro contato ao desembarque. Pontualidade, discrição e conforto não são diferencial: são o combinado. Atendemos executivos, passageiros de aeroporto, hotéis, eventos e empresas que precisam de um serviço confiável em Santa Catarina. Mais que transporte. A tranquilidade de chegar bem.",
   addressLocality: "Balneário Camboriú",
   addressRegion: "SC",
   addressCountry: "BR",
@@ -81,7 +95,7 @@ export function getWhatsAppUrl(message?: string) {
  */
 export const navLinks = [
   { href: routes.servicos, label: "Serviços" },
-  { href: "/#experiencia", label: "Experiência" },
+  { href: routes.destinos, label: "Destinos" },
   { href: "/#frota", label: "Frota" },
   { href: "/#como-funciona", label: "Como funciona" },
   { href: "/#faq", label: "FAQ" },

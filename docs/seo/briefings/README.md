@@ -41,7 +41,7 @@ briefing estiverem respondidos.
 
 | Briefing | Página | Status |
 | --- | --- | --- |
-| [aeroporto-navegantes.md](aeroporto-navegantes.md) | `/destinos/aeroporto-navegantes` | ⬜ vazio |
+| [aeroporto-navegantes.md](aeroporto-navegantes.md) | `/destinos/aeroporto-navegantes` | 🟡 parcial — página publicada; faltam capacidade dos veículos, cadeirinha e fotos reais |
 | [aeroporto-florianopolis.md](aeroporto-florianopolis.md) | `/destinos/aeroporto-florianopolis` | ⬜ vazio |
 | [beto-carrero.md](beto-carrero.md) | `/destinos/beto-carrero` | ⬜ vazio |
 | [frota.md](frota.md) | `/frota` | ⬜ vazio |

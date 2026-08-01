@@ -100,7 +100,7 @@ Orçamento de caracteres: **título ≤ 52** (o template do layout acrescenta
 | URL | Intenção que responde | Título (sem sufixo) | Prioridade | Status |
 | --- | --- | --- | --- | --- |
 | `/` | transporte executivo balneário camboriú | *(default do layout)* | — | ✅ publicada |
-| `/destinos/aeroporto-navegantes` | transfer aeroporto navegantes bc | Transfer Aeroporto de Navegantes a Balneário Camboriú | 🔴 alta | Fase 1 |
+| `/destinos/aeroporto-navegantes` | transfer aeroporto navegantes bc | Transfer Aeroporto Navegantes a Balneário Camboriú | 🔴 alta | ✅ publicada |
 | `/servicos/transfer-aeroporto` | transfer aeroporto executivo sc *(hub)* | Transfer Executivo para Aeroportos | 🔴 alta | Fase 1 |
 | `/destinos/beto-carrero` | transporte / transfer para beto carrero | Transfer para o Beto Carrero World | 🔴 alta | Fase 1 |
 | `/destinos/aeroporto-florianopolis` | transfer aeroporto florianópolis bc | Transfer Aeroporto de Florianópolis a Balneário Camboriú ⚠️ | 🟡 média | Fase 1 |
@@ -108,7 +108,7 @@ Orçamento de caracteres: **título ≤ 52** (o template do layout acrescenta
 | `/contato` | contato, orçamento | Contato e Orçamento | 🟡 média | Fase 1 |
 | `/sobre` | quem é a astaz *(confiança, E-E-A-T)* | Sobre a Astaz | 🟢 baixa | Fase 1 |
 | `/servicos` | hub — o que a empresa faz | Serviços de Transporte Executivo | 🟡 média | ✅ publicada |
-| `/destinos` | hub de destinos | Destinos Atendidos | 🟡 média | Fase 2 |
+| `/destinos` | hub de destinos | Destinos Atendidos | 🟡 média | ✅ publicada |
 | `/eventos` | hub de eventos sazonais | Transporte para Eventos em SC | 🟢 baixa | Fase 3 |
 | `/servicos/transporte-corporativo` | transporte corporativo bc | Transporte Corporativo em Balneário Camboriú | 🟡 média | Fase 2 |
 | `/servicos/motorista-particular` | motorista particular / à disposição | Motorista Particular à Disposição | 🟡 média | Fase 2 |
