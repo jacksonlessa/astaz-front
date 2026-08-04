@@ -3,6 +3,7 @@ import Link from "next/link";
 import { navLinks, siteConfig } from "@/lib/site";
 import { routes } from "@/lib/routes";
 import { WhatsAppButton } from "@/components/ui/whatsapp-button";
+import { MobileMenu } from "@/components/landing/mobile-menu";
 
 export function Header() {
   return (
@@ -36,7 +37,12 @@ export function Header() {
           ))}
         </nav>
 
-        <WhatsAppButton size="sm">WhatsApp</WhatsAppButton>
+        <div className="flex items-center gap-3">
+          <div className="hidden sm:block">
+            <WhatsAppButton size="sm">WhatsApp</WhatsAppButton>
+          </div>
+          <MobileMenu />
+        </div>
       </div>
     </header>
   );
