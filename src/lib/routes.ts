@@ -56,4 +56,5 @@ export const publishedRoutes: readonly SitemapEntry[] = [
     priority: 0.8,
   },
   { path: routes.frota, changeFrequency: "monthly", priority: 0.7 },
+  { path: routes.sobre, changeFrequency: "yearly", priority: 0.6 },
 ] as const;

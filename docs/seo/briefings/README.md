@@ -45,7 +45,10 @@ briefing estiverem respondidos.
 | [aeroporto-florianopolis.md](aeroporto-florianopolis.md) | `/destinos/aeroporto-florianopolis` | 🟡 parcial — publicada; falta o motivo de escolher FLN em vez de NVT, e foto real |
 | [beto-carrero.md](beto-carrero.md) | `/destinos/beto-carrero` | 🟡 parcial — publicada; faltam melhor horário de saída e fotos reais |
 | [frota.md](frota.md) | `/frota` | 🟡 parcial — publicada; faltam ano dos veículos, acessibilidade, manutenção e fotos reais |
-| [sobre.md](sobre.md) | `/sobre` | ⬜ vazio |
+| [sobre.md](sobre.md) | `/sobre` | ✅ publicada — falta só a revisão visual e o protocolo de manutenção |
+| [transfer-aeroporto.md](transfer-aeroporto.md) | `/servicos/transfer-aeroporto` | 🟡 parcial — Navegantes e Florianópolis herdados; faltam Joinville e Curitiba |
+| [transporte-corporativo.md](transporte-corporativo.md) | `/servicos/transporte-corporativo` | ⬜ vazio |
+| [transporte-idosos.md](transporte-idosos.md) | `/servicos/transporte-idosos` | ⬜ vazio |
 
 Para uma página nova, copie [_template.md](_template.md).
 

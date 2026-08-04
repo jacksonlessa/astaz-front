@@ -38,6 +38,18 @@ export const businessInfo = {
   businessName: "Astaz Transporte Executivo",
   /** Razão social do CNPJ, se houver. Omitido do schema enquanto for null. */
   legalName: null as string | null,
+  /**
+   * CNPJ da empresa. Informação pública e sinal forte de confiabilidade para
+   * cliente corporativo — exibido no rodapé e declarado como `taxID` no
+   * JSON-LD. Formatado como aparece em documento, não só dígitos.
+   */
+  taxId: "48.403.098/0001-54",
+  /**
+   * Perfil no Google, em forma canônica (derivada do CID do perfil). Link curto
+   * de compartilhamento (`share.google/...`) não serve aqui: redireciona para
+   * uma página de busca e carrega parâmetros de sessão que expiram.
+   */
+  googleProfileUrl: "https://maps.google.com/?cid=12272972188567551431",
   /** Categoria principal no GBP. */
   category: "Serviço de transporte",
   /**
@@ -58,7 +70,7 @@ export const businessInfo = {
   /** Perfis oficiais — confirmam ao Google que site, GBP e Instagram são a mesma entidade. */
   sameAs: [
     "https://www.instagram.com/astaz.executivo/",
-    "https://share.google/JPyd0UggtIlpBakXY",
+    "https://maps.google.com/?cid=12272972188567551431",
   ],
   /**
    * Área de cobertura. Espelha exatamente a lista do GBP, na mesma ordem
@@ -97,6 +109,7 @@ export const navLinks = [
   { href: routes.servicos, label: "Serviços" },
   { href: routes.destinos, label: "Destinos" },
   { href: routes.frota, label: "Frota" },
+  { href: routes.sobre, label: "Sobre" },
   { href: "/#como-funciona", label: "Como funciona" },
   { href: "/#faq", label: "FAQ" },
 ] as const;

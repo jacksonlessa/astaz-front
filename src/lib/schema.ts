@@ -38,6 +38,7 @@ export function localBusinessSchema(): JsonLdObject {
     name: businessInfo.businessName,
     alternateName: siteConfig.name,
     legalName: businessInfo.legalName,
+    taxID: businessInfo.taxId,
     // Espelha a descrição do GBP, não a meta description da home.
     description: businessInfo.description,
     url: siteConfig.url,

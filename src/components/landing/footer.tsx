@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { getWhatsAppUrl, navLinks, siteConfig } from "@/lib/site";
+import { businessInfo, getWhatsAppUrl, navLinks, siteConfig } from "@/lib/site";
 import { routes } from "@/lib/routes";
 import { WhatsAppIconButton } from "@/components/ui/whatsapp-button";
 
@@ -89,10 +89,15 @@ export function Footer() {
         </div>
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border-subtle pt-8 sm:flex-row">
-          <p className="text-xs text-neutral-dark">
-            &copy; {currentYear} {siteConfig.name}. Todos os direitos
-            reservados.
-          </p>
+          <div className="flex flex-col items-center gap-1 sm:items-start">
+            <p className="text-xs text-neutral-dark">
+              &copy; {currentYear} {siteConfig.name}. Todos os direitos
+              reservados.
+            </p>
+            <p className="text-xs text-neutral-dark">
+              CNPJ {businessInfo.taxId}
+            </p>
+          </div>
           <div className="flex flex-col items-center gap-1 sm:items-end">
             <p className="text-xs text-neutral-dark">
               Transporte Executivo Premium
