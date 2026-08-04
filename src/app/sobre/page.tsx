@@ -49,67 +49,81 @@ export default function SobrePage() {
       <Header />
 
       <main id="conteudo" className="pt-16 sm:pt-20">
+        {/*
+          Hero no padrão da home, adaptado a uma foto retrato: em vez de ocupar
+          a largura inteira (o que cortaria o veículo numa faixa estreita), a
+          imagem ocupa uma coluna à direita e se dissolve num degradê para o
+          fundo. O degradê é o que faz a borda esquerda parecer intencional em
+          vez de recortada.
+        */}
         <section
-          className="section-padding bg-secondary"
+          className="relative flex min-h-[540px] items-end overflow-hidden bg-secondary lg:min-h-[620px]"
           aria-labelledby="sobre-heading"
         >
-          <div className="container-wide mx-auto">
-            <nav aria-label="Trilha de navegação" className="mb-8">
-              <ol className="flex items-center gap-2 text-xs text-neutral-dark">
-                <li>
-                  <Link
-                    href={routes.home}
-                    className="transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 rounded-sm"
-                  >
-                    Início
-                  </Link>
-                </li>
-                <li aria-hidden="true">/</li>
-                <li className="text-neutral" aria-current="page">
-                  Sobre
-                </li>
-              </ol>
-            </nav>
+          <div className="absolute inset-y-0 right-0 w-full lg:w-[70%]">
+            <Image
+              src={sobreIntro.image}
+              alt={sobreIntro.imageAlt}
+              fill
+              priority
+              className="object-cover object-center"
+              sizes="(max-width: 1024px) 100vw, 70vw"
+            />
+            {/*
+              Dissolve a borda esquerda da foto no fundo da seção. As paradas
+              são explícitas porque o degradê precisa ser longo: um fade curto
+              deixa uma emenda vertical visível onde a imagem começa.
+            */}
+            <div className="absolute inset-0 bg-gradient-to-r from-secondary from-18% via-secondary/55 via-50% to-transparent to-92%" />
+            {/* No mobile a foto fica atrás do texto e precisa de contraste. */}
+            <div className="absolute inset-0 bg-gradient-to-t from-secondary via-secondary/70 to-secondary/20 lg:hidden" />
+          </div>
 
-            <div className="max-w-3xl">
-              <SectionLabel>{sobreIntro.eyebrow}</SectionLabel>
-              <SectionHeading as="h1" id="sobre-heading" className="mt-4">
-                {sobreIntro.title}
-              </SectionHeading>
-              <SectionDescription className="mt-6 max-w-3xl">
-                {sobreIntro.description}
-              </SectionDescription>
-              <div className="mt-8">
-                <WhatsAppButton message={sobreIntro.whatsappMessage}>
-                  Falar pelo WhatsApp
-                </WhatsAppButton>
+          <div className="relative z-10 w-full section-padding">
+            <div className="container-wide mx-auto">
+              <nav aria-label="Trilha de navegação" className="mb-8">
+                <ol className="flex items-center gap-2 text-xs text-neutral-dark">
+                  <li>
+                    <Link
+                      href={routes.home}
+                      className="transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 rounded-sm"
+                    >
+                      Início
+                    </Link>
+                  </li>
+                  <li aria-hidden="true">/</li>
+                  <li className="text-neutral" aria-current="page">
+                    Sobre
+                  </li>
+                </ol>
+              </nav>
+
+              <div className="max-w-xl animate-fade-up">
+                <SectionLabel>{sobreIntro.eyebrow}</SectionLabel>
+                <SectionHeading as="h1" id="sobre-heading" className="mt-4">
+                  {sobreIntro.title}
+                </SectionHeading>
+                <SectionDescription className="mt-6">
+                  {sobreIntro.description}
+                </SectionDescription>
+                <div className="mt-8">
+                  <WhatsAppButton message={sobreIntro.whatsappMessage}>
+                    Falar pelo WhatsApp
+                  </WhatsAppButton>
+                </div>
               </div>
             </div>
+          </div>
+        </section>
 
+        <section className="section-padding bg-secondary">
+          <div className="container-wide mx-auto">
             {/*
-              16/9 em todos os tamanhos, sem a variante 21/9 usada nas páginas
-              de destino: a foto original é retrato e já foi recortada para
-              16/9. Um contêiner mais largo cortaria o teto e as rodas do
-              veículo pela segunda vez.
+              Foto à direita e texto à esquerda. A foto fica em 4:5 porque é
+              retrato de pessoa: recortá-la em paisagem cortaria justamente o
+              rosto.
             */}
-            <div className="relative mt-14 aspect-[16/9] overflow-hidden rounded-2xl">
-              <Image
-                src={sobreIntro.image}
-                alt={sobreIntro.imageAlt}
-                fill
-                priority
-                className="object-cover"
-                sizes="(max-width: 1408px) 100vw, 1408px"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-secondary/80 to-transparent" />
-            </div>
-
-            {/*
-              Foto à direita e texto à esquerda. A foto é retrato (4:5) porque é
-              retrato de pessoa: cortá-la em paisagem para casar com o banner
-              acima cortaria justamente o rosto.
-            */}
-            <section className="mt-16 lg:grid lg:grid-cols-2 lg:items-center lg:gap-12">
+            <section className="lg:grid lg:grid-cols-2 lg:items-center lg:gap-12">
               <div>
                 <SectionHeading as="h2" className="!text-2xl sm:!text-3xl">
                   {quemConduz.title}
@@ -194,7 +208,8 @@ export default function SobrePage() {
             </div>
 
             <section className="mt-16 lg:grid lg:grid-cols-2 lg:items-center lg:gap-12">
-              <div className="relative aspect-[4/3] overflow-hidden rounded-2xl">
+              {/* 3:4 acompanha o enquadramento retrato do original. */}
+              <div className="relative aspect-[3/4] overflow-hidden rounded-2xl">
                 <Image
                   src={interiorAstaz.image}
                   alt={interiorAstaz.imageAlt}

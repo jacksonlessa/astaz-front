@@ -26,7 +26,12 @@ export const sobreIntro = {
   title: "Sobre a Astaz",
   description:
     "A Astaz nasceu em 2022, em Balneário Camboriú, a partir de uma constatação simples: quem precisa chegar a um compromisso importante não quer negociar preço no momento do embarque. Quer saber que o carro vai estar lá.",
-  image: "/images/sobre-astaz-veiculo.webp",
+  /**
+   * Recorte 5:4 do original, que é retrato. No hero a imagem ocupa uma coluna
+   * à direita e some num degradê à esquerda — é o que permite usar uma foto
+   * vertical em faixa larga sem esticar nem cortar o veículo.
+   */
+  image: "/images/sobre-astaz-hero.webp",
   imageAlt:
     "SUV executivo preto da Astaz, visto de frente em três quartos, estacionado em dia de sol",
   whatsappMessage:
@@ -111,7 +116,7 @@ export const interiorAstaz = {
   ],
   image: "/images/sobre-astaz-interior.webp",
   imageAlt:
-    "Banco traseiro do veículo executivo da Astaz, com água e um lanche à disposição do passageiro",
+    "Banco traseiro em couro caramelo do veículo executivo da Astaz, com uma garrafa de água no porta-copos e um pacote de biscoitos sobre o apoio de braço",
 } as const;
 
 export const preparoAstaz = {
