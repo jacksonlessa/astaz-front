@@ -90,4 +90,4 @@ Nenhuma variável de ambiente é usada hoje (`.env*` está no `.gitignore` para 
 - Não montar a URL do WhatsApp manualmente — usar `getWhatsAppUrl()` de `src/lib/site.ts`.
 - Não marcar componentes como `"use client"` sem necessidade real de estado, efeitos ou APIs de browser.
 - Não commitar arquivos `.env*` ou segredos.
-- Não remover os atributos de acessibilidade existentes (skip link, `aria-label`, `focus-visible`).
+- Não remover os atributos de acessibilidade existentes (`aria-label`, `focus-visible`).

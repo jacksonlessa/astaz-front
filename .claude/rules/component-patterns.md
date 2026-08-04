@@ -16,8 +16,8 @@ Exemplos reais no projeto: `src/components/ui/whatsapp-button.tsx` e `src/compon
 
 ## Acessibilidade (obrigatório, não opcional)
 
-Siga o padrão já estabelecido no `Header` (`src/components/landing/header.tsx`) e no skip link de `src/app/page.tsx`:
+Siga o padrão já estabelecido no `Header` (`src/components/landing/header.tsx`):
 - Links de navegação e botões de ícone precisam de `aria-label` quando o texto não é autoexplicativo.
 - Elementos interativos precisam de `focus-visible:ring-2` visível.
-- Não remova o skip link (`Pular para o conteúdo`) nem o `id="conteudo"` do `<main>`.
+- Mantenha o `id="conteudo"` do `<main>` — é o alvo de âncora das páginas.
 - Use `alt` descritivo em toda imagem (ver `imageAlt` em `src/lib/site.ts`).
