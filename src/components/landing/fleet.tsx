@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { categoriasFrota } from "@/lib/content/frota";
+import { categoriasFrota, faixaPassageiros } from "@/lib/content/frota";
 import { routes } from "@/lib/routes";
 import {
   SectionDescription,
@@ -63,6 +63,9 @@ export function Fleet() {
                 <h3 className="font-display text-2xl text-foreground">
                   {category.title}
                 </h3>
+                <p className="mt-2 text-xs uppercase tracking-[0.15em] text-primary">
+                  {faixaPassageiros(category)}
+                </p>
                 <p className="mt-3 flex-1 text-sm leading-relaxed text-neutral sm:text-base">
                   {category.description}
                 </p>
@@ -76,7 +79,7 @@ export function Fleet() {
             href={routes.frota}
             className="inline-flex items-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-primary-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-secondary rounded-sm"
           >
-            Ver capacidade de passageiros e bagagem
+            Ver todas as configurações da frota
             <span aria-hidden="true">→</span>
           </Link>
         </div>

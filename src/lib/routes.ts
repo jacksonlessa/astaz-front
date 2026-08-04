@@ -50,5 +50,10 @@ export const publishedRoutes: readonly SitemapEntry[] = [
     changeFrequency: "monthly",
     priority: 0.9,
   },
+  {
+    path: destinoPath("aeroporto-florianopolis"),
+    changeFrequency: "monthly",
+    priority: 0.8,
+  },
   { path: routes.frota, changeFrequency: "monthly", priority: 0.7 },
 ] as const;

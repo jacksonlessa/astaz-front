@@ -10,8 +10,8 @@ export function Hero() {
     >
       <div className="absolute inset-0">
         <Image
-          src="https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?auto=format&fit=crop&w=1920&q=80"
-          alt="Sedã executivo preto em ambiente urbano noturno"
+          src="/images/hero-transfer-aeroporto.webp"
+          alt="Sedã executivo escuro estacionado em pista de aeroporto ao lado de uma aeronave"
           fill
           priority
           className="object-cover object-center"
@@ -60,7 +60,7 @@ export function Hero() {
         aria-hidden="true"
       >
         <span className="text-[10px] uppercase tracking-[0.3em] text-neutral-dark">
-          Scroll
+          Role
         </span>
         <div className="h-12 w-px bg-gradient-to-b from-primary/60 to-transparent" />
       </div>

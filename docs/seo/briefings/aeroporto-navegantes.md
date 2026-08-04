@@ -99,11 +99,14 @@ Perguntas que clientes realmente fazem no WhatsApp sobre esta rota. **Mínimo de
 
 ## 6. Veículos e capacidade
 
-| Veículo | Passageiros | Malas grandes | Observação |
-| --- | --- | --- | --- |
-| Sedã Executivo | | | |
-| SUV Premium | | | |
-| Van Executiva | | | |
+| Veículo | Passageiros | Observação |
+| --- | --- | --- |
+| Sedã Executivo | 4 | |
+| SUV Premium | 4 a 6 | |
+| Van Executiva | 9 a 20 | |
+
+**Bagagem**: não há capacidade fixa a publicar — quantidade e tipo de volume
+são alinhados no orçamento, junto com a escolha do veículo.
 
 **Tem cadeirinha/bebê conforto?** (decisivo para o público familiar)
 
@@ -150,7 +153,8 @@ Depois vêm outras dúvidas:
 
 * Vai atrasar?
 * E se meu voo atrasar?
-* Vou conseguir levar todas as malas?
+* O veículo comporta a bagagem do meu grupo? *(responder sempre pelo
+  atendimento, no orçamento — nunca com número na página)*
 * O motorista conhece a região?
 * Vou precisar ficar procurando o carro?
 
@@ -285,11 +289,14 @@ Estas perguntas são exatamente o tipo que costuma aparecer no WhatsApp.
 
 Como vocês ainda não definiram exatamente a frota, eu deixaria para preencher depois.
 
-| Veículo        | Passageiros | Malas | Observação                           |
-| -------------- | ----------- | ----- | ------------------------------------ |
-| Sedã Executivo |             |       | Ideal para viagens executivas        |
-| SUV Premium    |             |       | Mais conforto e espaço para bagagens |
-| Van Executiva  |             |       | Ideal para grupos e famílias         |
+| Veículo        | Passageiros | Observação                    |
+| -------------- | ----------- | ----------------------------- |
+| Sedã Executivo |             | Ideal para viagens executivas |
+| SUV Premium    |             | Mais conforto a bordo         |
+| Van Executiva  |             | Ideal para grupos e famílias  |
+
+> Capacidade de bagagem não entra na página: não há número definido, é
+> alinhada no orçamento.
 
 ---
 
@@ -309,7 +316,6 @@ Eu recomendaria levantar pelo menos:
 
 * veículo aguardando no aeroporto;
 * motorista ao lado do carro;
-* porta-malas aberto com malas;
 * interior do veículo;
 * Aeroporto de Navegantes ao fundo;
 * embarque de passageiros.

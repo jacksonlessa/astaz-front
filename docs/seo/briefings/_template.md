@@ -65,7 +65,10 @@ a resposta que você daria. Mínimo de 3.
 
 ## 6. Veículos e capacidade
 
-Quais veículos atendem, quantos passageiros e quantas malas cabem.
+Quais veículos atendem e quantos passageiros cabem.
+
+> **Não pergunte nem publique capacidade de bagagem.** Não existe um número
+> definido — isso é alinhado com o cliente no momento do orçamento.
 
 >
 

@@ -56,6 +56,12 @@ export type Destino = {
    * é a assinatura de template com nome trocado.
    */
   cta: { title: string; body: string };
+  /**
+   * Slugs de destinos irmãos, exibidos no fim da página. Existe para que rotas
+   * próximas — dois aeroportos que servem a mesma cidade — troquem link entre
+   * si em vez de disputarem a mesma busca isoladas.
+   */
+  relacionados?: readonly string[];
   /** Enquanto false, a rota não é gerada e não entra no sitemap. */
   published: boolean;
 };
@@ -74,10 +80,10 @@ export const destinos: readonly Destino[] = [
       "São 40 quilômetros entre o Aeroporto de Navegantes e Balneário Camboriú. O que muda a experiência não é a distância — é chegar ao desembarque e encontrar o motorista já esperando, sem procurar por ninguém.",
     summary:
       "Recepção no desembarque, monitoramento de voo e atendimento em qualquer horário, inclusive na madrugada.",
-    image:
-      "https://images.unsplash.com/photo-1436491865339-9a61a109fa08?auto=format&fit=crop&w=1600&q=80",
-    imageAlt: "Aeroporto ao entardecer, com aeronave na pista",
-    imageIsPlaceholder: true,
+    image: "/images/aeroporto-navegantes.webp",
+    imageAlt:
+      "Fachada do terminal do Aeroporto Internacional de Navegantes, com veículos no desembarque",
+    imageIsPlaceholder: false,
     routeFacts: [
       { label: "Distância", value: "40 km" },
       {
@@ -180,6 +186,7 @@ export const destinos: readonly Destino[] = [
       title: "Agende seu transfer",
       body: "Informe a data, o horário e o número do voo. Nossa equipe retorna com a confirmação e todos os detalhes da recepção.",
     },
+    relacionados: ["aeroporto-florianopolis"],
     published: true,
   },
   {
@@ -190,43 +197,40 @@ export const destinos: readonly Destino[] = [
       "Olá, ASTAZ! Gostaria de um orçamento para transfer de Balneário Camboriú ao Beto Carrero World.",
     metaTitle: "Transfer para o Beto Carrero World",
     metaDescription:
-      "Transfer executivo de Balneário Camboriú ao Beto Carrero World, em Penha: van para até 7 passageiros, cadeirinha sob solicitação e volta combinada.",
+      "Transfer executivo de Balneário Camboriú ao Beto Carrero World, em Penha: 45 km em cerca de 45 minutos, com ida e volta combinadas antes do passeio.",
     intro:
-      "O parque ocupa o dia inteiro, e a volta costuma ser a parte menos planejada. Com o transfer, estacionamento, trânsito e estrada ficam por nossa conta — a família só precisa aproveitar o passeio.",
+      "São 45 quilômetros entre Balneário Camboriú e o parque, em Penha. O passeio ocupa o dia inteiro, e a volta costuma ser a parte menos planejada — com o transfer, estacionamento, trânsito e estrada ficam por nossa conta.",
     summary:
-      "Ida e volta para o parque, em Penha, com o motorista aguardando no local ou retornando no horário combinado.",
-    // TODO: substituir por foto real da van no parque ou embarque da família.
-    image:
-      "https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1600&q=80",
-    imageAlt: "Veículo executivo em estrada ao amanhecer",
-    imageIsPlaceholder: true,
+      "45 quilômetros até Penha, com embarque na entrada do parque e o retorno combinado antes do passeio.",
+    // TODO: idealmente trocar por foto da van no parque ou do embarque da
+    // família — a imagem atual é do parque, não do serviço.
+    image: "/images/beto-carrero-world.webp",
+    imageAlt:
+      "Castelo colorido na entrada do Beto Carrero World, em Penha, com a serra ao fundo",
+    imageIsPlaceholder: false,
     routeFacts: [
+      { label: "Distância", value: "45 km" },
       {
-        label: "Volta",
-        value: "No seu horário",
-        note: "Motorista aguardando no local ou retorno agendado",
+        label: "Tempo médio",
+        value: "45 minutos",
+        note: "Sujeito às condições de trânsito no dia",
       },
       {
-        label: "Van executiva",
-        value: "7 passageiros",
-        note: "Uma mala grande por passageiro",
+        label: "Feriados e fins de semana",
+        value: "Até 2 horas",
+        note: "O acesso a Penha concentra o movimento nesses dias",
       },
       {
-        label: "Cadeirinha",
-        value: "Sob solicitação",
-        note: "Informe as idades no momento da reserva",
-      },
-      {
-        label: "Atendimento",
-        value: "24 horas",
-        note: "Mediante agendamento",
+        label: "Agendamento",
+        value: "A partir de 1 dia antes",
+        note: "Em férias escolares e feriados, quanto antes melhor",
       },
     ],
     blocks: [
       {
         type: "highlight",
         title: "Duas formas de organizar a volta",
-        body: "O motorista pode aguardar no local durante toda a permanência no parque, ou retornar em um horário combinado com você. As duas opções são definidas junto com o orçamento, antes do dia — nada fica para ser resolvido na saída do parque.",
+        body: "No formato mais comum, o motorista deixa vocês na entrada do parque e retorna no horário combinado. Se preferir que ele permaneça à disposição durante a visita, isso está incluído no valor da ida e volta. As duas opções são definidas junto com o orçamento, antes do dia — nada fica para ser resolvido na saída do parque.",
       },
       {
         type: "prose",
@@ -234,7 +238,16 @@ export const destinos: readonly Destino[] = [
         paragraphs: [
           "Quem vai ao Beto Carrero costuma chegar cedo e sair no fim da tarde. Entre uma coisa e outra são muitas horas em pé, e a estrada de volta acontece exatamente quando o cansaço aparece.",
           "Com o transfer, o trajeto até Penha e o retorno a Balneário Camboriú ficam por nossa conta — e não há carro para estacionar em dia de parque cheio.",
-          "Para famílias com crianças pequenas, cadeirinha e bebê conforto ficam disponíveis mediante solicitação no momento da reserva. Basta informar as idades para prepararmos o veículo.",
+          "Para famílias com crianças pequenas, o bebê conforto atende até 13 quilos e fica disponível mediante solicitação no momento da reserva. Basta informar a idade e o peso da criança para prepararmos o veículo.",
+        ],
+      },
+      {
+        type: "prose",
+        title: "O trajeto até Penha",
+        paragraphs: [
+          "São 45 quilômetros entre Balneário Camboriú e o parque, percorridos em cerca de 45 minutos em condições normais de trânsito.",
+          "Em feriados e fins de semana, o acesso a Penha concentra o movimento e o trajeto pode chegar a duas horas. É por isso que o horário de saída é definido conforme o dia da visita, e não por uma tabela fixa.",
+          "O embarque e o desembarque acontecem na entrada do parque — o mesmo ponto na ida e na volta, sem caminhada extra com criança cansada no fim do dia.",
         ],
       },
       {
@@ -249,7 +262,7 @@ export const destinos: readonly Destino[] = [
           {
             title: "Combinamos o formato da volta",
             description:
-              "Motorista aguardando no local ou retorno em horário agendado. A escolha é feita junto com o orçamento.",
+              "Retorno em horário agendado ou motorista à disposição durante a visita. A escolha é feita junto com o orçamento.",
           },
           {
             title: "Buscamos você em Balneário Camboriú",
@@ -257,39 +270,182 @@ export const destinos: readonly Destino[] = [
               "No endereço combinado, no horário planejado para chegar ao parque sem correria.",
           },
           {
-            title: "O retorno acontece como o combinado",
+            title: "O retorno acontece na entrada do parque",
             description:
-              "Sem procurar o carro no estacionamento e sem encarar a estrada no fim do dia.",
+              "No horário combinado — ou antes, se preferirem encerrar o dia mais cedo. Basta avisar pelo WhatsApp.",
           },
         ],
       },
     ],
     faq: [
       {
+        question: "Quanto tempo leva de Balneário Camboriú até o Beto Carrero?",
+        answer:
+          "São 45 quilômetros, percorridos em cerca de 45 minutos em condições normais de trânsito. Em feriados e fins de semana, quando o acesso a Penha fica mais movimentado, o trajeto pode chegar a duas horas.",
+      },
+      {
         question: "O motorista fica esperando durante o dia no parque?",
         answer:
-          "Pode ficar. O motorista aguarda no local durante toda a permanência, ou retorna em um horário combinado com você. As duas opções são definidas junto com o orçamento.",
+          "Pode ficar. No formato mais comum, o motorista deixa vocês na entrada e retorna no horário combinado, mas ele também pode permanecer à disposição durante a visita — nesse caso, a espera está incluída no valor da ida e volta.",
+      },
+      {
+        question: "Onde o transfer deixa e busca o grupo no parque?",
+        answer:
+          "Na entrada do parque, o mesmo ponto na ida e na volta. O local e o horário são confirmados pelo WhatsApp antes do dia da visita.",
+      },
+      {
+        question: "Posso voltar antes do horário combinado?",
+        answer:
+          "Sim. Basta avisar pelo WhatsApp e organizamos o retorno o quanto antes, conforme a disponibilidade do motorista no momento.",
       },
       {
         question: "Vocês têm cadeirinha para crianças?",
         answer:
-          "Sim. Cadeirinha e bebê conforto estão disponíveis mediante solicitação no momento da reserva. Informe as idades das crianças para prepararmos o veículo.",
+          "Sim. Temos bebê conforto para crianças de até 13 quilos, mediante solicitação no momento da reserva. Informe a idade e o peso da criança para prepararmos o veículo.",
       },
       {
         question: "Quantas pessoas cabem no transfer para o Beto Carrero?",
         answer:
-          "A van executiva atende até 7 passageiros, considerando uma mala grande por pessoa. Para grupos menores, sedã e SUV atendem até 3 passageiros.",
+          "As vans executivas atendem de 9 a 20 passageiros, conforme a configuração. Para grupos menores, o sedã atende 4 passageiros e o SUV, até 6.",
       },
       {
         question: "Preciso agendar com antecedência?",
         answer:
-          "Recomendamos o agendamento com antecedência para garantir disponibilidade, especialmente em férias escolares e feriados prolongados. Para solicitações de última hora, consulte nossa equipe.",
+          "Recomendamos agendar com pelo menos um dia de antecedência e, em férias escolares e feriados prolongados, o quanto antes. Para solicitações de última hora, consulte nossa equipe.",
       },
     ],
     cta: {
       title: "Agende o transfer para o parque",
       body: "Informe a data da visita, quantas pessoas viajam e as idades das crianças. Definimos junto com você o formato da volta e retornamos com o orçamento.",
     },
+    published: true,
+  },
+  {
+    slug: "aeroporto-florianopolis",
+    title: "Transfer entre o Aeroporto de Florianópolis e Balneário Camboriú",
+    breadcrumbLabel: "Aeroporto de Florianópolis",
+    whatsappMessage:
+      "Olá, ASTAZ! Gostaria de um orçamento para transfer entre o Aeroporto de Florianópolis e Balneário Camboriú.",
+    metaTitle: "Transfer Aeroporto Florianópolis–Balneário Camboriú",
+    metaDescription:
+      "Transfer executivo entre o Aeroporto de Florianópolis e Balneário Camboriú: 100 km em cerca de 1h30, com monitoramento de voo e recepção no desembarque.",
+    intro:
+      "São 100 quilômetros entre Balneário Camboriú e o Aeroporto de Florianópolis — cerca de uma hora e meia de estrada. Quem embarca por lá costuma ter um motivo: um voo, uma conexão ou um horário que só fecham pela capital.",
+    summary:
+      "100 quilômetros até o aeroporto da capital, com horário de saída planejado pelo seu voo e recepção no desembarque.",
+    // Banco de imagem (Pexels, licença livre para uso comercial). NÃO é o
+    // Aeroporto de Florianópolis nem o serviço da Astaz — por isso
+    // `imageIsPlaceholder` continua true até existir foto real.
+    image: "/images/aeroporto-florianopolis.webp",
+    imageAlt:
+      "Passageiros com malas de rodinhas caminhando pelo desembarque de um aeroporto, em contraluz",
+    imageIsPlaceholder: true,
+    routeFacts: [
+      { label: "Distância", value: "100 km" },
+      {
+        label: "Tempo médio",
+        value: "1h30",
+        note: "Sujeito às condições de trânsito no dia",
+      },
+      {
+        label: "Alta temporada",
+        value: "Até 3 horas",
+        note: "A saída de Balneário Camboriú e a entrada da capital concentram o movimento",
+      },
+      {
+        label: "Agendamento",
+        value: "A partir de 1 dia antes",
+        note: "Recomendado com mais folga entre dezembro e março",
+      },
+    ],
+    blocks: [
+      {
+        type: "prose",
+        title: "Cem quilômetros mudam o planejamento, não o serviço",
+        paragraphs: [
+          "Navegantes é o aeroporto mais próximo de Balneário Camboriú, a cerca de 40 minutos. Florianópolis fica a 100 quilômetros, e o trajeto leva por volta de uma hora e meia em condições normais.",
+          "Entre dezembro e março, com o litoral cheio, esse mesmo percurso pode chegar a três horas. A diferença não está no serviço — está no horário em que precisamos sair.",
+          "Por isso, para quem embarca pela capital, o planejamento do horário de saída pesa mais do que em qualquer outra rota que atendemos.",
+        ],
+      },
+      {
+        type: "highlight",
+        title: "Quando sair de Balneário Camboriú",
+        body: "Para embarques em Florianópolis, a saída costuma acontecer cerca de três horas antes do horário do voo — o número exato depende do horário do embarque e do movimento previsto para o dia. Definimos isso com você no agendamento, e não na véspera.",
+      },
+      {
+        type: "prose",
+        title: "Onde o trajeto costuma prender",
+        paragraphs: [
+          "Dois pontos concentram a lentidão nesta rota: a saída de Balneário Camboriú e a entrada de Florianópolis. Nos dois casos, o horário do dia pesa mais que a distância.",
+          "Aplicativos de navegação calculam o percurso pelo trânsito do momento da consulta, não pelo trânsito que existirá na hora da viagem. Nossa equipe acompanha as condições da BR-101 antes da saída e define a partida com essa margem embutida.",
+        ],
+      },
+      {
+        type: "steps",
+        title: "Como funciona a recepção no desembarque",
+        intro:
+          "O terminal da capital é maior e mais movimentado que o de Navegantes, e por isso a identificação prévia importa ainda mais aqui.",
+        items: [
+          {
+            title: "Você informa o número do voo",
+            description:
+              "Com o código do voo, acompanhamos a chegada e ajustamos o horário da recepção sempre que necessário.",
+          },
+          {
+            title: "Enviamos a identificação antes da chegada",
+            description:
+              "Você recebe pelo WhatsApp a identificação do motorista e do veículo, com foto e modelo. Ao desembarcar, já sabe exatamente o que procurar.",
+          },
+          {
+            title: "O encontro acontece na área de desembarque",
+            description:
+              "O motorista aguarda na área de desembarque do terminal, ou em outro ponto combinado previamente durante o atendimento.",
+          },
+          {
+            title: "Seguimos para Balneário Camboriú",
+            description:
+              "Com a rota definida antes da saída, considerando as condições da BR-101 no dia.",
+          },
+        ],
+      },
+    ],
+    faq: [
+      {
+        question:
+          "Quanto tempo leva de Balneário Camboriú até o Aeroporto de Florianópolis?",
+        answer:
+          "São 100 quilômetros, percorridos em cerca de uma hora e meia em condições normais de trânsito. Entre dezembro e março, o trajeto pode chegar a três horas.",
+      },
+      {
+        question:
+          "Com quanta antecedência preciso sair de Balneário Camboriú para embarcar em Florianópolis?",
+        answer:
+          "Em geral, cerca de três horas antes do horário do voo. O horário exato depende do embarque e do movimento previsto para o dia, e é definido com você no agendamento.",
+      },
+      {
+        question:
+          "Vale mais a pena usar o Aeroporto de Florianópolis ou o de Navegantes?",
+        answer:
+          "Depende do seu voo. Navegantes fica a 40 quilômetros de Balneário Camboriú, cerca de 40 minutos; Florianópolis fica a 100 quilômetros, cerca de uma hora e meia. Atendemos os dois com o mesmo serviço.",
+      },
+      {
+        question:
+          "Onde o motorista aguarda no desembarque do Aeroporto de Florianópolis?",
+        answer:
+          "Na área de desembarque do terminal, ou em outro ponto combinado previamente. Antes da sua chegada, enviamos pelo WhatsApp a identificação do motorista e do veículo.",
+      },
+      {
+        question: "Com quanta antecedência preciso agendar o transfer?",
+        answer:
+          "Recomendamos agendar com pelo menos um dia de antecedência. Entre dezembro e março, quanto antes melhor — é o período de maior procura.",
+      },
+    ],
+    cta: {
+      title: "Agende o transfer para Florianópolis",
+      body: "Informe a data, o horário e o número do voo. Nossa equipe retorna com a confirmação, o horário de saída recomendado de Balneário Camboriú e os detalhes da recepção.",
+    },
+    relacionados: ["aeroporto-navegantes"],
     published: true,
   },
 ];
@@ -299,3 +455,13 @@ export function getDestino(slug: string) {
 }
 
 export const publishedDestinos = destinos.filter((destino) => destino.published);
+
+/**
+ * Destinos irmãos que já estão publicados. Filtrar por `published` aqui evita
+ * que um link interno aponte para uma rota que ainda não existe.
+ */
+export function getDestinosRelacionados(destino: Destino) {
+  return (destino.relacionados ?? [])
+    .map(getDestino)
+    .filter((item): item is Destino => Boolean(item?.published));
+}

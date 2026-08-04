@@ -44,6 +44,7 @@ não voltarem.
 | `/transporte-executivo-itajai` | Intenção de origem, não de destino — uma página forte serve as duas | `/destinos/itajai` |
 | Menu `/rotas` | A origem é sempre BC; "rota" e "destino" seriam a mesma coisa | `/destinos/*` |
 | `/destinos/oktoberfest` | Oktoberfest é um evento em Blumenau, não um destino | `/eventos/oktoberfest-blumenau` + `/destinos/blumenau` |
+| `/servicos/motorista-particular` | "motorista particular" é busca de quem procura **vaga de emprego**, não de quem contrata transporte | `/servicos/transporte-corporativo` e `/servicos/city-tour` (ver seção abaixo) |
 
 ---
 
@@ -57,9 +58,46 @@ perderia, porque a home concentra os links externos e a autoridade do domínio.
 separado. O termo genérico continua sendo da home; o hub organiza e distribui
 para os serviços específicos.
 
-O ângulo "motorista à disposição" virou `/servicos/motorista-particular`, que é
-intenção distinta e está cadastrado como serviço no GBP (junto de "Táxi
-Executivo").
+---
+
+## Conflito resolvido: `/servicos/motorista-particular` descartado
+
+A página existia para o ângulo "motorista à disposição". Foi **removida** depois
+de uma checagem das buscas reais: "motorista particular" é dominado por intenção
+de **emprego** — gente procurando vaga de motorista, não gente contratando
+transporte. Uma página otimizada para esse termo atrairia tráfego que nunca
+converte e diluiria a autoridade das páginas que convertem.
+
+**Quem cobre a intenção comercial que sobrou**:
+
+| Ângulo | Página que absorve |
+| --- | --- |
+| Veículo à disposição por período, roteiro que muda no dia | `/servicos/transporte-corporativo` |
+| Passeio com paradas à escolha do cliente | `/servicos/city-tour` |
+| Roteiros fora do padrão | bloco "Roteiros sob demanda" do hub `/servicos` |
+
+**Ação no GBP**: remover a etiqueta "Motorista Particular" do perfil, pelo mesmo
+motivo — ela atrai candidatos a vaga, não clientes.
+
+---
+
+## Página nova: `/servicos/transporte-idosos`
+
+Entrou no lugar de `motorista-particular`. Intenção comercial clara e
+concorrência local baixa: famílias organizando o deslocamento de um pai, mãe ou
+avô para consultas, exames e compromissos recorrentes — frequência alta e
+relação de longo prazo, não corrida avulsa.
+
+**Limite que a copy não pode ultrapassar**: o serviço é *transporte com
+acompanhamento* — apoio no embarque e no desembarque, espera durante o
+atendimento, contato com a família. **Não** é serviço de saúde: nada de sugerir
+cuidador, enfermagem, remoção de paciente ou qualquer procedimento clínico.
+Prometer isso é problema regulatório, não só de tom de voz.
+
+**Só você sabe**: se o motorista acompanha até a recepção da clínica; como
+funciona a espera e a cobrança durante a consulta; se atende cadeira de rodas ou
+passageiro com mobilidade reduzida (e como); se existe contato/aviso para a
+família na chegada; se há formato recorrente (mensal, semanal).
 
 ---
 
@@ -79,16 +117,18 @@ garantir que nenhuma etiqueta do perfil fique sem página correspondente.
 | `/servicos/transporte-corporativo` | Transporte Corporativo · Transporte para Reuniões · Transporte para Empresas · Empresa de transporte |
 | `/servicos/transporte-eventos` | Transporte para Eventos · Transporte para Congressos · Transporte para Feiras · Transporte para Shows |
 | `/servicos/transporte-casamentos` | Transporte para Casamentos |
-| `/servicos/motorista-particular` | Motorista Particular · Táxi Executivo · Transporte Executivo |
+| `/servicos/transporte-idosos` | — *(não cadastrado no GBP; vale adicionar)* |
 | `/servicos/city-tour` | — *(não cadastrado no GBP; vale adicionar)* |
 | `/destinos/beto-carrero` | Transfer para Beto Carrero |
+| `/` *(home)* | Transporte Executivo · Táxi Executivo — termos genéricos, cobertos pelo título da home |
 
 **Congressos e feiras** aparecem em corporativo e em eventos. A divisão
 adotada: `/servicos/transporte-eventos` fica com congressos, feiras e shows;
 `/servicos/transporte-corporativo` fica com a agenda executiva do dia a dia
 (reuniões, visitas técnicas, deslocamentos entre compromissos).
 
-**Ação no GBP**: adicionar "City Tour" à lista de serviços.
+**Ações no GBP**: adicionar "City Tour" e "Transporte de Idosos" à lista de
+serviços; remover "Motorista Particular" (ver conflito resolvido abaixo).
 
 ---
 
@@ -111,7 +151,7 @@ Orçamento de caracteres: **título ≤ 52** (o template do layout acrescenta
 | `/destinos` | hub de destinos | Destinos Atendidos | 🟡 média | ✅ publicada |
 | `/eventos` | hub de eventos sazonais | Transporte para Eventos em SC | 🟢 baixa | Fase 3 |
 | `/servicos/transporte-corporativo` | transporte corporativo bc | Transporte Corporativo em Balneário Camboriú | 🟡 média | Fase 2 |
-| `/servicos/motorista-particular` | motorista particular / à disposição | Motorista Particular à Disposição | 🟡 média | Fase 2 |
+| `/servicos/transporte-idosos` | transporte de idosos para consultas e exames | Transporte de Idosos em Balneário Camboriú | 🟡 média | Fase 2 |
 | `/servicos/transporte-eventos` | transporte para eventos e congressos | Transporte para Eventos e Congressos | 🟢 baixa | Fase 2 |
 | `/servicos/transporte-casamentos` | carro para casamento bc | Transporte para Casamentos | 🟢 baixa | Fase 2 |
 | `/servicos/city-tour` | city tour balneário camboriú | City Tour em Balneário Camboriú | 🟢 baixa | Fase 2 |
@@ -162,7 +202,8 @@ essa pessoa já vai contratar alguém, é só decidir quem.
 2. Dados objetivos da rota: distância, tempo médio, tempo em alta temporada
 3. Como funciona a recepção no desembarque (placa? onde encontra o motorista?)
 4. Monitoramento de voo — o que acontece se o voo atrasa
-5. Veículos disponíveis para essa rota + capacidade de bagagem
+5. Veículos disponíveis para essa rota (sem capacidade de bagagem — não há
+   número definido, é alinhado no orçamento)
 6. FAQ específica da rota (`FAQPage` schema)
 7. CTA WhatsApp com mensagem pré-preenchida citando a rota
 
@@ -215,16 +256,16 @@ natural de BC — quem busca Florianópolis geralmente tem um motivo específico
 **Intenção**: comparação — a pessoa já quer contratar e está avaliando veículo.
 Página de **conversão**, não de captação.
 
-**Só você sabe**: modelos reais, ano, capacidade de passageiros, capacidade de
-malas, e **fotos reais dos veículos**. Foto de banco de imagem aqui destrói a
-credibilidade da página inteira.
+**Só você sabe**: modelos reais, ano, capacidade de passageiros e **fotos reais
+dos veículos**. Foto de banco de imagem aqui destrói a credibilidade da página
+inteira. Capacidade de bagagem não entra: é alinhada no orçamento.
 
 ### `/contato` 🟡
 
 Formulário de orçamento que monta uma mensagem estruturada de WhatsApp.
 
-Campos sugeridos: data, horário, origem, destino, nº de passageiros, nº de
-malas, tipo de veículo, observações. O envio abre o WhatsApp via
+Campos sugeridos: data, horário, origem, destino, nº de passageiros, tipo de
+veículo, observações. O envio abre o WhatsApp via
 `getWhatsAppUrl()` com o texto já formatado.
 
 ⚠️ **Nenhum dado do formulário deve ir para query string de URL nossa nem para

@@ -41,10 +41,17 @@ briefing estiverem respondidos.
 
 | Briefing | Página | Status |
 | --- | --- | --- |
-| [aeroporto-navegantes.md](aeroporto-navegantes.md) | `/destinos/aeroporto-navegantes` | 🟡 parcial — página publicada; faltam capacidade dos veículos, cadeirinha e fotos reais |
-| [aeroporto-florianopolis.md](aeroporto-florianopolis.md) | `/destinos/aeroporto-florianopolis` | ⬜ vazio |
-| [beto-carrero.md](beto-carrero.md) | `/destinos/beto-carrero` | ⬜ vazio |
-| [frota.md](frota.md) | `/frota` | ⬜ vazio |
+| [aeroporto-navegantes.md](aeroporto-navegantes.md) | `/destinos/aeroporto-navegantes` | 🟡 parcial — publicada; faltam fotos reais |
+| [aeroporto-florianopolis.md](aeroporto-florianopolis.md) | `/destinos/aeroporto-florianopolis` | 🟡 parcial — publicada; falta o motivo de escolher FLN em vez de NVT, e foto real |
+| [beto-carrero.md](beto-carrero.md) | `/destinos/beto-carrero` | 🟡 parcial — publicada; faltam melhor horário de saída e fotos reais |
+| [frota.md](frota.md) | `/frota` | 🟡 parcial — publicada; faltam ano dos veículos, acessibilidade, manutenção e fotos reais |
 | [sobre.md](sobre.md) | `/sobre` | ⬜ vazio |
 
 Para uma página nova, copie [_template.md](_template.md).
+
+## Imagens
+
+Fotos candidatas, com licença e ressalvas registradas, ficam em
+[docs/imagens-de-referencia.md](../../imagens-de-referencia.md). Imagem de banco
+não passa pelo ciclo acima, mas tem as próprias verificações — direito de
+imagem, veículo que a frota não tem, cenário que contradiz o texto.

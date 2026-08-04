@@ -113,9 +113,9 @@ export const services = [
     title: "Transfer Aeroporto",
     description:
       "Transfers entre Balneário Camboriú e os aeroportos de Navegantes, Florianópolis, Joinville e Curitiba, com monitoramento de voos.",
-    image:
-      "https://images.unsplash.com/photo-1436491865339-9a61a109fa08?auto=format&fit=crop&w=1200&q=80",
-    imageAlt: "Aeroporto ao entardecer",
+    image: "/images/aeroporto-navegantes.webp",
+    imageAlt:
+      "Fachada do terminal do Aeroporto Internacional de Navegantes, com veículos no desembarque",
   },
   {
     title: "Corporativo",

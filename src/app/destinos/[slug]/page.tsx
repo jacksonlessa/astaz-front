@@ -13,11 +13,19 @@ import {
   SectionLabel,
 } from "@/components/ui/section-label";
 import { WhatsAppButton } from "@/components/ui/whatsapp-button";
-import { getDestino, publishedDestinos } from "@/lib/content/destinos";
+import {
+  getDestino,
+  getDestinosRelacionados,
+  publishedDestinos,
+} from "@/lib/content/destinos";
 import { destinoPath, routes } from "@/lib/routes";
 import { breadcrumbSchema, faqSchema } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
-import { categoriasFrota } from "@/lib/content/frota";
+import {
+  categoriasFrota,
+  faixaPassageiros,
+  notaVeiculosDestino,
+} from "@/lib/content/frota";
 
 type PageProps = { params: Promise<{ slug: string }> };
 
@@ -49,6 +57,8 @@ export default async function DestinoPage({ params }: PageProps) {
 
   if (!destino?.published) notFound();
 
+  const relacionados = getDestinosRelacionados(destino);
+
   return (
     <>
       <JsonLd
@@ -64,12 +74,6 @@ export default async function DestinoPage({ params }: PageProps) {
           faqSchema(destino.faq),
         ]}
       />
-      <a
-        href="#conteudo"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-secondary focus:outline-none"
-      >
-        Pular para o conteúdo
-      </a>
       <Header />
 
       <main id="conteudo" className="pt-16 sm:pt-20">
@@ -165,8 +169,7 @@ export default async function DestinoPage({ params }: PageProps) {
                       {categoria.title}
                     </h3>
                     <p className="mt-2 text-xs uppercase tracking-[0.15em] text-primary">
-                      {categoria.passageiros} passageiros ·{" "}
-                      {categoria.malasGrandes} malas
+                      {faixaPassageiros(categoria)}
                     </p>
                     <p className="mt-3 text-sm leading-relaxed text-neutral">
                       {categoria.description}
@@ -175,8 +178,7 @@ export default async function DestinoPage({ params }: PageProps) {
                 ))}
               </div>
               <p className="mt-6 max-w-3xl text-sm leading-relaxed text-neutral-dark">
-                Considere uma mala grande por passageiro. Cadeirinha e bebê
-                conforto estão disponíveis mediante solicitação na reserva.{" "}
+                {notaVeiculosDestino}{" "}
                 <Link
                   href={routes.frota}
                   className="text-primary underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 rounded-sm"
@@ -208,6 +210,37 @@ export default async function DestinoPage({ params }: PageProps) {
                 ))}
               </dl>
             </section>
+
+            {relacionados.length > 0 ? (
+              <section className="mt-16" aria-labelledby="relacionados-heading">
+                <SectionHeading
+                  as="h2"
+                  id="relacionados-heading"
+                  className="!text-2xl sm:!text-3xl"
+                >
+                  Outros destinos
+                </SectionHeading>
+                <ul className="mt-8 grid gap-6 sm:grid-cols-2">
+                  {relacionados.map((relacionado) => (
+                    <li key={relacionado.slug}>
+                      <article className="h-full rounded-2xl border border-border-subtle bg-surface p-6 transition-colors hover:border-primary/30 sm:p-8">
+                        <h3 className="font-display text-xl text-foreground">
+                          <Link
+                            href={destinoPath(relacionado.slug)}
+                            className="transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 rounded-sm"
+                          >
+                            {relacionado.breadcrumbLabel}
+                          </Link>
+                        </h3>
+                        <p className="mt-3 text-sm leading-relaxed text-neutral">
+                          {relacionado.summary}
+                        </p>
+                      </article>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            ) : null}
 
             <div className="mt-16 rounded-2xl border border-border-subtle bg-surface p-8 sm:p-12">
               <SectionHeading as="h2" className="!text-2xl sm:!text-3xl">

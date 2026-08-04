@@ -3,8 +3,8 @@
 **URL**: `/destinos/beto-carrero`
 **Intenção de busca**: famílias e grupos hospedados em BC que vão ao parque, em
 Penha
-**Status**: 🟡 parcial — página publicada com a política de espera confirmada;
-**faltam distância e tempo de trajeto**
+**Status**: ✅ publicada — política de espera, distância, tempo de trajeto e
+cadeirinha confirmados
 **Prioridade**: 🔴 alta, com pico em férias escolares e feriados prolongados
 
 ---
@@ -16,20 +16,16 @@ Penha
 > O motorista pode tanto ficar esperando quanto voltar em um horário agendado
 > — tudo combinado no momento do orçamento.
 
-**Veículos**: van executiva para até 7 passageiros, uma mala grande por
-passageiro. Sedã e SUV atendem até 3.
+**Veículos**: van executiva de 9 a 20 passageiros. Sedã atende 4 e SUV, até 6.
 
-**Cadeirinha**: disponível mediante solicitação na reserva.
+**Cadeirinha**: bebê conforto para até 13 kg, mediante solicitação na reserva.
 
-### Lacuna que enfraquece a página
+**Bagagem**: não há capacidade fixa a publicar — é alinhada no orçamento.
 
-**Distância e tempo de trajeto de Balneário Camboriú até Penha não foram
-informados** e por isso não aparecem na página. É justamente o dado que a
-página de Navegantes tem e que a diferencia de um texto genérico — sem ele,
-esta página é mais fraca que poderia ser.
+### Ainda em aberto
 
-Também em aberto: melhor horário de saída para evitar fila na entrada, ponto de
-embarque e desembarque no parque, horário-limite de retorno.
+Melhor horário de saída para evitar fila na entrada do parque e fotos reais do
+serviço (a imagem atual é do parque, não do transfer).
 
 ---
 
@@ -48,11 +44,10 @@ não querer dirigir depois de um dia inteiro no parque?
 
 | Dado | Resposta |
 | --- | --- |
-| Distância BC ↔ Beto Carrero (Penha) | |
-| Tempo médio de trajeto | |
-| Tempo em alta temporada | |
-| Faixa de preço (ida e volta) | |
-| Antecedência mínima para agendar | |
+| Distância BC ↔ Beto Carrero (Penha) | 45km |
+| Tempo médio de trajeto | 45min |
+| Tempo em alta temporada | 2h |
+| Antecedência mínima para agendar | 1 dia |
 
 ## 3. Como funciona a espera durante o dia (obrigatório)
 
@@ -60,27 +55,28 @@ não querer dirigir depois de um dia inteiro no parque?
 chega no WhatsApp.
 
 **O motorista fica esperando no parque o dia todo, ou volta e retorna depois?**
-
+O motorista deixa e agenda para retornar buscar 
 >
 
 **Se fica: isso é cobrado por hora? Está incluso no valor da ida e volta?**
-
+está incluso nos valores
 >
 
 **Como o cliente avisa que quer voltar antes do horário combinado?**
-
+Contato via whatsapp
 >
 
 **Qual o horário-limite de retorno?** (o parque fecha tarde em alta temporada)
-
+O parque fecha sempre as 20:00
 >
 
 ## 4. Particularidades que só vocês sabem
 
 - Melhor horário para sair de BC e evitar fila na entrada do parque?
 - O acesso a Penha muda muito em feriado?
+Muda nos feriados e finais de semana, 
 - Onde é o ponto de embarque/desembarque no parque?
-
+na entrada do parque
 >
 
 ## 5. Perguntas frequentes reais
@@ -102,11 +98,11 @@ Grupo grande é comum aqui — a van tende a ser o veículo principal desta pág
 
 | Veículo | Passageiros | Observação |
 | --- | --- | --- |
-| SUV Premium | | |
-| Van Executiva | | |
+| SUV Premium | 4 | |
+| Van Executiva | até 20 | |
 
 **Tem cadeirinha e bebê conforto? Para quais idades?**
-
+possui cadeirinha, de 0 a 13KG
 > **Este campo é decisivo.** Família com criança pequena não fecha sem essa
 > resposta, e é um diferencial concreto contra app de corrida.
 

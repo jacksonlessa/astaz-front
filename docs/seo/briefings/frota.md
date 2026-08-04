@@ -10,13 +10,18 @@ veículos, acessibilidade, rotina de manutenção e **fotos reais**
 
 ## Respostas já fornecidas pela Astaz
 
-| Categoria | Modelos | Passageiros | Malas grandes |
-| --- | --- | --- | --- |
-| Sedã Executivo | Nissan Sentra | 3 | 3 |
-| SUV Premium | AION V *(principal)* · Jeep Commander | 3 | 3 |
-| Van Executiva | Sprinter | 7 | 7 |
+| Categoria | Modelos | Passageiros |
+| --- | --- | --- |
+| Sedã Executivo | Nissan Sentra | 4 |
+| SUV Premium | AION V *(principal)* | 4 |
+| SUV Premium | Jeep Commander | 6 |
+| Van Executiva | Sprinter | 9 · 18 · 20 |
 
-Regra de bagagem informada: **uma mala grande por passageiro**.
+**Bagagem: não há capacidade fixa a publicar.** A operação não trabalha com um
+número definido de volumes por veículo — isso é alinhado com o cliente no
+momento do orçamento, conforme o veículo, o número de passageiros e o tipo de
+viagem. Nenhuma página do site deve informar quantidade de bagagem, e nenhum
+briefing deve pedir esse dado.
 
 **Cadeirinha e bebê conforto**: disponíveis mediante solicitação na reserva.
 
@@ -54,9 +59,6 @@ Preencha um bloco por veículo da frota. Repita quantas vezes for necessário.
 | Categoria (Sedã / SUV / Van) | |
 | Modelo e ano | |
 | Passageiros (sem contar o motorista) | |
-| Malas grandes | |
-| Malas de mão | |
-| Tem porta-malas para bagagem de aeroporto com folga? | |
 | Diferenciais (ar por zona, tomada USB, água, wi-fi) | |
 | Melhor para qual situação | |
 
@@ -67,8 +69,6 @@ Preencha um bloco por veículo da frota. Repita quantas vezes for necessário.
 | Categoria | |
 | Modelo e ano | |
 | Passageiros | |
-| Malas grandes | |
-| Malas de mão | |
 | Diferenciais | |
 | Melhor para qual situação | |
 
@@ -79,8 +79,6 @@ Preencha um bloco por veículo da frota. Repita quantas vezes for necessário.
 | Categoria | |
 | Modelo e ano | |
 | Passageiros | |
-| Malas grandes | |
-| Malas de mão | |
 | Diferenciais | |
 | Melhor para qual situação | |
 
@@ -102,9 +100,8 @@ confiança, melhor que adjetivo)
 
 ## Fotos (obrigatório)
 
-Para cada veículo, o ideal é: exterior em ângulo 3/4, interior dos bancos
-traseiros e porta-malas aberto com bagagem — este último responde sozinho a
-pergunta que mais trava a decisão.
+Para cada veículo, o ideal é: exterior em ângulo 3/4 e interior dos bancos
+traseiros — é o que mostra o padrão do veículo sem precisar de adjetivo.
 
 **O que já existe:**
 
@@ -113,6 +110,10 @@ pergunta que mais trava a decisão.
 **O que precisa ser produzido:**
 
 >
+
+Fotos de banco já levantadas como candidatas — e as ressalvas de cada uma —
+estão em [docs/imagens-de-referencia.md](../../imagens-de-referencia.md).
+Nenhuma substitui foto real nesta página.
 
 ## O que NÃO dizer
 
@@ -125,7 +126,9 @@ impecável descrito com honestidade converte mais que uma frota inflada.
 
 ## Checklist antes de publicar
 
-- [ ] Todos os veículos reais listados, com capacidade de passageiros e malas
+- [ ] Todos os veículos reais listados, com capacidade de passageiros
+- [ ] Nenhuma quantidade de bagagem no texto final — bagagem é alinhada no
+      orçamento
 - [ ] Resposta sobre cadeirinha preenchida
 - [ ] **Fotos reais de cada veículo disponíveis** — bloqueia a publicação
 - [ ] Nenhum modelo ou ano listado que não esteja na frota atual
