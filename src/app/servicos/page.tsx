@@ -4,6 +4,7 @@ import { Footer } from "@/components/landing/footer";
 import { Header } from "@/components/landing/header";
 import { FloatingWhatsApp } from "@/components/landing/floating-whatsapp";
 import { JsonLd } from "@/components/seo/json-ld";
+import { CardLinkArrow, CardTitleLink } from "@/components/ui/card-link";
 import {
   SectionDescription,
   SectionHeading,
@@ -19,7 +20,7 @@ import { siteConfig } from "@/lib/site";
 export const metadata = buildMetadata({
   title: "Serviços de Transporte Executivo",
   description:
-    "Transporte executivo em Balneário Camboriú para aeroportos, agendas corporativas, eventos e casamentos, com motorista particular e city tour.",
+    "Transporte executivo em Balneário Camboriú para aeroportos, agendas corporativas, eventos, casamentos, city tour e acompanhamento de idosos.",
   path: routes.servicos,
   // Enquanto nenhuma página de serviço estiver publicada, este hub não linka
   // nenhuma filha e apenas reformula a seção de serviços da home — uma URL
@@ -37,12 +38,6 @@ export default function ServicosPage() {
           { name: "Serviços", path: routes.servicos },
         ])}
       />
-      <a
-        href="#conteudo"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-secondary focus:outline-none"
-      >
-        Pular para o conteúdo
-      </a>
       <Header />
 
       <main id="conteudo" className="pt-16 sm:pt-20">
@@ -84,26 +79,36 @@ export default function ServicosPage() {
             <ul className="mt-16 grid gap-6 sm:grid-cols-2">
               {servicos.map((servico) => (
                 <li key={servico.slug}>
-                  <article className="h-full rounded-2xl border border-border-subtle bg-surface p-6 transition-all duration-500 hover:border-primary/30 hover:gold-glow sm:p-8">
-                    <h2 className="font-display text-2xl text-foreground">
-                      {/*
-                        Enquanto `published` for false, a página de detalhe não
-                        existe — o card fica sem link para não gerar 404.
-                      */}
+                  <article className="group relative flex h-full flex-col rounded-2xl border border-border-subtle bg-surface p-6 transition-all duration-500 hover:border-primary/30 hover:gold-glow sm:p-8">
+                    {/*
+                      Enquanto `published` for false, a página de detalhe não
+                      existe — o card fica sem link (e sem a seta de rodapé)
+                      para não gerar 404 nem prometer uma navegação que não
+                      acontece. Publicada a filha, o card passa a seguir o mesmo
+                      padrão do hub de destinos, sem mais nenhuma alteração
+                      aqui.
+                    */}
+                    <h2
+                      className={`font-display text-2xl text-foreground ${
+                        servico.published
+                          ? "transition-colors group-hover:text-primary"
+                          : ""
+                      }`}
+                    >
                       {servico.published ? (
-                        <Link
-                          href={servicoPath(servico.slug)}
-                          className="transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 rounded-sm"
-                        >
+                        <CardTitleLink href={servicoPath(servico.slug)}>
                           {servico.title}
-                        </Link>
+                        </CardTitleLink>
                       ) : (
                         servico.title
                       )}
                     </h2>
-                    <p className="mt-3 text-sm leading-relaxed text-neutral sm:text-base">
+                    <p className="mt-3 flex-1 text-sm leading-relaxed text-neutral sm:text-base">
                       {servico.summary}
                     </p>
+                    {servico.published ? (
+                      <CardLinkArrow>Ver detalhes do serviço</CardLinkArrow>
+                    ) : null}
                   </article>
                 </li>
               ))}

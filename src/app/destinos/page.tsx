@@ -5,6 +5,7 @@ import { Footer } from "@/components/landing/footer";
 import { Header } from "@/components/landing/header";
 import { FloatingWhatsApp } from "@/components/landing/floating-whatsapp";
 import { JsonLd } from "@/components/seo/json-ld";
+import { CardLinkArrow, CardTitleLink } from "@/components/ui/card-link";
 import {
   SectionDescription,
   SectionHeading,
@@ -33,12 +34,6 @@ export default function DestinosPage() {
           { name: "Destinos", path: routes.destinos },
         ])}
       />
-      <a
-        href="#conteudo"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-primary focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-secondary focus:outline-none"
-      >
-        Pular para o conteúdo
-      </a>
       <Header />
 
       <main id="conteudo" className="pt-16 sm:pt-20">
@@ -71,7 +66,7 @@ export default function DestinosPage() {
               </SectionHeading>
               <SectionDescription className="mt-4">
                 Cada destino tem suas particularidades de trajeto, horário e
-                bagagem. Reunimos aqui o que você precisa saber antes de
+                veículo. Reunimos aqui o que você precisa saber antes de
                 agendar.
               </SectionDescription>
             </div>
@@ -79,7 +74,7 @@ export default function DestinosPage() {
             <ul className="mt-16 grid gap-6 sm:grid-cols-2">
               {publishedDestinos.map((destino) => (
                 <li key={destino.slug}>
-                  <article className="group h-full overflow-hidden rounded-2xl border border-border-subtle bg-surface transition-all duration-500 hover:border-primary/30 hover:gold-glow">
+                  <article className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border-subtle bg-surface transition-all duration-500 hover:border-primary/30 hover:gold-glow">
                     <div className="relative aspect-[16/10] overflow-hidden">
                       <Image
                         src={destino.image}
@@ -90,18 +85,16 @@ export default function DestinosPage() {
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-secondary via-secondary/40 to-transparent" />
                     </div>
-                    <div className="p-6 sm:p-8">
-                      <h2 className="font-display text-2xl text-foreground">
-                        <Link
-                          href={destinoPath(destino.slug)}
-                          className="transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 rounded-sm"
-                        >
+                    <div className="flex flex-1 flex-col p-6 sm:p-8">
+                      <h2 className="font-display text-2xl text-foreground transition-colors group-hover:text-primary">
+                        <CardTitleLink href={destinoPath(destino.slug)}>
                           {destino.breadcrumbLabel}
-                        </Link>
+                        </CardTitleLink>
                       </h2>
-                      <p className="mt-3 text-sm leading-relaxed text-neutral sm:text-base">
+                      <p className="mt-3 flex-1 text-sm leading-relaxed text-neutral sm:text-base">
                         {destino.summary}
                       </p>
+                      <CardLinkArrow>Ver detalhes do trajeto</CardLinkArrow>
                     </div>
                   </article>
                 </li>
