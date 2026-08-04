@@ -489,6 +489,9 @@ a idade da empresa), total de empresas atendidas (número não confiável).
 - [x] "Sobre" adicionado à navegação principal (`navLinks`)
 - [x] Entrada em `publishedRoutes` (`src/lib/routes.ts`) — já no `sitemap.xml`
 - [x] `npm run lint` e `npm run build` sem erros
+- [x] Copy validada pelo agente `copy-astaz` — aprovada, com cinco ajustes
+      aplicados (comparação com atendente removida, tautologia no bloco de
+      números, "vira conteúdo", `title` que repetia a marca e a mensagem de
+      WhatsApp corporativa no CTA geral)
 - [ ] Revisão visual em desktop e mobile — **pendente**, o painel de preview
       ficou sem resposta durante a verificação
-- [ ] Copy validada pelo agente `copy-astaz` contra o Manifesto

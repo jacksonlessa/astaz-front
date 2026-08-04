@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/section-label";
 import { WhatsAppButton } from "@/components/ui/whatsapp-button";
 import {
+  fechamentoSobre,
   interiorAstaz,
   numerosAstaz,
   paraEmpresas,
@@ -27,7 +28,9 @@ import { buildMetadata } from "@/lib/seo";
 import { businessInfo } from "@/lib/site";
 
 export const metadata = buildMetadata({
-  title: "Sobre a Astaz",
+  // O layout adiciona "| ASTAZ" — repetir a marca aqui empilharia o nome duas
+  // vezes no resultado de busca e gastaria o espaço que a cidade ocupa melhor.
+  title: "Sobre o transporte executivo em Balneário Camboriú",
   description:
     "Transporte executivo em Balneário Camboriú desde 2022. Mais de 2.000 viagens, agenda confirmada na véspera e voo acompanhado até o embarque.",
   path: routes.sobre,
@@ -241,15 +244,13 @@ export default function SobrePage() {
 
             <div className="mt-16 rounded-2xl border border-border-subtle bg-surface p-8 sm:p-12">
               <SectionHeading as="h2" className="!text-2xl sm:!text-3xl">
-                Vamos combinar a sua viagem
+                {fechamentoSobre.title}
               </SectionHeading>
               <SectionDescription className="mt-4">
-                Informe data, horário, origem e destino. A proposta volta com a
-                configuração de veículo adequada e o horário de embarque
-                combinado com você.
+                {fechamentoSobre.description}
               </SectionDescription>
               <div className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
-                <WhatsAppButton message={paraEmpresas.whatsappMessage}>
+                <WhatsAppButton message={fechamentoSobre.whatsappMessage}>
                   Falar pelo WhatsApp
                 </WhatsAppButton>
                 <a
@@ -258,7 +259,7 @@ export default function SobrePage() {
                   rel="noopener noreferrer"
                   className="text-sm text-neutral transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 rounded-sm"
                 >
-                  Ver a Astaz no Google
+                  {fechamentoSobre.googleLinkLabel}
                 </a>
               </div>
             </div>

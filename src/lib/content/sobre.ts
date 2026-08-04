@@ -42,7 +42,7 @@ export const quemConduz = {
    */
   paragraphs: [
     "Quem conduz a Astaz é Vinícius Dalpra Pieper, que atende turistas, executivos e artistas em Balneário Camboriú e região, direto no veículo. O administrativo e a organização das agendas ficam com a outra metade do time.",
-    "São duas pessoas. Quem responde a sua mensagem é quem organiza o atendimento — nunca um atendente que não sabe quem vai dirigir.",
+    "São duas pessoas. Quem responde a sua mensagem é quem organiza o atendimento e sabe quem vai dirigir.",
   ],
   image: "/images/sobre-astaz-motorista.webp",
   imageAlt:
@@ -69,7 +69,7 @@ export const numerosAstaz = [
 export const recorrencia = {
   title: "O que os números dizem",
   paragraphs: [
-    "A conta dá cerca de dez viagens por cliente. É o que acontece quando as pessoas voltam: metade delas contrata de novo, e dez empresas mantêm atendimento recorrente com a Astaz.",
+    "A conta dá cerca de dez viagens por cliente. Metade dos passageiros contrata a Astaz mais de uma vez, e dez empresas mantêm atendimento recorrente.",
   ],
 } as const;
 
@@ -98,7 +98,7 @@ export const pilares = [
     items: [
       "O motorista segue o ritmo do passageiro: conversa se houver vontade de conversar, silêncio se não houver.",
       "O que acontece na viagem não sai da viagem — nem quem viajou, nem para onde, nem o que foi dito.",
-      "Passageiro não vira conteúdo. Quando há foto, é porque ele mesmo pediu.",
+      "A iniciativa de publicar uma foto nunca parte da Astaz. Quando há foto, é porque o próprio passageiro pediu.",
     ],
   },
 ] as const;
@@ -124,6 +124,18 @@ export const paraEmpresas = {
   title: "Para empresas",
   description:
     "A Astaz é pessoa jurídica com CNPJ ativo e emite nota fiscal em todo atendimento. Reembolso, prestação de contas e contrato ficam resolvidos, sem improviso na hora de fechar o mês.",
+} as const;
+
+/**
+ * Fechamento da página. A mensagem é genérica de propósito: quem chega até aqui
+ * pode ser passageiro particular ou empresa, e abrir o WhatsApp já falando de
+ * contrato corporativo erraria a metade das pessoas.
+ */
+export const fechamentoSobre = {
+  title: "Vamos combinar a sua viagem",
+  description:
+    "Informe data, horário, origem e destino. A proposta volta com a configuração de veículo adequada e o horário de embarque combinado com você.",
   whatsappMessage:
-    "Olá, ASTAZ! Gostaria de conversar sobre atendimento corporativo recorrente.",
+    "Olá, ASTAZ! Vi a página sobre a empresa e gostaria de solicitar um orçamento.",
+  googleLinkLabel: "Ver a Astaz no Google",
 } as const;
