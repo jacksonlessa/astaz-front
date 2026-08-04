@@ -95,18 +95,15 @@ export const servicos: readonly Servico[] = [
     published: false,
   },
   {
-    slug: "motorista-particular",
-    title: "Motorista Particular",
-    metaTitle: "Motorista Particular à Disposição",
+    slug: "transporte-idosos",
+    title: "Transporte e Acompanhamento de Idosos",
+    metaTitle: "Transporte de Idosos em Balneário Camboriú",
     metaDescription:
-      "Motorista particular por período em Balneário Camboriú: agenda com múltiplas paradas, veículo à disposição e condução discreta.",
+      "Transporte executivo para idosos em Balneário Camboriú: consultas, exames e compromissos, com apoio no embarque e espera durante o atendimento.",
     summary:
-      "Motorista e veículo à disposição por período, para agendas com múltiplas paradas ou roteiros que mudam durante o dia.",
-    gbpServices: [
-      "Motorista Particular",
-      "Táxi Executivo",
-      "Transporte Executivo",
-    ],
+      "Deslocamentos para consultas, exames e compromissos do dia a dia, com apoio no embarque e no desembarque e espera durante o atendimento.",
+    // Ainda não cadastrado no GBP — ver ação em `docs/seo/mapeamento-de-paginas.md`.
+    gbpServices: [],
     published: false,
   },
   {
