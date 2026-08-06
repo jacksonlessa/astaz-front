@@ -13,6 +13,11 @@ export const routes = {
   sobre: "/sobre",
   contato: "/contato",
   faq: "/faq",
+  /**
+   * Página utilitária (`noIndex: true`), não entra em `publishedRoutes` — não
+   * é conteúdo de busca. Linkada só no rodapé e no banner de cookies.
+   */
+  politicaDePrivacidade: "/politica-de-privacidade",
 } as const;
 
 export function servicoPath(slug: string) {

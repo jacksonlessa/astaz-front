@@ -14,15 +14,15 @@ export function Footer() {
           <div className="sm:col-span-2 lg:col-span-1">
             <Link
               href={routes.home}
-              className="inline-block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-secondary"
+              className="group inline-block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-secondary"
               aria-label={`${siteConfig.name} — página inicial`}
             >
-              <span className="font-display text-2xl tracking-[0.15em] text-foreground">
-                {siteConfig.name}
-              </span>
-              <span className="mt-1 block text-xs font-medium uppercase tracking-[0.3em] text-neutral">
-                {siteConfig.tagline}
-              </span>
+              {/* eslint-disable-next-line @next/next/no-img-element -- logo vetorial estático, sem necessidade do otimizador de imagem */}
+              <img
+                src="/images/logo-astaz-vertical-branco.svg"
+                alt=""
+                className="h-14 w-auto transition-opacity duration-300 group-hover:opacity-80"
+              />
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-neutral">
               Transporte executivo com requinte, discrição e pontualidade para
@@ -97,6 +97,12 @@ export function Footer() {
             <p className="text-xs text-neutral-dark">
               CNPJ {businessInfo.taxId}
             </p>
+            <Link
+              href={routes.politicaDePrivacidade}
+              className="text-xs text-neutral-dark underline underline-offset-2 transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 rounded-sm"
+            >
+              Política de Privacidade
+            </Link>
           </div>
           <div className="flex flex-col items-center gap-1 sm:items-end">
             <p className="text-xs text-neutral-dark">
