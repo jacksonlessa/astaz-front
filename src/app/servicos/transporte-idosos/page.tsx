@@ -6,13 +6,14 @@ import { Footer } from "@/components/landing/footer";
 import { Header } from "@/components/landing/header";
 import { FloatingWhatsApp } from "@/components/landing/floating-whatsapp";
 import { JsonLd } from "@/components/seo/json-ld";
+import { FleetCategoryCard } from "@/components/ui/fleet-category-card";
 import {
   SectionDescription,
   SectionHeading,
   SectionLabel,
 } from "@/components/ui/section-label";
 import { WhatsAppButton } from "@/components/ui/whatsapp-button";
-import { categoriasFrota, faixaPassageiros } from "@/lib/content/frota";
+import { categoriasFrota } from "@/lib/content/frota";
 import { getServico } from "@/lib/content/servicos";
 import {
   compromissosRecorrentes,
@@ -248,20 +249,7 @@ export default function TransporteIdososPage() {
               </SectionHeading>
               <div className="mt-8 grid gap-6 sm:grid-cols-3">
                 {categoriasFrota.map((categoria) => (
-                  <article
-                    key={categoria.title}
-                    className="rounded-2xl border border-border-subtle bg-surface p-6"
-                  >
-                    <h3 className="font-display text-xl text-foreground">
-                      {categoria.title}
-                    </h3>
-                    <p className="mt-2 text-xs uppercase tracking-[0.15em] text-primary">
-                      {faixaPassageiros(categoria)}
-                    </p>
-                    <p className="mt-3 text-sm leading-relaxed text-neutral">
-                      {categoria.description}
-                    </p>
-                  </article>
+                  <FleetCategoryCard key={categoria.title} categoria={categoria} />
                 ))}
               </div>
               <p className="mt-6 max-w-3xl text-sm leading-relaxed text-neutral-dark">

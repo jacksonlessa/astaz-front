@@ -1,7 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
-import { categoriasFrota, faixaPassageiros } from "@/lib/content/frota";
+import { categoriasFrota } from "@/lib/content/frota";
 import { routes } from "@/lib/routes";
+import { FleetCategoryCard } from "@/components/ui/fleet-category-card";
 import {
   SectionDescription,
   SectionHeading,
@@ -30,32 +30,7 @@ export function Fleet() {
 
         <div className="grid gap-8 lg:grid-cols-3">
           {categoriasFrota.map((category) => (
-            <article
-              key={category.title}
-              className="group flex flex-col overflow-hidden rounded-2xl border border-border-subtle bg-surface transition-all duration-500 hover:border-primary/30"
-            >
-              <div className="relative aspect-[4/3] overflow-hidden">
-                <Image
-                  src={category.image}
-                  alt={category.imageAlt}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  sizes="(max-width: 1024px) 100vw, 33vw"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-surface to-transparent" />
-              </div>
-              <div className="flex flex-1 flex-col p-6 sm:p-8">
-                <h3 className="font-display text-2xl text-foreground">
-                  {category.title}
-                </h3>
-                <p className="mt-2 text-xs uppercase tracking-[0.15em] text-primary">
-                  {faixaPassageiros(category)}
-                </p>
-                <p className="mt-3 flex-1 text-sm leading-relaxed text-neutral sm:text-base">
-                  {category.description}
-                </p>
-              </div>
-            </article>
+            <FleetCategoryCard key={category.title} categoria={category} />
           ))}
         </div>
 
