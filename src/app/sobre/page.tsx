@@ -119,12 +119,19 @@ export default function SobrePage() {
         <section className="section-padding bg-secondary">
           <div className="container-wide mx-auto">
             {/*
-              Foto à direita e texto à esquerda. A foto fica em 4:5 porque é
-              retrato de pessoa: recortá-la em paisagem cortaria justamente o
-              rosto.
+              Duas fotos em composição editorial. As colunas são posicionadas
+              explicitamente porque a ordem que funciona no desktop não é a que
+              funciona no mobile: empilhado, o retrato precisa vir logo depois
+              do texto (é ele que responde à pergunta que o texto acabou de
+              levantar), com a foto ao volante fechando. No desktop o retrato
+              ocupa a coluna direita inteira e a foto de apoio senta embaixo do
+              texto, preenchendo o vazio que a coluna curta deixava.
+
+              Ambas em 4:5 porque são retratos de pessoa: recorte em paisagem
+              cortaria justamente o rosto.
             */}
-            <section className="lg:grid lg:grid-cols-2 lg:items-center lg:gap-12">
-              <div>
+            <section className="lg:grid lg:grid-cols-2 lg:gap-12">
+              <div className="lg:col-start-1 lg:row-start-1">
                 <SectionHeading as="h2" className="!text-2xl sm:!text-3xl">
                   {quemConduz.title}
                 </SectionHeading>
@@ -138,13 +145,39 @@ export default function SobrePage() {
                 ))}
               </div>
 
-              <div className="relative mt-8 aspect-[4/5] overflow-hidden rounded-2xl lg:mt-0">
+              <figure className="mt-8 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:mt-0">
+                {/*
+                  Proporção nativa do arquivo (872×1024), não 4:5 como as
+                  demais: o retrato veio de estúdio com grafismo próprio até a
+                  borda, e qualquer recorte fatia a coluna de pontos da
+                  esquerda — o corte fica visível e parece defeito.
+                */}
+                <div className="relative aspect-[872/1024] overflow-hidden rounded-2xl">
+                  <Image
+                    src={quemConduz.retrato.image}
+                    alt={quemConduz.retrato.imageAlt}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 100vw, 704px"
+                  />
+                </div>
+                <figcaption className="mt-4 text-sm text-neutral">
+                  <span className="text-foreground">
+                    {quemConduz.retrato.name}
+                  </span>
+                  <span className="mt-1 block text-xs uppercase tracking-[0.15em] text-neutral-dark">
+                    {quemConduz.retrato.role}
+                  </span>
+                </figcaption>
+              </figure>
+
+              <div className="relative mt-8 aspect-[4/5] overflow-hidden rounded-2xl lg:col-start-1 lg:row-start-2 lg:max-w-[300px] lg:self-end">
                 <Image
-                  src={quemConduz.image}
-                  alt={quemConduz.imageAlt}
+                  src={quemConduz.aoVolante.image}
+                  alt={quemConduz.aoVolante.imageAlt}
                   fill
                   className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 704px"
+                  sizes="(max-width: 1024px) 100vw, 300px"
                 />
               </div>
             </section>

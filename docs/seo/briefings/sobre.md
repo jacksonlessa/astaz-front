@@ -75,9 +75,35 @@ Isso pode ser dito sem nomear ninguém — o argumento é a estrutura, não o no
 
 ✅ Sem nome da segunda pessoa e sem necessidade de autorização de terceiro.
 
-⚠️ **Foto do proprietário**: existe `20260730_131320.jpg` (Vinícius de terno,
-dentro do veículo). Não bloqueia — a página pode ir ao ar com o nome e sem
-foto, e a foto entra depois. Ver seção 5.
+✅ **Revisão da equipe (06/08/2026) — duas mudanças:**
+
+1. **Público ampliado**: `empresários, investidores, turistas e artistas`. Vale
+   a mesma regra dos artistas — o segmento se diz, o nome não.
+2. **Tamanho da equipe sai da página** (decisão do proprietário). "São duas
+   pessoas" foi removido, e a sugestão de trocar por "uma equipe nos
+   bastidores" também não entrou: seria vago justamente onde a página precisa
+   ser concreta. O argumento passou a se sustentar por procedimento — agenda,
+   reserva e voo ficam com quem responde a mensagem — o que continua
+   verificável sem publicar headcount.
+
+✅ **Foto do proprietário — resolvido em 06/08/2026 com as duas fotos.**
+
+| Foto | Papel | Onde |
+| --- | --- | --- |
+| `sobre-astaz-vinicius-perfil.webp` (retrato de estúdio) | Responde "com quem eu vou entrar num carro?" — rosto nítido, olhar direto | Imagem principal, coluna direita, com legenda nome + função |
+| `sobre-astaz-motorista.webp` (ao volante) | Responde "isso existe mesmo?" — operação e veículo reais | Apoio, 300px, abaixo do texto |
+
+Nenhuma substitui a outra: retrato de estúdio prova identidade e não prova
+contexto; foto na operação prova contexto e não mostra o rosto (ele está de
+óculos escuros e virado). Numa página de E-E-A-T as duas perguntas são feitas.
+
+⚠️ **Ressalvas do retrato**, se um dia houver nova sessão de fotos: o fundo é
+azul-marinho, mais frio e mais claro que o `#121212` do site, e o grafismo
+(pontos dourados e a estrelinha no canto inferior direito) é de template, não
+da identidade Astaz. Nada disso impede a publicação — o dourado dos pontos
+conversa com o `--color-primary` — mas um retrato sobre o fundo do próprio site
+integraria melhor. A proporção nativa (872×1024) é respeitada no layout de
+propósito: recorte em 4:5 fatia a coluna de pontos da esquerda.
 
 **Há quanto tempo atua com transporte executivo?** ✅
 
@@ -123,16 +149,25 @@ outro motorista, a frase precisa ser revista.
 > **Manutenção sempre em dia** — os veículos são considerados peça-chave da
 > empresa.
 
-📝 **Rascunho:**
+✅ **Revisão da equipe (06/08/2026) — protocolo confirmado, encerra a pendência
+abaixo:** a higienização acontece **antes de cada atendimento**, junto com uma
+**inspeção** do veículo, e a manutenção segue um **plano preventivo**.
 
-> A frota é higienizada diariamente: o veículo sai limpo por dentro e por fora
-> e volta para a rotina antes do próximo passageiro. A manutenção é feita em
-> dia, sem exceção — o carro é a ferramenta central do negócio, e veículo com
-> problema significa compromisso perdido.
+Trocado na página: "higienizada diariamente" → "antes de cada atendimento".
+Frequência é promessa que o passageiro não consegue conferir; gatilho é. Saiu
+"rigoroso processo" (adjetivo sobre si mesmo, Manifesto §10).
 
-⚠️ Se existir um protocolo concreto — revisão por quilometragem, revisão
-programada em concessionária, checagem antes de viagem longa — vale citar, que
-é mais forte que "em dia". Mas o texto acima já se sustenta sem isso.
+📝 **Texto publicado:**
+
+> Antes de cada atendimento o veículo passa por higienização e inspeção: sai
+> limpo por dentro e por fora e é conferido antes de o próximo passageiro
+> embarcar. A manutenção segue plano preventivo, sem exceção — o carro é a
+> ferramenta central do trabalho, e veículo com problema significa compromisso
+> perdido.
+
+⚠️ Ainda não citado por falta de confirmação: revisão por quilometragem,
+revisão programada em concessionária ou checagem antes de viagem longa. Se
+algum desses existir de fato, é mais forte que "plano preventivo".
 
 **Seguro** — os passageiros são cobertos? ✅ **Não possui.**
 
@@ -236,25 +271,51 @@ um fato. **Um já apareceu nas fotos:**
 
 | Valor | Fato que prova | Status |
 | --- | --- | --- |
-| Acolhimento | **Água e algo para comer à disposição no banco traseiro, em todo atendimento** — foto `20260730_130543.jpg` | ✅ **confirmado como padrão** |
+| Acolhimento | **Água mineral e um mimo no banco traseiro, em todo atendimento** — foto `20260730_130543.jpg`. O mimo **varia a cada atendimento** (confirmado em 06/08/2026); a água **não** é prometida gelada, porque não é sempre | ✅ **confirmado como padrão** |
 | Pontualidade | Depoimentos no Google mencionam pontualidade, mas ainda estão em revisão e não aparecem publicamente | ⚠️ **pendente** |
 | Discrição | Como aparece na prática? (não puxa conversa sem o passageiro iniciar, não comenta destino, veículo sem identificação visual) | ⚠️ |
 
-📝 **Rascunho do acolhimento:**
+📝 **Rascunho do acolhimento** (atualizado em 06/08/2026):
 
-> Água e algo para comer esperam o passageiro no banco de trás — em toda
-> viagem, sem precisar pedir.
+> No banco de trás, água mineral e um mimo esperam por você — em toda viagem,
+> sem precisar pedir. O mimo muda de uma viagem para outra: é escolhido a cada
+> atendimento, não é item de estoque.
 
 Vale como fato porque é verificável na foto e não depende de adjetivo. É
 também o tipo de detalhe que o Manifesto (§3) chama de excelência nas pequenas
 atitudes.
 
+**Sobre a palavra "mimo".** Ela fica. Pertence ao vocabulário de hospitalidade
+("mimo de boas-vindas" é registro corrente de hotelaria), não ao de
+informalidade excessiva. O que o Manifesto §10 barra é o **adjetivo elogioso**
+sobre o próprio serviço — "quitutes deliciosos" seria o problema, "mimo" não é.
+
+**E por que não substituir por descrição genérica.** "Algo para comer" foi
+tentado e descartado: nesta página a sensação de cuidado vem de
+**especificidade**, não de adjetivo, e formulação vaga lê como econômica. Como
+o item varia e não pode ser nomeado, é a **variação** que faz esse trabalho —
+mimo escolhido a cada atendimento diz mais que qualquer adjetivo diria.
+
 ✅ **Adesivo do vidro esclarecido.** O que aparece na foto traseira é um
-adesivo **decorativo** (padrão quadriculado, tipo linha de chegada) mais o
-reflexo de uma luz externa — **não é identificação de transporte**. Portanto a
-copy pode afirmar que **o veículo não leva identificação da empresa**. A
-formulação precisa é essa ("sem identificação da empresa"), não "sem nenhum
-adesivo".
+adesivo **decorativo** (padrão quadriculado, tipo linha de chegada), **de
+fábrica, parte do modelo do carro** — não é identificação de transporte nem da
+empresa.
+
+⛔ **Reversão (06/08/2026) — o veículo passou a ser identificado.** No fim de
+semana de 02–03/08 foi instalado **adesivo de identificação da Astaz nas
+portas**. A afirmação "o veículo não leva identificação da empresa" **saiu da
+página no mesmo dia**. Não cabe suavizar nem qualificar: numa página cuja
+função é ser verificável, uma frase que o cliente desmente ao ver o carro
+chegar custa mais do que o argumento que ela sustentava.
+
+**O reenquadramento:** a discrição da Astaz é do **passageiro**, não do
+veículo. O carro identificado não expõe ninguém — quem expõe seria a película
+clara, o motorista que comenta o destino ou a foto publicada sem autorização.
+Nada disso mudou.
+
+⚠️ **Película ≠ adesivo.** Película é o escurecimento dos vidros: protege o
+interior do sol e impede que se veja de fora quem está no banco de trás. Não
+confundir os dois na copy.
 
 ✅ **Discrição: quatro práticas confirmadas.**
 
@@ -262,17 +323,18 @@ adesivo".
 | --- | --- |
 | O motorista não puxa conversa; segue o ritmo do passageiro | ✅ |
 | Não se comenta com ninguém quem viajou, para onde ou o que foi conversado | ✅ |
-| Passageiro não vira conteúdo; foto só quando ele mesmo pede ou autoriza | ✅ |
-| O veículo não leva identificação da empresa | ✅ |
+| Passageiro não é fotografado nem filmado; foto só quando ele mesmo pede | ✅ |
 | Vidros com película, no que é permitido por lei | ✅ |
+| ~~O veículo não leva identificação da empresa~~ | ⛔ **revogada em 06/08/2026** |
 
-📝 **Rascunho da discrição:**
+📝 **Rascunho da discrição** (atualizado em 06/08/2026):
 
-> O veículo não leva identificação da empresa, e os vidros têm película dentro
-> do que a lei permite — ninguém precisa saber quem está no carro. Dentro dele,
-> o motorista segue o ritmo do passageiro: conversa se houver vontade de
-> conversar, silêncio se não houver. E o que acontece na viagem não sai da
-> viagem: nem quem viajou, nem para onde, nem o que foi dito.
+> Os vidros têm película dentro do que a lei permite: protege o interior do sol
+> e, de fora, não se enxerga quem está no banco de trás. Dentro do carro, o
+> motorista segue o ritmo do passageiro: conversa se houver vontade de
+> conversar, silêncio se o trajeto for para trabalhar ou descansar. E o que
+> acontece na viagem não sai da viagem: nem quem viajou, nem para onde, nem o
+> que foi dito.
 
 Formulações a evitar aqui:
 - Não escrever "nunca publicamos foto de passageiro" — há casos com
@@ -375,12 +437,13 @@ preço no momento do embarque. Quer saber que o carro vai estar lá.
 
 **H2 — Quem conduz**
 
-Quem conduz a Astaz é Vinícius Dalpra Pieper, que atende turistas, executivos e
-artistas em Balneário Camboriú e região, direto no veículo. O administrativo e
-a organização das agendas ficam com a outra metade do time.
+Quem conduz a Astaz é Vinícius Dalpra Pieper, que atende empresários,
+investidores, turistas e artistas em Balneário Camboriú e região, direto no
+veículo.
 
-São duas pessoas. Quem responde a sua mensagem é quem organiza o atendimento —
-nunca um atendente que não sabe quem vai dirigir.
+O que acontece antes da viagem — organizar a agenda, confirmar a reserva,
+acompanhar o voo — fica com quem responde a sua mensagem. Do primeiro contato
+ao destino, quem atende você sabe quem vai dirigir.
 
 **H2 — O que os números dizem**
 
@@ -403,22 +466,26 @@ estimativa de aplicativo.
 
 **H2 — Discrição**
 
-O veículo não leva identificação da empresa, e os vidros têm película dentro do
-que a lei permite. Ninguém precisa saber quem está no carro.
+Os vidros têm película dentro do que a lei permite: protege o interior do sol e,
+de fora, não se enxerga quem está no banco de trás.
 
-Dentro dele, o motorista segue o ritmo do passageiro: conversa se houver
-vontade de conversar, silêncio se não houver. E o que acontece na viagem não
-sai da viagem — nem quem viajou, nem para onde, nem o que foi dito.
+Dentro do carro, o motorista segue o ritmo do passageiro: conversa se houver
+vontade de conversar, silêncio se o trajeto for para trabalhar ou descansar. O
+que acontece na viagem não sai da viagem — nem quem viajou, nem para onde, nem
+o que foi dito. E a Astaz não fotografa nem filma passageiro: quando existe uma
+foto publicada, é porque o próprio passageiro pediu.
 
 **H2 — O carro, por dentro**
 
-Água e algo para comer esperam você no banco de trás, em toda viagem, sem
-precisar pedir.
+No banco de trás, água mineral e um mimo esperam por você — em toda viagem, sem
+precisar pedir. O mimo muda de uma viagem para outra: é escolhido a cada
+atendimento, não é item de estoque.
 
-A frota é higienizada diariamente: o veículo sai limpo por dentro e por fora e
-volta para a rotina antes do próximo passageiro. A manutenção é feita em dia,
-sem exceção — o carro é a ferramenta central do trabalho, e veículo com
-problema significa compromisso perdido.
+Antes de cada atendimento o veículo passa por higienização e inspeção: sai
+limpo por dentro e por fora e é conferido antes de o próximo passageiro
+embarcar. A manutenção segue plano preventivo, sem exceção — o carro é a
+ferramenta central do trabalho, e veículo com problema significa compromisso
+perdido.
 
 **H2 — Preparo**
 
@@ -460,22 +527,31 @@ a idade da empresa), total de empresas atendidas (número não confiável).
 - [x] CNPJ 48.403.098/0001-54 validado
 - [x] Critérios de seleção: omitidos por decisão
 - [x] Seis fotos reais do AION V disponíveis
-- [x] Manutenção e higienização respondidas
+- [x] Manutenção e higienização respondidas — protocolo detalhado na revisão de
+      06/08/2026 (higienização e inspeção antes de cada atendimento, plano
+      preventivo de manutenção)
 - [x] Inglês avançado
 - [x] Quem responde o WhatsApp: as duas pessoas que tocam a empresa
 - [x] Só o Vinícius é nomeado; a segunda pessoa aparece como time, sem nome
 
-- [x] Discrição: cinco práticas confirmadas — seção 4
+- [x] Discrição: quatro práticas confirmadas — seção 4 (a quinta, "veículo sem
+      identificação da empresa", foi revogada em 06/08/2026: o adesivo da Astaz
+      passou a ser instalado nas portas)
 - [x] "Artistas" confirmado, sem citar nomes — seção 1
-- [x] Adesivo do vidro: decorativo, não é identificação
+- [x] Adesivo do vidro traseiro: decorativo e de fábrica, não é identificação
+- [x] Adesivo das portas: identificação da Astaz, instalado em 08/2026
 
 - [x] Pontualidade: quatro procedimentos confirmados — seção 4
 
 **Em aberto, mas não bloqueia:**
 
-- [ ] Decisão sobre a foto do proprietário (publicar a atual ou esperar nova) —
-      a página funciona com as fotos do veículo
-- [ ] Protocolo específico de manutenção, se existir — seção 2
+- [ ] Retrato do Vinícius sobre o fundo do próprio site, sem o grafismo de
+      template — o atual já está publicado e funciona; é melhoria, não bloqueio
+- [ ] Refotografar as laterais do veículo com o adesivo de identificação — as
+      fotos atuais mostram as portas limpas. **Decisão de 06/08/2026: conviver
+      com as fotos atuais**, sem urgência de troca
+- [ ] Detalhamento do plano preventivo (quilometragem, concessionária,
+      checagem antes de viagem longa), se existir — seção 2
 - [ ] Nota do Google, quando houver base de avaliações — seção 3
 
 **Execução — página publicada:**

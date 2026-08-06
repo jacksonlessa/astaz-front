@@ -44,14 +44,40 @@ export const quemConduz = {
    * Só o Vinícius é nomeado. A segunda pessoa da operação aparece como parte do
    * time, sem nome, por decisão do proprietário — publicar o nome de terceiro
    * exigiria autorização dela.
+   *
+   * O tamanho da equipe também ficou fora por decisão do proprietário. O
+   * argumento que interessa não é o número: é que quem responde a mensagem é
+   * quem acompanha a reserva. Isso se sustenta por procedimento, e procedimento
+   * não precisa de headcount para ser verificável.
    */
   paragraphs: [
-    "Quem conduz a Astaz é Vinícius Dalpra Pieper, que atende turistas, executivos e artistas em Balneário Camboriú e região, direto no veículo. O administrativo e a organização das agendas ficam com a outra metade do time.",
-    "São duas pessoas. Quem responde a sua mensagem é quem organiza o atendimento e sabe quem vai dirigir.",
+    "Quem conduz a Astaz é Vinícius Dalpra Pieper, que atende empresários, investidores, turistas e artistas em Balneário Camboriú e região, direto no veículo.",
+    "O que acontece antes da viagem — organizar a agenda, confirmar a reserva, acompanhar o voo — fica com quem responde a sua mensagem. Do primeiro contato ao destino, quem atende você sabe quem vai dirigir.",
   ],
-  image: "/images/sobre-astaz-motorista.webp",
-  imageAlt:
-    "Vinícius Dalpra Pieper, de terno, no banco do motorista do veículo executivo da Astaz",
+  /**
+   * Duas fotos, dois trabalhos diferentes — é por isso que nenhuma substitui a
+   * outra.
+   *
+   * O retrato responde "com quem eu vou entrar num carro?": rosto nítido e
+   * olhar direto, que é o que o visitante hesitante procura nesta página. Por
+   * isso é a imagem principal, com legenda ligando o rosto ao nome.
+   *
+   * A foto ao volante responde "isso existe mesmo?": operação real, veículo
+   * real, sem estúdio. Entra menor e como apoio, porque prova contexto, não
+   * identidade — mas prova algo que retrato de estúdio nenhum prova.
+   */
+  retrato: {
+    image: "/images/sobre-astaz-vinicius-perfil.webp",
+    imageAlt:
+      "Vinícius Dalpra Pieper, de terno azul-marinho e gravata, braços cruzados, em retrato de estúdio",
+    name: "Vinícius Dalpra Pieper",
+    role: "Motorista executivo",
+  },
+  aoVolante: {
+    image: "/images/sobre-astaz-motorista.webp",
+    imageAlt:
+      "Vinícius Dalpra Pieper, de terno, no banco do motorista do veículo executivo da Astaz, visto do banco traseiro de couro caramelo",
+  },
 } as const;
 
 /**
@@ -96,23 +122,48 @@ export const pilares = [
       "O horário de embarque é o que foi combinado com você, não uma estimativa de aplicativo.",
     ],
   },
+  /**
+   * A discrição aqui é do passageiro, não do veículo.
+   *
+   * Até 08/2026 esta seção dizia que o carro não levava identificação da
+   * empresa. Deixou de ser verdade quando o adesivo da Astaz foi instalado nas
+   * portas, e a frase saiu no mesmo dia — numa página cuja função é ser
+   * verificável, uma afirmação que o cliente desmente ao ver o carro chegar
+   * custa mais que o argumento que ela sustentava.
+   *
+   * O que segue de pé, e é o que o passageiro realmente contrata: de fora não
+   * se vê quem está dentro, e nada do que acontece na viagem sai dela.
+   */
   {
     title: "Discrição",
     intro:
-      "O veículo não leva identificação da empresa, e os vidros têm película dentro do que a lei permite. Ninguém precisa saber quem está no carro.",
+      "Os vidros têm película dentro do que a lei permite: protege o interior do sol e, de fora, não se enxerga quem está no banco de trás.",
     items: [
-      "O motorista segue o ritmo do passageiro: conversa se houver vontade de conversar, silêncio se não houver.",
+      "O motorista segue o ritmo do passageiro: conversa se houver vontade de conversar, silêncio se o trajeto for para trabalhar ou descansar.",
       "O que acontece na viagem não sai da viagem — nem quem viajou, nem para onde, nem o que foi dito.",
-      "A iniciativa de publicar uma foto nunca parte da Astaz. Quando há foto, é porque o próprio passageiro pediu.",
+      "A Astaz não fotografa nem filma passageiro. Quando existe uma foto publicada, é porque o próprio passageiro pediu.",
     ],
   },
 ] as const;
 
+/**
+ * A higienização é descrita por gatilho ("antes de cada atendimento"), não por
+ * frequência ("diariamente"): é a versão confirmada pela operação e a que o
+ * passageiro consegue verificar ao embarcar.
+ *
+ * Sobre "mimo": a palavra é da operação e fica. Ela pertence ao vocabulário de
+ * hospitalidade, não ao de informalidade — o que o Manifesto §10 barra é o
+ * adjetivo elogioso ("quitutes deliciosos"), não o substantivo. O que sustenta
+ * o registro aqui é o fato de o mimo variar: item escolhido a cada atendimento
+ * diz mais sobre cuidado do que qualquer adjetivo diria.
+ *
+ * A água não é prometida gelada porque não é gelada em toda viagem.
+ */
 export const interiorAstaz = {
   title: "O carro, por dentro",
   paragraphs: [
-    "Água e algo para comer esperam você no banco de trás, em toda viagem, sem precisar pedir.",
-    "A frota é higienizada diariamente: o veículo sai limpo por dentro e por fora e volta para a rotina antes do próximo passageiro. A manutenção é feita em dia, sem exceção — o carro é a ferramenta central do trabalho, e veículo com problema significa compromisso perdido.",
+    "No banco de trás, água mineral e um mimo esperam por você — em toda viagem, sem precisar pedir. O mimo muda de uma viagem para outra: é escolhido a cada atendimento, não é item de estoque.",
+    "Antes de cada atendimento o veículo passa por higienização e inspeção: sai limpo por dentro e por fora e é conferido antes de o próximo passageiro embarcar. A manutenção segue plano preventivo, sem exceção — o carro é a ferramenta central do trabalho, e veículo com problema significa compromisso perdido.",
   ],
   image: "/images/sobre-astaz-interior.webp",
   imageAlt:
