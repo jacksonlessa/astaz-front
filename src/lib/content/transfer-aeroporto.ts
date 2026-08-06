@@ -38,13 +38,20 @@ export const transferAeroportoIntro = {
   description:
     "A dúvida de quem contrata um transfer nunca é o trajeto. É se o motorista vai estar lá quando a porta do desembarque abrir. Atendemos os quatro aeroportos que servem Balneário Camboriú, com o voo acompanhado e o motorista identificado antes de você pousar.",
   /**
+   * Aponta para o mesmo arquivo do hero da home. Não é preguiça: até 06/08/2026
+   * este campo apontava para `/images/transfer-aeroporto.webp`, um arquivo que
+   * nunca existiu em `public/images/` — a página de captação mais forte do site
+   * abria com 404 no lugar da capa. Reaproveitar uma foto que existe e descrever
+   * o que ela de fato mostra é melhor que uma imagem quebrada.
+   *
    * TODO: foto real do serviço. O briefing pede veículo da frota no desembarque
    * com o motorista em posição de recepção — é a tradução visual da abertura
-   * acima. Enquanto não existir, `imageIsPlaceholder` continua true.
+   * acima. Enquanto não existir, `imageIsPlaceholder` continua true e o `alt`
+   * descreve a foto real, não o serviço que gostaríamos de ilustrar.
    */
-  image: "/images/transfer-aeroporto.webp",
+  image: "/images/hero-transfer-aeroporto.webp",
   imageAlt:
-    "Motorista executivo de terno aguardando ao lado de veículo preto na área de desembarque de um aeroporto",
+    "Sedã executivo escuro estacionado em pista de aeroporto ao lado de uma aeronave",
   imageIsPlaceholder: true,
   whatsappMessage:
     "Olá, ASTAZ! Gostaria de um orçamento para transfer de aeroporto.",
