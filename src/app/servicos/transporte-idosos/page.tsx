@@ -39,12 +39,14 @@ export const metadata = buildMetadata({
   description: servico?.metaDescription ?? "",
   path: servicoPath(SLUG),
   image: transporteIdososIntro.image,
-  // `noIndex` fica ligado até: 1) o texto ter uma leitura final da operação
-  // (o FAQ desta página ainda não foi confirmado frase a frase — ver
-  // `docs/seo/briefings/transporte-idosos.md`) e 2) existir foto real ou uma
-  // decisão consciente de publicar sem. Tirar o `noIndex` e adicionar a rota
-  // em `publishedRoutes` (`src/lib/routes.ts`) no mesmo commit.
-  noIndex: true,
+  // Indexável desde 06/08/2026. As duas condições que seguravam o `noIndex`
+  // foram cumpridas: o FAQ foi revisado pela operação, e publicar com imagem
+  // de banco (`imageIsPlaceholder: true`) é decisão consciente e registrada —
+  // sem imagem, o link não teria preview no WhatsApp, que é por onde esta
+  // página mais circula. A rota entrou em `publishedRoutes` no mesmo commit.
+  //
+  // Segue valendo o limite do briefing: a copy não promete o mesmo motorista
+  // em atendimentos recorrentes, porque a escala não garante isso.
 });
 
 export default function TransporteIdososPage() {

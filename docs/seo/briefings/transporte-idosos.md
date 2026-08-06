@@ -3,11 +3,13 @@
 **URL**: `/servicos/transporte-idosos`
 **Intenção de busca**: "transporte para idosos balneário camboriú", "transporte
 para consultas e exames", "levar idoso ao médico"
-**Status**: 🟡 parcial — publicada em `noindex`; página escrita em
+**Status**: ✅ **publicada e indexável desde 06/08/2026** — `noIndex` removido e
+rota em `publishedRoutes`, no mesmo commit. Página em
 `src/lib/content/transporte-idosos.ts` e `src/app/servicos/transporte-idosos/page.tsx`.
-Faltam: revisão final da operação sobre o texto do FAQ (seção 6, escrito por
-mim a partir dos dados confirmados, nunca lido linha a linha por vocês),
-fotos reais (seção 7) e a resposta sobre continuidade do motorista (seção 5)
+Em aberto, sem bloquear: foto real da operação (hoje é imagem de banco, com
+`imageIsPlaceholder: true`) e a continuidade do motorista em atendimentos
+recorrentes (seção 5) — enquanto não houver resposta, a copy não promete o
+mesmo motorista
 **Prioridade**: 🟡 média — **concorrência local baixa e cliente recorrente**, o
 melhor par risco/retorno das páginas de serviço
 
@@ -402,6 +404,7 @@ Além do limite regulatório e do léxico do topo:
 - [x] Imagem publicada — de banco, `imageIsPlaceholder: true`. Decisão
       consciente de publicar sem foto real, para o link ter preview no WhatsApp
 - [ ] Foto real da operação — substitui a de banco quando existir
-- [ ] `noIndex` removido de `buildMetadata` na página
-- [ ] Entrada em `publishedRoutes` (`src/lib/routes.ts`) — no mesmo commit da
-      remoção do `noIndex`, para o sitemap não anunciar antes da hora
+- [x] `noIndex` removido de `buildMetadata` na página *(06/08/2026)*
+- [x] Entrada em `publishedRoutes` (`src/lib/routes.ts`), no mesmo commit da
+      remoção do `noIndex` — `priority: 0.8`, abaixo de `transfer-aeroporto`
+      (0.9), que tem volume de busca maior

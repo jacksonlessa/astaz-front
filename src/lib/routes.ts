@@ -44,6 +44,11 @@ export const publishedRoutes: readonly SitemapEntry[] = [
     changeFrequency: "monthly",
     priority: 0.9,
   },
+  {
+    path: servicoPath("transporte-idosos"),
+    changeFrequency: "monthly",
+    priority: 0.8,
+  },
   { path: routes.destinos, changeFrequency: "monthly", priority: 0.8 },
   {
     path: destinoPath("aeroporto-navegantes"),
