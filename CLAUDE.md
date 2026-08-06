@@ -82,7 +82,13 @@ Sem Docker, CI/CD ou banco de dados configurados hoje. Deploy previsto na Vercel
 
 ## Variáveis de Ambiente
 
-Nenhuma variável de ambiente é usada hoje (`.env*` está no `.gitignore` para o caso de precisar futuramente — ex.: chave de analytics, endpoint de formulário de contato). Se adicionar uma, documente aqui e crie um `.env.example`.
+`.env*` está no `.gitignore`; use `.env.local` (não versionado) para valores reais e mantenha `.env.example` como referência de quais variáveis existem.
+
+| Variável | Descrição |
+| --- | --- |
+| `NEXT_PUBLIC_GTM_ID` | ID do contêiner do Google Tag Manager (`GTM-XXXXXXX`). GA4 e Meta Pixel são configurados **dentro** do contêiner do GTM — não existem variáveis próprias para eles. Sem esta variável, `<GoogleTagManager />` não é renderizado e o site funciona normalmente sem medição. |
+
+Ao adicionar uma variável nova, documente aqui e no `.env.example` no mesmo commit.
 
 ## O que NÃO Fazer
 

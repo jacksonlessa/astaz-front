@@ -1,4 +1,28 @@
-import { getWhatsAppUrl } from "@/lib/site";
+"use client";
+
+import { usePathname } from "next/navigation";
+import { sendGTMEvent } from "@next/third-parties/google";
+
+import { getWhatsAppUrl, siteConfig } from "@/lib/site";
+
+/**
+ * Único ponto de saída para o WhatsApp no site inteiro — por isso é aqui, e
+ * não em cada página, que o clique é medido. `cta_page` vem do pathname atual
+ * (não exige que cada chamador passe uma prop nova) e `cta_message` é a
+ * mensagem pré-preenchida, que já varia por página/contexto e funciona como
+ * sinal de intenção sem trabalho extra.
+ *
+ * `sendGTMEvent` só empurra para `window.dataLayer`; funciona mesmo sem
+ * `NEXT_PUBLIC_GTM_ID` definida (o array fica sem leitor, inofensivo) — não é
+ * necessário condicionar a chamada à existência do GTM.
+ */
+function trackWhatsAppClick(pathname: string, message?: string) {
+  sendGTMEvent({
+    event: "whatsapp_click",
+    cta_page: pathname,
+    cta_message: message ?? siteConfig.whatsappMessage,
+  });
+}
 
 function WhatsAppIcon({ className }: { className?: string }) {
   return (
@@ -43,11 +67,14 @@ export function WhatsAppButton({
   className = "",
   children,
 }: WhatsAppButtonProps) {
+  const pathname = usePathname();
+
   return (
     <a
       href={getWhatsAppUrl(message)}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={() => trackWhatsAppClick(pathname, message)}
       className={`inline-flex items-center justify-center rounded-full font-semibold tracking-wide transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-secondary ${variantStyles[variant]} ${sizeStyles[size]} ${className}`}
     >
       <WhatsAppIcon className="size-4 shrink-0" />
@@ -65,12 +92,15 @@ export function WhatsAppIconButton({
   className?: string;
   label?: string;
 }) {
+  const pathname = usePathname();
+
   return (
     <a
       href={getWhatsAppUrl(message)}
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
+      onClick={() => trackWhatsAppClick(pathname, message)}
       className={`inline-flex items-center justify-center rounded-full border border-primary/30 bg-primary/10 p-2.5 text-primary transition-all duration-300 hover:bg-primary/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-secondary ${className}`}
     >
       <WhatsAppIcon className="size-5" />

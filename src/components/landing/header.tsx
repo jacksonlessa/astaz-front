@@ -11,15 +11,15 @@ export function Header() {
       <div className="container-wide mx-auto flex h-16 items-center justify-between px-5 sm:h-20 sm:px-8 lg:px-12">
         <Link
           href={routes.home}
-          className="group flex flex-col focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-secondary"
+          className="group flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-secondary"
           aria-label={`${siteConfig.name} — página inicial`}
         >
-          <span className="font-display text-xl tracking-[0.15em] text-foreground transition-colors group-hover:text-primary sm:text-2xl">
-            {siteConfig.name}
-          </span>
-          <span className="text-[10px] font-medium uppercase tracking-[0.3em] text-neutral sm:text-xs">
-            {siteConfig.tagline}
-          </span>
+          {/* eslint-disable-next-line @next/next/no-img-element -- logo vetorial estático, sem necessidade do otimizador de imagem */}
+          <img
+            src="/images/logo-astaz-vertical-branco.svg"
+            alt=""
+            className="h-11 w-auto transition-opacity duration-300 group-hover:opacity-80 sm:h-14"
+          />
         </Link>
 
         <nav

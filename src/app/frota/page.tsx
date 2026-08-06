@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import { Footer } from "@/components/landing/footer";
@@ -80,42 +81,54 @@ export default function FrotaPage() {
               {categoriasFrota.map((categoria) => (
                 <article
                   key={categoria.title}
-                  className="rounded-2xl border border-border-subtle bg-surface p-6 sm:p-8 lg:grid lg:grid-cols-3 lg:gap-12"
+                  className="overflow-hidden rounded-2xl border border-border-subtle bg-surface lg:grid lg:grid-cols-3 lg:gap-8"
                 >
-                  <div>
-                    <h2 className="font-display text-2xl text-foreground">
-                      {categoria.title}
-                    </h2>
-                    <p className="mt-4 text-sm leading-relaxed text-neutral">
-                      {categoria.description}
-                    </p>
+                  <div className="relative aspect-[16/9] lg:aspect-auto lg:h-full lg:min-h-64">
+                    <Image
+                      src={categoria.image}
+                      alt={categoria.imageAlt}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 1024px) 100vw, 33vw"
+                    />
                   </div>
 
-                  <ul className="mt-6 divide-y divide-border-subtle border-t border-border-subtle lg:col-span-2 lg:mt-0 lg:border-t-0">
-                    {categoria.configuracoes.map((config) => (
-                      <li
-                        key={config.modelo}
-                        className="py-5 first:pt-5 last:pb-0 lg:first:pt-0"
-                      >
-                        {/*
-                          No mobile o par empilha sempre: deixar quebrar por
-                          conta do `justify-between` alinhava uma linha à
-                          direita e as outras à esquerda.
-                        */}
-                        <div className="flex flex-col items-start gap-1 sm:flex-row sm:flex-wrap sm:items-baseline sm:justify-between sm:gap-x-6">
-                          <h3 className="font-display text-lg text-foreground">
-                            {config.modelo}
-                          </h3>
-                          <p className="text-xs uppercase tracking-[0.15em] text-primary">
-                            {config.passageiros} passageiros
+                  <div className="p-6 sm:p-8 lg:col-span-2 lg:grid lg:grid-cols-3 lg:gap-12 lg:p-8 lg:pl-0">
+                    <div>
+                      <h2 className="font-display text-2xl text-foreground">
+                        {categoria.title}
+                      </h2>
+                      <p className="mt-4 text-sm leading-relaxed text-neutral">
+                        {categoria.description}
+                      </p>
+                    </div>
+
+                    <ul className="mt-6 divide-y divide-border-subtle border-t border-border-subtle lg:col-span-2 lg:mt-0 lg:border-t-0">
+                      {categoria.configuracoes.map((config) => (
+                        <li
+                          key={config.modelo}
+                          className="py-5 first:pt-5 last:pb-0 lg:first:pt-0"
+                        >
+                          {/*
+                            No mobile o par empilha sempre: deixar quebrar por
+                            conta do `justify-between` alinhava uma linha à
+                            direita e as outras à esquerda.
+                          */}
+                          <div className="flex flex-col items-start gap-1 sm:flex-row sm:flex-wrap sm:items-baseline sm:justify-between sm:gap-x-6">
+                            <h3 className="font-display text-lg text-foreground">
+                              {config.modelo}
+                            </h3>
+                            <p className="text-xs uppercase tracking-[0.15em] text-primary">
+                              {config.passageiros} passageiros
+                            </p>
+                          </div>
+                          <p className="mt-2 text-sm leading-relaxed text-neutral-dark">
+                            {config.indicadoPara}
                           </p>
-                        </div>
-                        <p className="mt-2 text-sm leading-relaxed text-neutral-dark">
-                          {config.indicadoPara}
-                        </p>
-                      </li>
-                    ))}
-                  </ul>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </article>
               ))}
             </div>

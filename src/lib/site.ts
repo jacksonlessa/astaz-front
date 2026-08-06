@@ -32,6 +32,21 @@ export const siteConfig = {
    * `curl -sI https://astaz.com.br/ | grep -i location`
    */
   url: "https://www.astaz.com.br",
+  /**
+   * Imagem padrão de compartilhamento (Open Graph / Twitter Card).
+   *
+   * Sem isso definido, o Next.js não declara `og:image` nenhum e cada rede
+   * social escolhe uma imagem por conta própria a partir do que encontra na
+   * página — o resultado é imprevisível (já apareceu até carro de terceiro
+   * nos previews). Path relativo porque `metadataBase` já resolve para
+   * `siteConfig.url`.
+   */
+  ogImage: {
+    url: "/images/sobre-astaz-motorista.webp",
+    width: 1200,
+    height: 1500,
+    alt: "Vinícius Dalpra Pieper, de terno, no banco do motorista do veículo executivo da Astaz, visto do banco traseiro de couro caramelo",
+  },
 } as const;
 
 /**
