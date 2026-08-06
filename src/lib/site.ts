@@ -16,7 +16,22 @@ export const siteConfig = {
   phoneRaw: "5547997269700",
   whatsappMessage:
     "Olá, ASTAZ! Gostaria de solicitar um orçamento para transporte executivo.",
-  url: "https://astaz.com.br",
+  /**
+   * COM `www`, e a escolha não é estética.
+   *
+   * O servidor responde 308 de `astaz.com.br` para `www.astaz.com.br`. Enquanto
+   * esta constante ficou no domínio sem `www`, tudo o que deriva dela —
+   * canonical, `og:url`, `<loc>` do sitemap, `Host` e `Sitemap` do robots.txt —
+   * apontava para URLs que redirecionam. Um sitemap inteiro de redirects é o
+   * que o Semrush acusou em 06/08/2026; o canonical apontando para redirect é
+   * o problema maior, porque manda o buscador consolidar sinais numa URL que
+   * não é a que serve a página.
+   *
+   * Se um dia a hospedagem inverter o redirect (www → raiz), esta linha muda
+   * junto, no mesmo dia. Confira com:
+   * `curl -sI https://astaz.com.br/ | grep -i location`
+   */
+  url: "https://www.astaz.com.br",
 } as const;
 
 /**
