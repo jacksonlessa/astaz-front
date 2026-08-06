@@ -146,17 +146,17 @@ Orçamento de caracteres: **título ≤ 52** (o template do layout acrescenta
 | --- | --- | --- | --- | --- |
 | `/` | transporte executivo balneário camboriú | *(default do layout)* | — | ✅ publicada |
 | `/destinos/aeroporto-navegantes` | transfer aeroporto navegantes bc | Transfer Aeroporto Navegantes a Balneário Camboriú | 🔴 alta | ✅ publicada |
-| `/servicos/transfer-aeroporto` | transfer aeroporto executivo sc *(hub)* | Transfer Executivo para Aeroportos | 🔴 alta | Fase 1 |
-| `/destinos/beto-carrero` | transporte / transfer para beto carrero | Transfer para o Beto Carrero World | 🔴 alta | Fase 1 |
-| `/destinos/aeroporto-florianopolis` | transfer aeroporto florianópolis bc | Transfer Aeroporto de Florianópolis a Balneário Camboriú ⚠️ | 🟡 média | Fase 1 |
-| `/frota` | frota / veículos disponíveis | Nossa Frota Executiva | 🟡 média | Fase 1 |
-| `/contato` | contato, orçamento | Contato e Orçamento | 🟡 média | Fase 1 |
-| `/sobre` | quem é a astaz *(confiança, E-E-A-T)* | Sobre a Astaz | 🟢 baixa | Fase 1 |
+| `/servicos/transfer-aeroporto` | transfer aeroporto executivo sc *(hub)* | Transfer Executivo para Aeroportos | 🔴 alta | ✅ publicada |
+| `/destinos/beto-carrero` | transporte / transfer para beto carrero | Transfer para o Beto Carrero World | 🔴 alta | ✅ publicada |
+| `/destinos/aeroporto-florianopolis` | transfer aeroporto florianópolis bc | Transfer Aeroporto Florianópolis–Balneário Camboriú | 🟡 média | ✅ publicada |
+| `/frota` | frota / veículos disponíveis | Frota Executiva | 🟡 média | ✅ publicada |
+| `/contato` | contato, orçamento | Contato e Orçamento | 🟡 média | **Fase 1 — única página que falta** |
+| `/sobre` | quem é a astaz *(confiança, E-E-A-T)* | Sobre o transporte executivo em Balneário Camboriú | 🟢 baixa | ✅ publicada |
 | `/servicos` | hub — o que a empresa faz | Serviços de Transporte Executivo | 🟡 média | ✅ publicada |
 | `/destinos` | hub de destinos | Destinos Atendidos | 🟡 média | ✅ publicada |
 | `/eventos` | hub de eventos sazonais | Transporte para Eventos em SC | 🟢 baixa | Fase 3 |
 | `/servicos/transporte-corporativo` | transporte corporativo bc | Transporte Corporativo em Balneário Camboriú | 🟡 média | Fase 2 |
-| `/servicos/transporte-idosos` | transporte de idosos para consultas e exames | Transporte para Idosos em Balneário Camboriú | 🟡 média | Fase 2 |
+| `/servicos/transporte-idosos` | transporte de idosos para consultas e exames | Transporte para Idosos em Balneário Camboriú | 🟡 média | ✅ publicada *(antecipada da Fase 2)* |
 | `/servicos/transporte-eventos` | transporte para eventos e congressos | Transporte para Eventos e Congressos | 🟢 baixa | Fase 2 |
 | `/servicos/transporte-casamentos` | carro para casamento bc | Transporte para Casamentos | 🟢 baixa | Fase 2 |
 | `/servicos/city-tour` | city tour balneário camboriú | City Tour em Balneário Camboriú | 🟢 baixa | Fase 2 |
@@ -170,9 +170,10 @@ Orçamento de caracteres: **título ≤ 52** (o template do layout acrescenta
 | `/eventos/fenarreco-brusque` | transporte fenarreco brusque | Transporte para a Fenarreco de Brusque | sazonal | Fase 3 |
 | `/faq` | dúvidas gerais | Perguntas Frequentes | 🟢 baixa | Fase 2 |
 
-⚠️ **Títulos acima do orçamento** — `/destinos/aeroporto-florianopolis` tem 56
-caracteres e estoura para 64 com o sufixo. Precisa ser encurtado antes de
-publicar.
+✅ **Títulos** — conferidos em 06/08/2026: todas as páginas publicadas estão
+dentro do orçamento. O maior é `/destinos/aeroporto-florianopolis`, com 51
+caracteres (59 com o sufixo), depois de encurtado para
+`Transfer Aeroporto Florianópolis–Balneário Camboriú`.
 
 ⚠️ **`/destinos/balneario-camboriu`** — a home já é a página de BC. Só criar se
 tiver um recorte próprio (ex.: *receptivo para quem chega a BC*). Caso
@@ -187,6 +188,173 @@ Blumenau, Joinville, São Francisco do Sul, Florianópolis. ✅ site e GBP alinh
 **Regra**: nenhuma cidade pode ser citada como atendida numa página se não
 estiver em `areaServed` — e nada entra em `areaServed` antes de entrar no GBP.
 Site e perfil precisam contar a mesma história.
+
+---
+
+## Fase 1 — o que ainda falta
+
+A Fase 1 deixou de ser só uma lista de páginas. Além de `/contato`, entraram
+cinco frentes que não são página nova, mas que travam o site: imagem que não
+carrega, home desatualizada em relação às páginas já publicadas, identidade
+visual provisória, ausência total de medição e a base legal que a medição exige.
+
+Ordem de execução:
+
+| # | Frente | Bloqueado por |
+| --- | --- | --- |
+| 1 | GTM + GA4 | ✅ feito em 06/08/2026 — falta o acionador `whatsapp_click` no painel |
+| 2 | Revisão da home | — |
+| 3 | `/contato` | — |
+| 4 | Banner de consentimento + `/politica-de-privacidade` | — |
+| 5 | Meta Pixel | item 4 no ar |
+| 6 | Logo e favicon | ✅ feito em 06/08/2026 — falta só `Footer` e `opengraph-image` |
+| 7 | Fotos reais (frota, desembarque, serviços) | operação |
+
+`opengraph-image` do item 6, aliás, também já saiu do zero: `siteConfig.ogImage`
+(`src/lib/site.ts`) alimenta `openGraph.images` e `twitter.images` no
+[layout raiz](../../src/app/layout.tsx) com a foto real do motorista. Falta
+só o `Footer` para o item 6 fechar de vez.
+
+**Medição primeiro.** Enquanto não houver GTM, cada dia de tráfego é dado
+perdido que não se recupera depois. Os itens 6 e 7 dependem de material externo
+e correm em paralelo — não seguram os demais.
+
+### 1. Imagens quebradas e provisórias
+
+Levantamento de 06/08/2026, conferido contra `https://www.astaz.com.br`.
+
+**Quebrada de verdade (1)** — ✅ corrigida em 06/08/2026:
+
+| Referência | Onde aparecia | Situação |
+| --- | --- | --- |
+| `/images/transfer-aeroporto.webp` | hero de `/servicos/transfer-aeroporto`, com `priority` | O arquivo nunca existiu em `public/images/` — a página principal de captação abria com 404 no lugar da capa. **Resolvido** reapontando para `hero-transfer-aeroporto.webp`, com o `alt` reescrito para descrever a foto real. Continua `imageIsPlaceholder: true` até haver foto do desembarque |
+
+**Imagens de banco genéricas (7)** — carregam, mas são fotos remotas do
+Unsplash, de veículos que a Astaz não tem. Nenhuma passou pelas verificações
+descritas em [imagens-de-referencia.md](../imagens-de-referencia.md):
+
+| Arquivo | Onde | Card / bloco |
+| --- | --- | --- |
+| `src/lib/site.ts` | home → Serviços | Corporativo |
+| `src/lib/site.ts` | home → Serviços | Eventos & Ocasiões |
+| `src/lib/site.ts` | home → Serviços | Sob Demanda |
+| `src/components/landing/fleet.tsx` | home → Frota | Sedã Executivo |
+| `src/components/landing/fleet.tsx` | home → Frota | SUV Premium |
+| `src/components/landing/fleet.tsx` | home → Frota | Van Executiva |
+| `src/components/landing/experience.tsx` | home → Experiência | interior do veículo |
+
+Duas observações que valem mais que a lista:
+
+- As três imagens de frota e a de experiência estão **hardcoded no componente**,
+  contra a regra de conteúdo do projeto. Ao substituí-las, o caminho certo é
+  movê-las para `src/lib/content/frota.ts` e `src/lib/site.ts`.
+- **`/frota` não tem uma única foto.** É a página de conversão do site, e o
+  detalhamento abaixo já registra que foto de banco ali destrói a credibilidade
+  da página inteira. Foto real dos veículos é o insumo que só a operação tem.
+
+**Placeholders assumidos (2)** — já marcados com `imageIsPlaceholder: true` e
+registrados em [imagens-de-referencia.md](../imagens-de-referencia.md).
+Carregam, não são urgentes, mas continuam na fila:
+`aeroporto-florianopolis.webp` (terminal que não é o de Florianópolis) e
+`transporte-idosos.webp` (banco traseiro que não é da frota).
+
+### 2. Revisão da home
+
+A home foi escrita quando o site tinha uma página só. Desde então nasceram sete
+páginas, e ela não aponta para quase nenhuma.
+
+- **Os cards de Serviços não são links.** São `<article>` estáticos. `/servicos/transfer-aeroporto`
+  e `/servicos/transporte-idosos` estão publicados e não recebem link da home —
+  só do hub. A home é a página com mais autoridade do site; é dela que o link
+  interno vale mais.
+- **Os títulos dos cards não batem com as páginas.** "Transfer Aeroporto",
+  "Corporativo", "Eventos & Ocasiões" e "Sob Demanda" são de antes do mapa de
+  serviços; hoje existem seis serviços definidos em `src/lib/content/servicos.ts`.
+- **A seção de frota linka para `/frota`, mas os cards não linkam para nada.**
+- **`navLinks` ainda tem duas âncoras** (`/#como-funciona`, `/#faq`). O próprio
+  comentário em `src/lib/site.ts` prevê que virem rota conforme a Fase 1 avança
+  — `/faq` está na Fase 2, então a âncora fica por ora.
+- **Nenhum caminho para `/contato`** — a decidir junto com a criação da página.
+
+### 3. Logo e favicon
+
+✅ **Resolvido em 06/08/2026** — a operação forneceu o arquivo vetorial
+oficial da identidade (pasta `Identidade Visual - Astaz/Logotipo/SVG (vetor)`).
+
+- **Favicon**: `src/app/favicon.ico` (16/32px), `icon.png` (512px) e
+  `apple-icon.png` (180px) substituem o ícone padrão do `create-next-app`.
+  Composição: o ícone oficial (`Ícone Dourado.svg`, arco dourado) sobre círculo
+  cheio `#121212` (`--color-secondary`), traço recolorido para `#c5a059`
+  (`--color-primary` — o arquivo original usa `#d6b050`, levemente diferente do
+  token do site). Gerado via `qlmanage` (rasterização do SVG) + script Python
+  que empacota os PNGs num `.ico` válido — não há `rsvg-convert`/ImageMagick
+  disponível no ambiente. Os SVGs de origem ficam versionados em
+  `public/images/icone-astaz-dourado.svg` e
+  `public/images/logo-astaz-vertical-branco.svg`, para não depender de novo
+  acesso à pasta local se precisar regenerar.
+- **Logo do header**: `Header` (`src/components/landing/header.tsx`) trocou o
+  lettering em Libre Caslon por `public/images/logo-astaz-vertical-branco.svg`
+  (a versão "Vertical Branco" da identidade — vetor real de "ASTAZ" +
+  "TRANSPORTE EXECUTIVO", não fonte web). Renderizado com `<img>` simples (não
+  `next/image`): é um asset estático, não precisa do otimizador, e evita
+  configurar `dangerouslyAllowSVG`.
+- ✅ **`opengraph-image`**: `siteConfig.ogImage` (`src/lib/site.ts`) alimenta
+  `openGraph.images` e `twitter.images` no layout raiz, usando a foto real do
+  motorista (`sobre-astaz-motorista.webp`) — não é o arquivo especial
+  `opengraph-image.tsx` do App Router, é a meta tag `og:image` populada por
+  metadata. Resolve o link do WhatsApp saindo sem imagem.
+- **Pendente**: o mesmo ajuste de logo no `Footer`
+  (`src/components/landing/footer.tsx`, que ainda tem o lettering antigo).
+
+### 4. GTM com Google Analytics e Meta Pixel
+
+✅ **GTM + GA4 no ar desde 06/08/2026.** O Meta Pixel continua pendente do
+item 5 (consentimento).
+
+Decisão de arquitetura mantida: **um único container do GTM no código**; GA4 e
+Meta Pixel configurados dentro do GTM, não no repositório. Trocar ou
+acrescentar tag não exige deploy.
+
+- Contêiner: `GTM-KQMGLBGM`. GA4 já configurado dentro do GTM pela operação
+  (measurement ID `G-DKP3RR8H95`), disparando pageview em `All Pages`.
+- Código: `<GoogleTagManager gtmId={...} />` de `@next/third-parties/google` no
+  [layout raiz](../../src/app/layout.tsx), lendo de `NEXT_PUBLIC_GTM_ID`
+  (`.env.local`, não versionada; `.env.example` documenta a variável). Sem ela
+  definida, o componente não renderiza e o site funciona normal — não é
+  obrigatória para rodar local.
+- **Evento que importa**: clique no WhatsApp. Implementado em
+  [`whatsapp-button.tsx`](../../src/components/ui/whatsapp-button.tsx) — o
+  único ponto de saída para o WhatsApp no site, por isso é ali (e não em cada
+  página) que o clique é medido. Virou Client Component (`usePathname` +
+  `sendGTMEvent`) e cobre `WhatsAppButton`, `WhatsAppIconButton` e, por
+  consequência, `FloatingWhatsApp`, que usa o segundo.
+  - Evento: `whatsapp_click`, com `cta_page` (pathname atual) e `cta_message`
+    (a mensagem pré-preenchida, que já varia por página — funciona como sinal
+    de intenção sem precisar de uma prop nova em cada chamador).
+  - Testado manualmente disparando o clique via console: o evento chega ao
+    `dataLayer` com os dois parâmetros. **Falta**: criar o acionador de evento
+    personalizado `whatsapp_click` no GTM, a tag de evento GA4 correspondente,
+    e marcar como conversão no GA4 — isso é feito no painel, não no código.
+
+### 5. Consentimento e privacidade (LGPD)
+
+Entrou na Fase 1 por decisão de 06/08/2026, junto com o Pixel. O Meta Pixel
+envia dado pessoal para terceiro; a LGPD (art. 8º) exige base legal e
+informação clara antes disso.
+
+Escopo:
+
+- **Banner de consentimento**, com recusa tão fácil quanto o aceite. Client
+  Component, decisão guardada localmente.
+- **`/politica-de-privacidade`** — página utilitária, `noIndex: true` via
+  `buildMetadata()`, linkada no rodapé. Não entra em `publishedRoutes`: não é
+  página de busca.
+- **Disparo condicionado**: GTM sobe sempre; o Pixel só dispara depois do
+  aceite, via Consent Mode. GA4 pode operar em modo restrito antes do aceite —
+  decidir na configuração do container, não no código.
+
+O container do GTM e o GA4 podem subir antes do banner ficar pronto; o Pixel,
+não.
 
 ---
 
