@@ -33,6 +33,13 @@ export type CategoriaFrota = {
    * porque o número exato já vive em cada `ConfiguracaoFrota`.
    */
   description: string;
+  /**
+   * Foto do modelo principal da categoria (a primeira `configuracao`). Usada
+   * na seção de frota da home e em `/frota` — um só campo para não duplicar
+   * caminho de imagem entre os dois lugares.
+   */
+  image: string;
+  imageAlt: string;
   /** A primeira é a configuração principal da categoria. */
   configuracoes: readonly ConfiguracaoFrota[];
 };
@@ -42,6 +49,8 @@ export const categoriasFrota: readonly CategoriaFrota[] = [
     title: "Sedã Executivo",
     description:
       "Elegância discreta e conforto de sedã para quem viaja sozinho, em dupla ou em família.",
+    image: "/images/frota-sedan-nissan-sentra.jpg",
+    imageAlt: "Nissan Sentra preto, sedã executivo da frota Astaz",
     configuracoes: [
       {
         modelo: "Nissan Sentra",
@@ -55,6 +64,8 @@ export const categoriasFrota: readonly CategoriaFrota[] = [
     title: "SUV Premium",
     description:
       "Posição de condução mais alta e amplitude interna, para trajetos que pedem mais espaço a bordo.",
+    image: "/images/frota-suv-aion-v.jpg",
+    imageAlt: "AION V preto, SUV premium da frota Astaz",
     configuracoes: [
       {
         modelo: "AION V",
@@ -74,6 +85,8 @@ export const categoriasFrota: readonly CategoriaFrota[] = [
     title: "Van Executiva",
     description:
       "Capacidade ampliada sem abrir mão do padrão executivo, em três configurações de lugares.",
+    image: "/images/frota-van-sprinter.jpg",
+    imageAlt: "Mercedes-Benz Sprinter preta, van executiva da frota Astaz",
     configuracoes: [
       {
         modelo: "Sprinter 9 lugares",

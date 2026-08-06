@@ -33,7 +33,11 @@ três verificações que ninguém faz por nós:
 | `public/images/aeroporto-florianopolis.webp` | [Pexels 37535047](https://www.pexels.com/photo/travelers-with-luggage-at-modern-airport-terminal-37535047/), foto de Mike Mijares | Passageiros com malas em contraluz. P&B, terminal asiático — **não** é Florianópolis. `imageIsPlaceholder: true` |
 | `public/images/aeroporto-navegantes.webp` | Fornecida pela operação | Fachada do terminal de Navegantes |
 | `public/images/beto-carrero-world.webp` | Fornecida pela operação | Entrada do parque, não o serviço |
+| `public/images/hero-transfer-aeroporto.webp` | Fornecida pela operação | Sedã em pista de aeroporto. Serve a home **e** o hero de `/servicos/transfer-aeroporto`, que até 06/08/2026 apontava para um `transfer-aeroporto.webp` inexistente. Repetição assumida enquanto não houver foto do desembarque. `imageIsPlaceholder: true` no hub |
 | `public/images/transporte-idosos.webp` | [Pexels 14667496](https://www.pexels.com/photo/back-seat-of-a-car-14667496/), foto de Luke Miller | Banco traseiro vazio, couro preto. Sem pessoa e sem emblema — conferido em 3000px. **Não** é veículo da frota. `imageIsPlaceholder: true` |
+| `public/images/frota-sedan-nissan-sentra.jpg` | Fornecida pelo usuário (foto de catálogo do fabricante/concessionária) | Nissan Sentra, categoria Sedã Executivo. Fundo branco de estúdio — estilo diferente das demais fotos do site, que são ambientadas. Usada na seção Frota da home (`src/components/landing/fleet.tsx`) |
+| `public/images/frota-suv-aion-v.jpg` | Fornecida pelo usuário (foto de catálogo do fabricante/concessionária) | AION V, categoria SUV Premium. Mesma origem e ressalva de estúdio da foto do Sentra acima |
+| `public/images/frota-van-sprinter.jpg` | Fornecida pelo usuário (foto de catálogo do fabricante/concessionária) | Mercedes-Benz Sprinter, categoria Van Executiva. Mesma origem e ressalva de estúdio da foto do Sentra acima |
 
 Além dessas, `src/lib/site.ts` ainda serve três imagens remotas do Unsplash nos
 cards de Corporativo, Eventos e Sob Demanda. São genéricas e devem sair quando

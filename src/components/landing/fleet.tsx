@@ -8,21 +8,6 @@ import {
   SectionLabel,
 } from "@/components/ui/section-label";
 
-const fleetImages = [
-  {
-    src: "https://images.unsplash.com/photo-1617531653332-bd46c24f2068?auto=format&fit=crop&w=800&q=80",
-    alt: "Sedã executivo em perspectiva lateral",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1519641471654-76ce0107a851?auto=format&fit=crop&w=800&q=80",
-    alt: "SUV premium em ambiente urbano",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1544622651-a3d4b7d31766?auto=format&fit=crop&w=800&q=80",
-    alt: "Van executiva em estrada",
-  },
-] as const;
-
 export function Fleet() {
   return (
     <section
@@ -44,15 +29,15 @@ export function Fleet() {
         </div>
 
         <div className="grid gap-8 lg:grid-cols-3">
-          {categoriasFrota.map((category, index) => (
+          {categoriasFrota.map((category) => (
             <article
               key={category.title}
               className="group flex flex-col overflow-hidden rounded-2xl border border-border-subtle bg-surface transition-all duration-500 hover:border-primary/30"
             >
               <div className="relative aspect-[4/3] overflow-hidden">
                 <Image
-                  src={fleetImages[index].src}
-                  alt={fleetImages[index].alt}
+                  src={category.image}
+                  alt={category.imageAlt}
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                   sizes="(max-width: 1024px) 100vw, 33vw"
