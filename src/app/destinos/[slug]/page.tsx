@@ -7,6 +7,7 @@ import { Header } from "@/components/landing/header";
 import { FloatingWhatsApp } from "@/components/landing/floating-whatsapp";
 import { DestinoBlocks } from "@/components/destino/destino-blocks";
 import { JsonLd } from "@/components/seo/json-ld";
+import { FleetCategoryCard } from "@/components/ui/fleet-category-card";
 import {
   SectionDescription,
   SectionHeading,
@@ -21,11 +22,7 @@ import {
 import { destinoPath, routes } from "@/lib/routes";
 import { breadcrumbSchema, faqSchema } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
-import {
-  categoriasFrota,
-  faixaPassageiros,
-  notaVeiculosDestino,
-} from "@/lib/content/frota";
+import { categoriasFrota, notaVeiculosDestino } from "@/lib/content/frota";
 
 type PageProps = { params: Promise<{ slug: string }> };
 
@@ -161,20 +158,7 @@ export default async function DestinoPage({ params }: PageProps) {
               </SectionHeading>
               <div className="mt-8 grid gap-6 sm:grid-cols-3">
                 {categoriasFrota.map((categoria) => (
-                  <article
-                    key={categoria.title}
-                    className="rounded-2xl border border-border-subtle bg-surface p-6"
-                  >
-                    <h3 className="font-display text-xl text-foreground">
-                      {categoria.title}
-                    </h3>
-                    <p className="mt-2 text-xs uppercase tracking-[0.15em] text-primary">
-                      {faixaPassageiros(categoria)}
-                    </p>
-                    <p className="mt-3 text-sm leading-relaxed text-neutral">
-                      {categoria.description}
-                    </p>
-                  </article>
+                  <FleetCategoryCard key={categoria.title} categoria={categoria} />
                 ))}
               </div>
               <p className="mt-6 max-w-3xl text-sm leading-relaxed text-neutral-dark">
