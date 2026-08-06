@@ -94,6 +94,11 @@ atendimento, contato com a família. **Não** é serviço de saúde: nada de sug
 cuidador, enfermagem, remoção de paciente ou qualquer procedimento clínico.
 Prometer isso é problema regulatório, não só de tom de voz.
 
+O léxico fechado — palavra a palavra, o que pode e o que não pode ser
+publicado — está em [briefings/transporte-idosos.md](briefings/transporte-idosos.md).
+A descrição "transporte com acompanhamento" vale aqui, em documento interno; no
+texto do site, não.
+
 **Só você sabe**: se o motorista acompanha até a recepção da clínica; como
 funciona a espera e a cobrança durante a consulta; se atende cadeira de rodas ou
 passageiro com mobilidade reduzida (e como); se existe contato/aviso para a
@@ -117,7 +122,7 @@ garantir que nenhuma etiqueta do perfil fique sem página correspondente.
 | `/servicos/transporte-corporativo` | Transporte Corporativo · Transporte para Reuniões · Transporte para Empresas · Empresa de transporte |
 | `/servicos/transporte-eventos` | Transporte para Eventos · Transporte para Congressos · Transporte para Feiras · Transporte para Shows |
 | `/servicos/transporte-casamentos` | Transporte para Casamentos |
-| `/servicos/transporte-idosos` | — *(não cadastrado no GBP; vale adicionar)* |
+| `/servicos/transporte-idosos` | Transporte para Idosos *(cadastrado no GBP em ago/2026)* |
 | `/servicos/city-tour` | — *(não cadastrado no GBP; vale adicionar)* |
 | `/destinos/beto-carrero` | Transfer para Beto Carrero |
 | `/` *(home)* | Transporte Executivo · Táxi Executivo — termos genéricos, cobertos pelo título da home |
@@ -151,7 +156,7 @@ Orçamento de caracteres: **título ≤ 52** (o template do layout acrescenta
 | `/destinos` | hub de destinos | Destinos Atendidos | 🟡 média | ✅ publicada |
 | `/eventos` | hub de eventos sazonais | Transporte para Eventos em SC | 🟢 baixa | Fase 3 |
 | `/servicos/transporte-corporativo` | transporte corporativo bc | Transporte Corporativo em Balneário Camboriú | 🟡 média | Fase 2 |
-| `/servicos/transporte-idosos` | transporte de idosos para consultas e exames | Transporte de Idosos em Balneário Camboriú | 🟡 média | Fase 2 |
+| `/servicos/transporte-idosos` | transporte de idosos para consultas e exames | Transporte para Idosos em Balneário Camboriú | 🟡 média | Fase 2 |
 | `/servicos/transporte-eventos` | transporte para eventos e congressos | Transporte para Eventos e Congressos | 🟢 baixa | Fase 2 |
 | `/servicos/transporte-casamentos` | carro para casamento bc | Transporte para Casamentos | 🟢 baixa | Fase 2 |
 | `/servicos/city-tour` | city tour balneário camboriú | City Tour em Balneário Camboriú | 🟢 baixa | Fase 2 |

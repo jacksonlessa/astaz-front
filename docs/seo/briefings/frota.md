@@ -25,13 +25,20 @@ briefing deve pedir esse dado.
 
 **Cadeirinha e bebê conforto**: disponíveis mediante solicitação na reserva.
 
+**Acessibilidade** *(respondido via
+[transporte-idosos.md](transporte-idosos.md), seção 4)*: **nenhum veículo da
+frota é adaptado.** Cadeira de rodas **dobrável** é atendida — vai no
+porta-malas e o passageiro viaja no banco. Andador e bengala não têm restrição.
+Cadeira motorizada ou que não dobra não pode ser transportada. Passageiro
+acamado não é atendido: é remoção de paciente, atividade regulada.
+
 ### Ainda em aberto
 
 - Ano dos veículos
 - **O AION V é elétrico?** Se sim, é um diferencial forte e alinhado ao
   Manifesto — condução silenciosa reforça discrição e tranquilidade. Não foi
   publicado por falta de confirmação
-- Acessibilidade para cadeirante ou mobilidade reduzida
+- ~~Acessibilidade para cadeirante ou mobilidade reduzida~~ ✅ respondido acima
 - Rotina de manutenção e higienização
 - **Fotos reais de cada veículo** — hoje a página usa imagens de banco
 

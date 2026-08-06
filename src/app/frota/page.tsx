@@ -11,7 +11,8 @@ import {
 } from "@/components/ui/section-label";
 import { WhatsAppButton } from "@/components/ui/whatsapp-button";
 import { categoriasFrota, itensFrota } from "@/lib/content/frota";
-import { routes } from "@/lib/routes";
+import { getServico } from "@/lib/content/servicos";
+import { routes, servicoPath } from "@/lib/routes";
 import { breadcrumbSchema } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
 
@@ -23,6 +24,8 @@ export const metadata = buildMetadata({
 });
 
 export default function FrotaPage() {
+  const transporteIdosos = getServico("transporte-idosos");
+
   return (
     <>
       <JsonLd
@@ -136,6 +139,26 @@ export default function FrotaPage() {
                   </article>
                 ))}
               </div>
+              {/*
+                Gancho editorial: "SUV é mais espaçoso" é a resposta confirmada
+                em `docs/seo/briefings/transporte-idosos.md` para "qual veículo
+                é mais fácil para o idoso entrar e sair". Link só quando a
+                página de destino existe, mesmo padrão do hub de serviços.
+              */}
+              {transporteIdosos?.published ? (
+                <p className="mt-6 max-w-3xl text-sm leading-relaxed text-neutral-dark">
+                  Para quem tem dificuldade de mobilidade, o SUV costuma ser a
+                  opção mais fácil para entrar e sair, por ser mais alto e
+                  espaçoso.{" "}
+                  <Link
+                    href={servicoPath(transporteIdosos.slug)}
+                    className="text-primary underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 rounded-sm"
+                  >
+                    Conheça o transporte para idosos
+                  </Link>
+                  .
+                </p>
+              ) : null}
             </section>
 
             <div className="mt-16 rounded-2xl border border-border-subtle bg-surface p-8 sm:p-12">

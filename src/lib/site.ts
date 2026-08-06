@@ -88,8 +88,21 @@ export const businessInfo = {
     "https://maps.google.com/?cid=12272972188567551431",
   ],
   /**
-   * Área de cobertura. Espelha exatamente a lista do GBP, na mesma ordem
-   * geográfica. Antes de adicionar uma cidade aqui, adicione-a no GBP.
+   * Área de cobertura. **O conjunto** precisa ser idêntico ao do GBP — cidade a
+   * cidade, sem sobra dos dois lados. Antes de adicionar uma aqui, adicione-a
+   * no perfil.
+   *
+   * A ORDEM não precisa bater, e não adianta tentar. O painel do GBP exibe as
+   * áreas ordenadas pelo comprimento da string formatada ("Penha, SC, Brasil"
+   * antes de "São Francisco do Sul, SC, 89240-000, Brasil") — é artefato de
+   * renderização, não uma ordem que alguém escolheu. No JSON-LD, `areaServed` é
+   * lido como conjunto: a ordem não é sinal de nada. Aqui a lista segue ordem
+   * geográfica, do centro da operação para fora, porque é o que se lê melhor.
+   *
+   * Curitiba e São José dos Pinhais são as duas únicas fora de Santa Catarina.
+   * Entraram porque o Aeroporto Afonso Pena (CWB) fica em São José dos Pinhais
+   * e a rota existe de verdade — quase sempre no sentido aeroporto → Balneário
+   * Camboriú, quando o voo do cliente aterrissa em Curitiba.
    */
   areaServed: [
     "Balneário Camboriú",
@@ -104,6 +117,8 @@ export const businessInfo = {
     "Joinville",
     "São Francisco do Sul",
     "Florianópolis",
+    "Curitiba",
+    "São José dos Pinhais",
   ],
 } as const;
 

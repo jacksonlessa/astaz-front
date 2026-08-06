@@ -46,9 +46,9 @@ briefing estiverem respondidos.
 | [beto-carrero.md](beto-carrero.md) | `/destinos/beto-carrero` | 🟡 parcial — publicada; faltam melhor horário de saída e fotos reais |
 | [frota.md](frota.md) | `/frota` | 🟡 parcial — publicada; faltam ano dos veículos, acessibilidade, manutenção e fotos reais |
 | [sobre.md](sobre.md) | `/sobre` | ✅ publicada — falta só a revisão visual e o protocolo de manutenção |
-| [transfer-aeroporto.md](transfer-aeroporto.md) | `/servicos/transfer-aeroporto` | 🟡 parcial — Navegantes e Florianópolis herdados; faltam Joinville e Curitiba |
+| [transfer-aeroporto.md](transfer-aeroporto.md) | `/servicos/transfer-aeroporto` | 🟡 parcial — publicada; faltam fotos reais |
 | [transporte-corporativo.md](transporte-corporativo.md) | `/servicos/transporte-corporativo` | ⬜ vazio |
-| [transporte-idosos.md](transporte-idosos.md) | `/servicos/transporte-idosos` | ⬜ vazio |
+| [transporte-idosos.md](transporte-idosos.md) | `/servicos/transporte-idosos` | 🟡 parcial — código escrito e publicado em `noindex`; falta confirmar o FAQ e fotos reais antes de indexar |
 
 Para uma página nova, copie [_template.md](_template.md).
 

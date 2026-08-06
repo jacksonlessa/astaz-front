@@ -49,7 +49,7 @@ export const servicos: readonly Servico[] = [
       "Transporte para Aeroportos",
       "Recepção em Aeroportos",
     ],
-    published: false,
+    published: true,
   },
   {
     slug: "transporte-corporativo",
@@ -96,15 +96,27 @@ export const servicos: readonly Servico[] = [
   },
   {
     slug: "transporte-idosos",
-    title: "Transporte e Acompanhamento de Idosos",
-    metaTitle: "Transporte de Idosos em Balneário Camboriú",
+    /**
+     * "Acompanhamento" saiu do título de propósito, e não volta sem decisão
+     * explícita: nenhuma busca-alvo contém a palavra (não traz volume) e
+     * "acompanhamento de idosos" sugere cuidador — atividade regulada que a
+     * Astaz não exerce. O léxico completo do que pode e não pode ser publicado
+     * nesta página está em `docs/seo/briefings/transporte-idosos.md`.
+     *
+     * "Companhia" descreve o que acontece; "acompanhante" nomeia um papel de
+     * saúde. Por isso a sala de espera pode ser citada e a palavra vizinha,
+     * não. Pelo mesmo motivo nada aqui menciona o interior do consultório,
+     * orientação médica ou risco de queda: o serviço descreve a cortesia e a
+     * logística, nunca o cuidado clínico nem um resultado de saúde.
+     */
+    title: "Transporte para Idosos",
+    metaTitle: "Transporte para Idosos em Balneário Camboriú",
     metaDescription:
-      "Transporte executivo para idosos em Balneário Camboriú: consultas, exames e compromissos, com apoio no embarque e espera durante o atendimento.",
+      "Transporte para idosos em Balneário Camboriú: consultas, exames e compromissos, com ida e volta, espera inclusa e a família avisada a cada etapa.",
     summary:
-      "Deslocamentos para consultas, exames e compromissos do dia a dia, com apoio no embarque e no desembarque e espera durante o atendimento.",
-    // Ainda não cadastrado no GBP — ver ação em `docs/seo/mapeamento-de-paginas.md`.
-    gbpServices: [],
-    published: false,
+      "Consultas, exames e compromissos do dia a dia, com ida e volta, espera inclusa e a família avisada a cada etapa.",
+    gbpServices: ["Transporte para Idosos"],
+    published: true,
   },
   {
     slug: "city-tour",

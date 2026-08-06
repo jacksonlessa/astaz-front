@@ -20,13 +20,12 @@ import { siteConfig } from "@/lib/site";
 export const metadata = buildMetadata({
   title: "Serviços de Transporte Executivo",
   description:
-    "Transporte executivo em Balneário Camboriú para aeroportos, agendas corporativas, eventos, casamentos, city tour e acompanhamento de idosos.",
+    "Transporte executivo em Balneário Camboriú: aeroportos, agendas corporativas, eventos, casamentos, city tour e deslocamentos para idosos.",
   path: routes.servicos,
-  // Enquanto nenhuma página de serviço estiver publicada, este hub não linka
-  // nenhuma filha e apenas reformula a seção de serviços da home — uma URL
-  // indexável sem função própria. `follow` permanece, para o Google seguir os
-  // links de navegação. Remover o noIndex assim que a primeira filha existir.
-  noIndex: true,
+  // O `noIndex` saiu com a publicação de `/servicos/transfer-aeroporto`: o hub
+  // agora linka uma filha real e passa a ter função própria de distribuição.
+  // Enquanto era um índice sem nenhum link, era só uma reformulação da seção de
+  // serviços da home — URL indexável sem conteúdo que lhe pertencesse.
 });
 
 export default function ServicosPage() {
