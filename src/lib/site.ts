@@ -145,17 +145,25 @@ export function getWhatsAppUrl(message?: string) {
 /**
  * Navegação principal.
  *
- * As âncoras são absolutas (`/#frota`, e não `#frota`) porque o site deixou de
- * ser uma página só: a partir de `/servicos`, uma âncora relativa não
- * encontraria a seção e o link morreria. Conforme as páginas da Fase 1 forem
- * publicadas, cada âncora vira uma rota própria.
+ * `/#faq` é âncora absoluta (não `#faq`) porque o site deixou de ser uma
+ * página só: a partir de `/servicos`, uma âncora relativa não encontraria a
+ * seção e o link morreria. É temporária por design — vira `/faq` (rota
+ * própria) quando essa página for publicada, na Fase 2
+ * (`docs/seo/mapeamento-de-paginas.md`).
+ *
+ * "Como funciona" saiu do menu em 07/08/2026: era o único item que não
+ * levava a um destino real — a partir de qualquer página que não a home,
+ * clicar mandava a pessoa de volta pra ler um resumo genérico de 3 passos,
+ * interrompendo a navegação numa página de conversão (`/frota`,
+ * `/servicos/*`) para isso. A seção continua na home
+ * (`src/components/landing/journey.tsx`, `id="como-funciona"`), só não tem
+ * mais entrada no menu.
  */
 export const navLinks = [
   { href: routes.servicos, label: "Serviços" },
   { href: routes.destinos, label: "Destinos" },
   { href: routes.frota, label: "Frota" },
   { href: routes.sobre, label: "Sobre" },
-  { href: "/#como-funciona", label: "Como funciona" },
   { href: "/#faq", label: "FAQ" },
   { href: routes.contato, label: "Contato" },
 ] as const;

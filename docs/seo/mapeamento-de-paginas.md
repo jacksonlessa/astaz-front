@@ -284,9 +284,14 @@ páginas, e por um tempo ela não apontava para quase nenhuma. Revisão feita em
 - **A seção de frota linka para `/frota`, mas os cards não linkam para nada.**
   Arquitetural, não um bug: não existe página por categoria de veículo para
   linkar — só `/frota` como um todo, que já está linkado abaixo do grid.
-- **`navLinks` ainda tem duas âncoras** (`/#como-funciona`, `/#faq`). O próprio
-  comentário em `src/lib/site.ts` prevê que virem rota conforme a Fase 1 avança
-  — `/faq` está na Fase 2, então a âncora fica por ora.
+- ✅ **`navLinks` tem só uma âncora agora** (`/#faq`) — desde 07/08/2026.
+  "Como funciona" saiu do menu: era o único item que não levava a um destino
+  real, e mandava quem estava em `/frota` ou `/servicos/*` de volta pra home
+  só pra ler um resumo genérico de 3 passos, interrompendo a navegação numa
+  página de conversão. A seção continua na home
+  (`src/components/landing/journey.tsx`, `id="como-funciona"`), só sem
+  entrada no menu. `/#faq` fica — vira rota própria quando `/faq` (Fase 2)
+  for publicada.
 - ✅ **`/contato` está em `navLinks`** desde 07/08/2026 — recebe link do
   Header, do menu mobile e do rodapé (os três consomem a mesma lista).
 
