@@ -89,11 +89,18 @@ export function QuoteForm({ preset, saudacao, className = "" }: QuoteFormProps) 
       ctaForm: preset.id,
     });
 
-    const novaJanela = window.open(url, "_blank", "noopener,noreferrer");
-    if (!novaJanela) {
-      // Bloqueador de pop-up: navega a própria aba em vez de falhar em silêncio.
-      window.location.href = url;
-    }
+    // `window.open(url, "_blank", "noopener")` foi tentado antes e tinha um
+    // bug: com `noopener`, o browser devolve `null` de propósito (não dá
+    // referência da janela nova ao opener) — então o fallback de
+    // `location.href` disparava *sempre*, mesmo com a aba nova aberta,
+    // redirecionando a aba atual junto. Um link real, clicado
+    // programaticamente, evita essa ambiguidade e é o mesmo padrão já usado
+    // em `WhatsAppButton`.
+    const link = document.createElement("a");
+    link.href = url;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.click();
   }
 
   return (

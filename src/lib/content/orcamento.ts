@@ -1,3 +1,5 @@
+import { publishedDestinos } from "@/lib/content/destinos";
+import { destinosAtendidos } from "@/lib/content/transporte-idosos";
 import { businessInfo, siteConfig } from "@/lib/site";
 
 /**
@@ -54,14 +56,32 @@ export type Campo = CampoBase &
   );
 
 /**
- * Sugestões de Origem/Destino — não limitam o campo, só ajudam a digitar.
- * Vêm de dados que já existem, sem copy nova: os quatro aeroportos atendidos
- * e a área de cobertura declarada no GBP. Um pedido para uma cidade fora
- * desta lista (ex.: Urubici) continua sendo aceito normalmente.
+ * Sugestões de Origem/Destino — não limitam o campo, só ajudam a digitar. Um
+ * pedido para um lugar fora desta lista (ex.: Urubici) continua sendo aceito
+ * normalmente; nada aqui é copy nova, tudo vem de fontes já verificadas:
+ *
+ * - os quatro aeroportos atendidos (`siteConfig.airports`) — cobre Joinville
+ *   e Curitiba mesmo sem página de destino própria;
+ * - os destinos já publicados (`publishedDestinos`), via `breadcrumbLabel` —
+ *   é o que adiciona "Beto Carrero World" e mantém a lista sincronizada
+ *   conforme novos destinos forem publicados, sem exigir edição aqui;
+ * - a área de cobertura declarada no GBP (`businessInfo.areaServed`);
+ * - os hospitais e clínicas de `transporte-idosos.ts`, cada um verificado por
+ *   endereço antes de entrar naquele arquivo (ver o comentário de
+ *   `destinosAtendidos`) — "Nome — Cidade" desambigua as duas unidades da
+ *   Clínica São Lucas (Balneário Camboriú e Itajaí).
+ *
+ * `breadcrumbLabel` dos destinos de aeroporto (ex.: "Aeroporto de
+ * Navegantes") é idêntico ao gerado a partir de `siteConfig.airports` — o
+ * `Set` abaixo remove a duplicata.
  */
 const locaisSugeridos = [
-  ...siteConfig.airports.map((aeroporto) => `Aeroporto de ${aeroporto}`),
-  ...businessInfo.areaServed,
+  ...new Set([
+    ...siteConfig.airports.map((aeroporto) => `Aeroporto de ${aeroporto}`),
+    ...publishedDestinos.map((destino) => destino.breadcrumbLabel),
+    ...businessInfo.areaServed,
+    ...destinosAtendidos.map((d) => `${d.nome} — ${d.cidade}`),
+  ]),
 ] as const;
 
 export const campos: Record<CampoId, Campo> = {
