@@ -5,6 +5,9 @@ import {
   SectionHeading,
   SectionLabel,
 } from "@/components/ui/section-label";
+// Reaproveita a foto do interior já usada em /sobre — mesmo arquivo, mesma
+// descrição, sem duplicar `image`/`imageAlt` num segundo lugar.
+import { interiorAstaz } from "@/lib/content/sobre";
 
 export function Experience() {
   return (
@@ -17,8 +20,8 @@ export function Experience() {
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
           <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-border-subtle lg:aspect-[3/4]">
             <Image
-              src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=1200&q=80"
-              alt="Interior luxuoso de veículo executivo com acabamento em couro"
+              src={interiorAstaz.image}
+              alt={interiorAstaz.imageAlt}
               fill
               className="object-cover"
               sizes="(max-width: 1024px) 100vw, 50vw"

@@ -30,6 +30,19 @@ export type Servico = {
    * link — evita link morto em produção — e a rota não é gerada.
    */
   published: boolean;
+  /**
+   * Aparece na seção de Serviços da home? A home mostra um recorte, não a
+   * lista inteira — o hub `/servicos` é que existe para isso. Os dois
+   * publicados entram sempre; os demais só com `image`/`imageAlt`
+   * preenchidos, porque o card da home é ilustrado (o do hub não é).
+   */
+  featuredOnHome: boolean;
+  /**
+   * Imagem do card — na home e, se um dia o hub ganhar imagem, lá também.
+   * Ausente para serviços que não aparecem na home.
+   */
+  image?: string;
+  imageAlt?: string;
 };
 
 export const servicos: readonly Servico[] = [
@@ -50,6 +63,10 @@ export const servicos: readonly Servico[] = [
       "Recepção em Aeroportos",
     ],
     published: true,
+    featuredOnHome: true,
+    image: "/images/aeroporto-navegantes.webp",
+    imageAlt:
+      "Fachada do terminal do Aeroporto Internacional de Navegantes, com veículos no desembarque",
   },
   {
     slug: "transporte-corporativo",
@@ -66,6 +83,12 @@ export const servicos: readonly Servico[] = [
       "Empresa de transporte",
     ],
     published: false,
+    featuredOnHome: true,
+    // TODO: foto real. Placeholder de banco até existir imagem própria — ver
+    // docs/imagens-de-referencia.md.
+    image:
+      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80",
+    imageAlt: "Edifícios corporativos modernos",
   },
   {
     slug: "transporte-eventos",
@@ -82,6 +105,12 @@ export const servicos: readonly Servico[] = [
       "Transporte para Shows",
     ],
     published: false,
+    featuredOnHome: true,
+    // TODO: foto real. Placeholder de banco até existir imagem própria — ver
+    // docs/imagens-de-referencia.md.
+    image:
+      "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1200&q=80",
+    imageAlt: "Mesa elegante para evento",
   },
   {
     slug: "transporte-casamentos",
@@ -93,6 +122,7 @@ export const servicos: readonly Servico[] = [
       "Veículos impecáveis e horários coordenados para noivos, padrinhos e convidados, do primeiro traslado ao último.",
     gbpServices: ["Transporte para Casamentos"],
     published: false,
+    featuredOnHome: false,
   },
   {
     slug: "transporte-idosos",
@@ -117,6 +147,11 @@ export const servicos: readonly Servico[] = [
       "Consultas, exames e compromissos do dia a dia, com ida e volta, espera inclusa e a família avisada a cada etapa.",
     gbpServices: ["Transporte para Idosos"],
     published: true,
+    featuredOnHome: true,
+    // Banco traseiro vazio, sem pessoa nem emblema — não é veículo da frota.
+    // Ver docs/imagens-de-referencia.md.
+    image: "/images/transporte-idosos.webp",
+    imageAlt: "Banco traseiro vazio, em couro preto, de veículo executivo",
   },
   {
     slug: "city-tour",
@@ -128,8 +163,14 @@ export const servicos: readonly Servico[] = [
       "Roteiros privativos por Balneário Camboriú e pelo litoral catarinense, no seu ritmo e com paradas à sua escolha.",
     gbpServices: [],
     published: false,
+    featuredOnHome: false,
   },
 ];
+
+/** Recorte exibido na seção de Serviços da home — não a lista inteira. */
+export const servicosFeaturedOnHome = servicos.filter(
+  (servico) => servico.featuredOnHome,
+);
 
 export function getServico(slug: string) {
   return servicos.find((servico) => servico.slug === slug);
