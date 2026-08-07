@@ -150,7 +150,7 @@ Orçamento de caracteres: **título ≤ 52** (o template do layout acrescenta
 | `/destinos/beto-carrero` | transporte / transfer para beto carrero | Transfer para o Beto Carrero World | 🔴 alta | ✅ publicada |
 | `/destinos/aeroporto-florianopolis` | transfer aeroporto florianópolis bc | Transfer Aeroporto Florianópolis–Balneário Camboriú | 🟡 média | ✅ publicada |
 | `/frota` | frota / veículos disponíveis | Frota Executiva | 🟡 média | ✅ publicada |
-| `/contato` | contato, orçamento | Contato e Orçamento | 🟡 média | **Fase 1 — única página que falta** |
+| `/contato` | contato, orçamento | Contato e Orçamento | 🟡 média | ✅ publicada |
 | `/sobre` | quem é a astaz *(confiança, E-E-A-T)* | Sobre o transporte executivo em Balneário Camboriú | 🟢 baixa | ✅ publicada |
 | `/servicos` | hub — o que a empresa faz | Serviços de Transporte Executivo | 🟡 média | ✅ publicada |
 | `/destinos` | hub de destinos | Destinos Atendidos | 🟡 média | ✅ publicada |
@@ -193,31 +193,30 @@ Site e perfil precisam contar a mesma história.
 
 ## Fase 1 — o que ainda falta
 
-A Fase 1 deixou de ser só uma lista de páginas. Além de `/contato`, entraram
-cinco frentes que não são página nova, mas que travam o site: imagem que não
-carrega, home desatualizada em relação às páginas já publicadas, identidade
-visual provisória, ausência total de medição e a base legal que a medição exige.
+A Fase 1 deixou de ser só uma lista de páginas. Entraram sete frentes: imagem
+que não carrega, home desatualizada em relação às páginas já publicadas,
+`/contato`, identidade visual provisória, ausência total de medição e a base
+legal que a medição exige.
 
 Ordem de execução:
 
 | # | Frente | Bloqueado por |
 | --- | --- | --- |
 | 1 | GTM + GA4 | ✅ feito em 06/08/2026 — falta o acionador `whatsapp_click` no painel |
-| 2 | Revisão da home | — |
-| 3 | `/contato` | — |
-| 4 | Banner de consentimento + `/politica-de-privacidade` | — |
-| 5 | Meta Pixel | item 4 no ar |
-| 6 | Logo e favicon | ✅ feito em 06/08/2026 — falta só `Footer` e `opengraph-image` |
+| 2 | Revisão da home | ✅ feito em 06/08/2026 — cards de Serviços, títulos e foto da Experiência |
+| 3 | `/contato` | ✅ feito em 07/08/2026 |
+| 4 | Banner de consentimento + `/politica-de-privacidade` | ✅ feito em 06/08/2026 |
+| 5 | Meta Pixel | ✅ feito em 06/08/2026 — confirmar no painel do GTM que a tag do Pixel está condicionada ao consentimento (`ad_storage`/`ad_user_data`) |
+| 6 | Logo e favicon | ✅ feito em 06/08/2026 (header, footer e `opengraph-image`) |
 | 7 | Fotos reais (frota, desembarque, serviços) | operação |
 
 `opengraph-image` do item 6, aliás, também já saiu do zero: `siteConfig.ogImage`
 (`src/lib/site.ts`) alimenta `openGraph.images` e `twitter.images` no
-[layout raiz](../../src/app/layout.tsx) com a foto real do motorista. Falta
-só o `Footer` para o item 6 fechar de vez.
+[layout raiz](../../src/app/layout.tsx) com a foto real do motorista.
 
-**Medição primeiro.** Enquanto não houver GTM, cada dia de tráfego é dado
-perdido que não se recupera depois. Os itens 6 e 7 dependem de material externo
-e correm em paralelo — não seguram os demais.
+Com os itens 1 a 6 fechados (ou pendentes só de configuração de painel), o
+único bloqueio real que resta na Fase 1 é o item 7 — fotos reais depende
+inteiramente da operação, não de código.
 
 ### 1. Imagens quebradas e provisórias
 
@@ -261,20 +260,57 @@ Carregam, não são urgentes, mas continuam na fila:
 ### 2. Revisão da home
 
 A home foi escrita quando o site tinha uma página só. Desde então nasceram sete
-páginas, e ela não aponta para quase nenhuma.
+páginas, e por um tempo ela não apontava para quase nenhuma. Revisão feita em
+06/08/2026 (ver findings completos abaixo, seção "Revisão de 06/08/2026").
 
-- **Os cards de Serviços não são links.** São `<article>` estáticos. `/servicos/transfer-aeroporto`
-  e `/servicos/transporte-idosos` estão publicados e não recebem link da home —
-  só do hub. A home é a página com mais autoridade do site; é dela que o link
-  interno vale mais.
-- **Os títulos dos cards não batem com as páginas.** "Transfer Aeroporto",
-  "Corporativo", "Eventos & Ocasiões" e "Sob Demanda" são de antes do mapa de
-  serviços; hoje existem seis serviços definidos em `src/lib/content/servicos.ts`.
+- ✅ **Cards de Serviços clicáveis.** `Services` (`src/components/landing/services.tsx`)
+  passou a consumir `servicosFeaturedOnHome` de `src/lib/content/servicos.ts`
+  em vez do array solto que existia em `site.ts`. Card de serviço publicado
+  vira link inteiro (`CardTitleLink`/`CardLinkArrow`, mesmo padrão do hub
+  `/servicos` e do hub `/destinos`); card de serviço ainda não publicado fica
+  sem link, mesma lógica de gating do hub — não promete navegação que não
+  existe.
+- ✅ **Títulos batem com os serviços reais.** Os 4 cards em destaque na home
+  (Transfer Aeroporto, Transporte Corporativo, Transporte para Eventos,
+  Transporte para Idosos) são um recorte de `servicos.ts`, não mais um array
+  paralelo desatualizado. `servicosFeaturedOnHome` é o filtro
+  (`featuredOnHome: true`); Transporte para Casamentos e City Tour ficam de
+  fora do recorte da home (continuam em `/servicos`).
+- ✅ **Home linka para as páginas de serviço publicadas.** `/servicos/transfer-aeroporto`
+  e `/servicos/transporte-idosos` agora recebem link direto do card; o link de
+  rodapé da seção trocou de "destino" para "Todos os serviços" → `/servicos`
+  (antes a seção "Serviços" terminava em links de "destino", inconsistência
+  que também foi corrigida).
 - **A seção de frota linka para `/frota`, mas os cards não linkam para nada.**
+  Arquitetural, não um bug: não existe página por categoria de veículo para
+  linkar — só `/frota` como um todo, que já está linkado abaixo do grid.
 - **`navLinks` ainda tem duas âncoras** (`/#como-funciona`, `/#faq`). O próprio
   comentário em `src/lib/site.ts` prevê que virem rota conforme a Fase 1 avança
   — `/faq` está na Fase 2, então a âncora fica por ora.
-- **Nenhum caminho para `/contato`** — a decidir junto com a criação da página.
+- ✅ **`/contato` está em `navLinks`** desde 07/08/2026 — recebe link do
+  Header, do menu mobile e do rodapé (os três consomem a mesma lista).
+
+#### Revisão de 06/08/2026 — achados e o que ainda falta
+
+Revisão completa (código + navegador + acessibilidade + SEO técnico) feita
+depois do commit do GTM/consentimento. Além dos 3 itens acima (cards, títulos,
+links), mais dois entraram na mesma passada:
+
+- ✅ **Foto genérica da seção Experiência trocada.** `experience.tsx` usava
+  banco de imagem (interior de carro que não é da Astaz); passou a reaproveitar
+  `interiorAstaz` de `src/lib/content/sobre.ts` — mesma foto real já usada em
+  `/sobre` (banco de couro caramelo, água e mimo), sem duplicar
+  `image`/`imageAlt` num segundo lugar.
+- **Aceito por ora**: 2 dos 4 cards de Serviços da home (Transporte Corporativo,
+  Transporte para Eventos) continuam com foto do Unsplash — não têm página
+  publicada nem foto própria ainda. Marcado com `// TODO: foto real` em
+  `servicos.ts`, junto dos outros itens da fila em
+  [imagens-de-referencia.md](../imagens-de-referencia.md).
+- **Verificado e aprovado sem mudança**: hierarquia de heading (H1 único, H2/H3
+  aninhados certo em todas as 8 seções), zero imagem quebrada, JSON-LD
+  (`LocalBusiness`/`WebSite`/`FAQPage`) presente e válido, sem overflow
+  horizontal no mobile, `focus-visible` consistente, FAQ com `<details>/<summary>`
+  nativo (acessível sem JS extra).
 
 ### 3. Logo e favicon
 
@@ -338,23 +374,27 @@ acrescentar tag não exige deploy.
 
 ### 5. Consentimento e privacidade (LGPD)
 
-Entrou na Fase 1 por decisão de 06/08/2026, junto com o Pixel. O Meta Pixel
+✅ **Feito em 06/08/2026.** Entrou na Fase 1 junto com o Pixel. O Meta Pixel
 envia dado pessoal para terceiro; a LGPD (art. 8º) exige base legal e
 informação clara antes disso.
 
 Escopo:
 
-- **Banner de consentimento**, com recusa tão fácil quanto o aceite. Client
-  Component, decisão guardada localmente.
+- **Banner de consentimento** (`src/components/landing/cookie-consent.tsx`),
+  com recusa tão fácil quanto o aceite. Client Component, decisão guardada em
+  `localStorage` (`astaz_consent`, ver `src/lib/consent.ts`).
 - **`/politica-de-privacidade`** — página utilitária, `noIndex: true` via
   `buildMetadata()`, linkada no rodapé. Não entra em `publishedRoutes`: não é
-  página de busca.
+  página de busca. Conteúdo em `src/lib/content/privacidade.ts`.
 - **Disparo condicionado**: GTM sobe sempre; o Pixel só dispara depois do
-  aceite, via Consent Mode. GA4 pode operar em modo restrito antes do aceite —
-  decidir na configuração do container, não no código.
+  aceite, via Google Consent Mode v2 (`ad_storage` e `ad_user_data`
+  concedidos/negados conforme a escolha). GA4 opera fora dessa checagem —
+  decisão registrada aqui, tag do GA4 no GTM sem condição de consentimento.
 
-O container do GTM e o GA4 podem subir antes do banner ficar pronto; o Pixel,
-não.
+**Pendente de confirmação no painel** (não verificável pelo código, porque a
+tag do Pixel vive dentro do contêiner do GTM): checar que a tag do Meta Pixel
+está de fato configurada com o acionador de consentimento apontando para
+`ad_storage`/`ad_user_data`, e não disparando antes do aceite.
 
 ---
 
@@ -433,17 +473,47 @@ Página de **conversão**, não de captação.
 dos veículos**. Foto de banco de imagem aqui destrói a credibilidade da página
 inteira. Capacidade de bagagem não entra: é alinhada no orçamento.
 
-### `/contato` 🟡
+### `/contato` ✅ publicada em 07/08/2026
 
-Formulário de orçamento que monta uma mensagem estruturada de WhatsApp.
+Formulário de orçamento (`QuoteForm`, `src/components/ui/quote-form.tsx`) que
+monta uma mensagem estruturada de WhatsApp. Campos: data, horário, origem,
+destino, nº de passageiros, nº do voo (opcional) e observações (opcional).
+Abaixo do formulário, um CTA secundário de WhatsApp direto — o formulário é o
+caminho principal, não o único.
 
-Campos sugeridos: data, horário, origem, destino, nº de passageiros, tipo de
-veículo, observações. O envio abre o WhatsApp via
-`getWhatsAppUrl()` com o texto já formatado.
+⚠️ **Nenhum dado do formulário vai para query string de URL nossa nem para
+backend** — não existe backend. O formulário monta o texto no cliente e
+entrega ao WhatsApp via `getWhatsAppUrl()`. Pelo mesmo motivo, o evento
+`whatsapp_click` enviado ao GTM carrega só metadado (página, id do preset) —
+**nunca** o conteúdo digitado pela pessoa (endereço, data da viagem são dado
+pessoal; mandar isso para GA4/Meta é problema de LGPD). Ver
+`src/lib/analytics.ts`.
 
-⚠️ **Nenhum dado do formulário deve ir para query string de URL nossa nem para
-backend** — não existe backend, e não vamos criar um só para isso. O formulário
-monta o texto no cliente e entrega ao WhatsApp.
+O botão do formulário se chama **"Continuar no WhatsApp"**, não "Enviar": ele
+só abre a conversa com o texto pronto, a pessoa ainda revisa e pode completar
+o que não coube nos campos (ex.: "tenho o voo de ida, quero agendar a volta")
+antes de mandar de verdade.
+
+**Arquitetura pensada para reuso** — o formulário nasceu genérico desde o
+início, porque cada serviço/destino vai precisar de um subconjunto diferente
+de campos (ex.: Beto Carrero não pergunta "destino", pergunta quantas
+crianças e se a pessoa já tem ingresso). Tudo vive em
+`src/lib/content/orcamento.ts`:
+
+- `campos` — vocabulário fechado de campos (`data`, `origem`, `passageiros`,
+  `adultos`, `criancas`, `ingressos`, `aniversariante`, etc.), cada um
+  declarado uma única vez.
+- `orcamentoPresets` — cada página declara **quais** campos usar, não escreve
+  campo novo. Hoje só existe o preset `contato` (todos os 7 campos); páginas
+  futuras (Beto Carrero, aeroporto-navegantes) ganham preset próprio com o
+  subconjunto certo, reaproveitando o `whatsappMessage` que aquele destino já
+  tem escrito em `destinos.ts` como saudação.
+- `buildOrcamentoMessage()` — monta o texto, pula campo vazio (uma linha
+  `*Número do voo:*` sem valor pareceria mensagem quebrada).
+
+Origem e Destino usam `<datalist>` nativo com sugestões (aeroportos + cidades
+de `businessInfo.areaServed`) — sugere, mas não limita: um pedido para
+Urubici, fora da lista, é aceito normalmente.
 
 ### `/sobre` 🟢
 

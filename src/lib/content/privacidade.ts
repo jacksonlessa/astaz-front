@@ -3,11 +3,14 @@
  * `/politica-de-privacidade`.
  *
  * Regra que governa este arquivo: só descrever o que o site realmente faz.
- * O Astaz não tem backend nem formulário próprio (todo contato sai por
- * WhatsApp, fora deste site) — isso é uma afirmação forte e verificável, não
- * fica de fora só porque parece pouco. Retenção exata de cada provedor
- * (Google, Meta) não é algo que dá para confirmar aqui — por isso o texto
- * aponta para a política de cada um em vez de inventar um prazo.
+ * Desde a publicação de `/contato`, o site TEM um formulário — mas continua
+ * sem backend: o formulário não envia nada para servidor nosso, só monta uma
+ * mensagem de WhatsApp no navegador da própria pessoa (ver
+ * `src/components/ui/quote-form.tsx`). Essa distinção é o que precisa ficar
+ * claro no texto — "tem formulário" e "não tem backend" não se contradizem,
+ * e a segunda afirmação continua verificável e forte. Retenção exata de cada
+ * provedor (Google, Meta) não é algo que dá para confirmar aqui — por isso o
+ * texto aponta para a política de cada um em vez de inventar um prazo.
  *
  * Ao adicionar uma nova tag/cookie no GTM, revise a seção `tecnologias` no
  * mesmo commit — é a lista que descreve o que efetivamente roda no site.
@@ -18,7 +21,7 @@ export const privacidadeIntro = {
   title: "Política de Privacidade",
   description:
     "Este documento explica quais dados este site coleta, com quem compartilha e como você pode controlar isso — em linguagem direta, sem juridiquês.",
-  lastUpdated: "6 de agosto de 2026",
+  lastUpdated: "7 de agosto de 2026",
 } as const;
 
 /** Item de lista simples, ou com link quando aponta para a política de um terceiro. */
@@ -37,14 +40,14 @@ export const politicaSections: readonly PoliticaSection[] = [
     title: "Quem trata os seus dados",
     paragraphs: [
       "Este site é operado por Astaz Transporte Executivo (CNPJ 48.403.098/0001-54), empresa de transporte executivo sediada em Balneário Camboriú, SC.",
-      "Este site não tem formulário próprio nem banco de dados: todo contato acontece pelo WhatsApp, fora desta página. O que este documento descreve é o que acontece enquanto você navega — antes de qualquer conversa começar.",
+      "Este site tem um formulário de orçamento, mas não tem banco de dados: os dados que você digita não são enviados a nenhum servidor nosso. O formulário só monta uma mensagem, que abre no seu próprio WhatsApp para você revisar e enviar — a conversa em si acontece fora desta página. O que este documento descreve é o que acontece enquanto você navega, incluindo o preenchimento do formulário — antes de qualquer conversa começar.",
     ],
   },
   {
     id: "o-que-coletamos",
     title: "O que coletamos enquanto você navega",
     paragraphs: [
-      "Não pedimos nome, e-mail, telefone ou qualquer outro dado num formulário — porque não existe formulário. O que este site coleta é automático, via cookies e tecnologias semelhantes, e só depois da sua autorização no aviso que aparece na primeira visita:",
+      "O que você digita no formulário de orçamento (data, endereços, número de passageiros e semelhantes) não é enviado a nós nem armazenado por este site — ele só monta a mensagem que abre no seu WhatsApp. O que este site efetivamente coleta é outra coisa: dado automático, via cookies e tecnologias semelhantes, e só depois da sua autorização no aviso que aparece na primeira visita:",
     ],
     items: [
       "Páginas visitadas, tempo de navegação e origem do acesso (Google Analytics 4)",
@@ -104,7 +107,7 @@ export const politicaSections: readonly PoliticaSection[] = [
     id: "como-exercer",
     title: "Como exercer esses direitos",
     paragraphs: [
-      "Fale com a Astaz pelo WhatsApp ou telefone informados no rodapé deste site. Como não há conta de usuário nem formulário próprio, a forma mais rápida de revogar o consentimento de cookies é recusá-lo no aviso ou limpar os cookies do navegador — isso interrompe a coleta pelo Google Analytics e pelo Meta Pixel imediatamente.",
+      "Fale com a Astaz pelo WhatsApp ou telefone informados no rodapé deste site. Como não há conta de usuário nem dado armazenado em nosso servidor, a forma mais rápida de revogar o consentimento de cookies é recusá-lo no aviso ou limpar os cookies do navegador — isso interrompe a coleta pelo Google Analytics e pelo Meta Pixel imediatamente.",
     ],
   },
   {

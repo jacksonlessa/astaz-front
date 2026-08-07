@@ -157,6 +157,7 @@ export const navLinks = [
   { href: routes.sobre, label: "Sobre" },
   { href: "/#como-funciona", label: "Como funciona" },
   { href: "/#faq", label: "FAQ" },
+  { href: routes.contato, label: "Contato" },
 ] as const;
 
 export const brandAttributes = [
@@ -166,41 +167,8 @@ export const brandAttributes = [
   "Atendimento personalizado",
 ] as const;
 
-export const services = [
-  {
-    title: "Transfer Aeroporto",
-    description:
-      "Transfers entre Balneário Camboriú e os aeroportos de Navegantes, Florianópolis, Joinville e Curitiba, com monitoramento de voos.",
-    image: "/images/aeroporto-navegantes.webp",
-    imageAlt:
-      "Fachada do terminal do Aeroporto Internacional de Navegantes, com veículos no desembarque",
-  },
-  {
-    title: "Corporativo",
-    description:
-      "Deslocamentos executivos para reuniões, visitas técnicas e agendas intensas, com padrão profissional em cada detalhe.",
-    image:
-      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80",
-    imageAlt: "Edifícios corporativos modernos",
-  },
-  {
-    title: "Eventos & Ocasiões",
-    description:
-      "Casamentos, jantares, premiações e eventos sociais com presença elegante e coordenação impecável do início ao fim.",
-    image:
-      "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1200&q=80",
-    imageAlt: "Mesa elegante para evento",
-  },
-  {
-    title: "Sob Demanda",
-    description:
-      "Roteiros personalizados, múltiplas paradas e disponibilidade conforme sua agenda — quando e onde precisar.",
-    image:
-      "https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1200&q=80",
-    imageAlt: "Sedã executivo em estrada",
-  },
-] as const;
-
+// Os serviços vivem em `src/lib/content/servicos.ts` — a home usa
+// `servicosFeaturedOnHome`, um recorte, não a lista inteira.
 // A frota vive em `src/lib/content/frota.ts`, com modelos e capacidades.
 
 export const journeySteps = [

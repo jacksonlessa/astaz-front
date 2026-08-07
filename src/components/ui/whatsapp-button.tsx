@@ -1,28 +1,9 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { sendGTMEvent } from "@next/third-parties/google";
 
-import { getWhatsAppUrl, siteConfig } from "@/lib/site";
-
-/**
- * Único ponto de saída para o WhatsApp no site inteiro — por isso é aqui, e
- * não em cada página, que o clique é medido. `cta_page` vem do pathname atual
- * (não exige que cada chamador passe uma prop nova) e `cta_message` é a
- * mensagem pré-preenchida, que já varia por página/contexto e funciona como
- * sinal de intenção sem trabalho extra.
- *
- * `sendGTMEvent` só empurra para `window.dataLayer`; funciona mesmo sem
- * `NEXT_PUBLIC_GTM_ID` definida (o array fica sem leitor, inofensivo) — não é
- * necessário condicionar a chamada à existência do GTM.
- */
-function trackWhatsAppClick(pathname: string, message?: string) {
-  sendGTMEvent({
-    event: "whatsapp_click",
-    cta_page: pathname,
-    cta_message: message ?? siteConfig.whatsappMessage,
-  });
-}
+import { trackWhatsAppClick } from "@/lib/analytics";
+import { getWhatsAppUrl } from "@/lib/site";
 
 function WhatsAppIcon({ className }: { className?: string }) {
   return (
