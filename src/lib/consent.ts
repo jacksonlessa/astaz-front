@@ -33,11 +33,10 @@ const CONSENT_TYPES = [
   "analytics_storage",
 ] as const;
 
-declare global {
-  interface Window {
-    dataLayer?: unknown[];
-  }
-}
+// Sem `declare global` próprio: `@next/third-parties/google` já declara
+// `Window.dataLayer` globalmente (ver `sendGTMEvent`, usado em
+// `src/lib/analytics.ts`), e uma segunda declaração com tipo diferente
+// conflita no build (`Object[]` vs. `unknown[]`).
 
 function pushConsentUpdate(choice: ConsentChoice) {
   const value = choice === "accepted" ? "granted" : "denied";
