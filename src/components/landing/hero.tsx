@@ -1,5 +1,6 @@
 import Image from "next/image";
-import { WhatsAppButton } from "@/components/ui/whatsapp-button";
+import Link from "next/link";
+import { routes } from "@/lib/routes";
 
 export function Hero() {
   return (
@@ -41,9 +42,12 @@ export function Hero() {
               Camboriú e nos principais aeroportos da região.
             </p>
             <div className="mt-10 flex flex-col gap-4 sm:flex-row animate-fade-up-delay-2">
-              <WhatsAppButton size="lg" variant="primary">
+              <Link
+                href={routes.contato}
+                className="inline-flex h-14 items-center justify-center gap-3 rounded-full bg-primary px-8 text-base font-semibold tracking-wide text-secondary transition-all duration-300 hover:bg-primary-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-secondary"
+              >
                 Solicitar orçamento
-              </WhatsAppButton>
+              </Link>
               <a
                 href="#servicos"
                 className="inline-flex h-14 items-center justify-center rounded-full border border-border-subtle px-8 text-base font-semibold text-foreground transition-all duration-300 hover:border-primary/40 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-secondary"
