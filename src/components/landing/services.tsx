@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { CardLinkArrow, CardTitleLink } from "@/components/ui/card-link";
+import { publishedDestinos } from "@/lib/content/destinos";
 import { servicosFeaturedOnHome } from "@/lib/content/servicos";
 import { destinoPath, routes, servicoPath } from "@/lib/routes";
 import {
@@ -19,8 +20,16 @@ export function Services() {
       <div className="container-wide mx-auto">
         <div className="mb-16 max-w-2xl">
           <SectionLabel>Serviços</SectionLabel>
+          {/*
+            Era "Soluções para cada ocasião". Nenhum dos 7 <h2> da home
+            continha "transporte executivo", "transfer" ou "aeroporto" — os
+            dois termos que trazem cliente. Este <h2> e o da <Fleet /> passaram
+            a carregá-los; os outros cinco seguem sendo copy de marca, que é o
+            equilíbrio certo (título de seção existe para orientar o leitor,
+            não para repetir palavra-chave).
+          */}
           <SectionHeading id="services-heading" className="mt-4">
-            Soluções para cada ocasião
+            Transporte executivo e transfer para aeroportos
           </SectionHeading>
           <SectionDescription className="mt-4">
             Do transfer aeroportuário ao evento mais exclusivo, oferecemos
@@ -87,13 +96,26 @@ export function Services() {
             Todos os serviços
             <span aria-hidden="true">→</span>
           </Link>
-          <Link
-            href={destinoPath("aeroporto-navegantes")}
-            className="inline-flex items-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-primary-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-secondary rounded-sm"
-          >
-            Transfer para o Aeroporto de Navegantes
-            <span aria-hidden="true">→</span>
-          </Link>
+          {/*
+            Os três destinos publicados, não só Navegantes.
+
+            A home é a página que mais recebe link externo, e por isso é a que
+            mais tem autoridade para distribuir. Enquanto linkava um destino
+            só, `/destinos/beto-carrero` recebia link de uma única página do
+            site (o hub) — página nova sem link interno demora muito mais para
+            o buscador considerar relevante. Vem de `publishedDestinos` para
+            que destino novo entre aqui sozinho.
+          */}
+          {publishedDestinos.map((destino) => (
+            <Link
+              key={destino.slug}
+              href={destinoPath(destino.slug)}
+              className="inline-flex items-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-primary-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-secondary rounded-sm"
+            >
+              Transfer para o {destino.breadcrumbLabel}
+              <span aria-hidden="true">→</span>
+            </Link>
+          ))}
           <Link
             href={routes.destinos}
             className="inline-flex items-center gap-2 text-sm font-semibold text-primary transition-colors hover:text-primary-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-secondary rounded-sm"

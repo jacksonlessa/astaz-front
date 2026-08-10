@@ -41,10 +41,22 @@ export const siteConfig = {
    * nos previews). Path relativo porque `metadataBase` já resolve para
    * `siteConfig.url`.
    */
+  /**
+   * 1200×630 (proporção 1,91:1), que é o formato que WhatsApp, Facebook e
+   * LinkedIn esperam. A versão anterior apontava para
+   * `sobre-astaz-motorista.webp`, que é 1200×1500 — retrato. Em preview de
+   * link, retrato é cortado com força nas laterais ou reduzido a miniatura
+   * quadrada; num negócio em que o link circula por WhatsApp, é o preview
+   * que decide se a pessoa abre.
+   *
+   * É um recorte da MESMA foto, não uma imagem de banco: continua sendo a
+   * operação real. Se um dia entrar uma foto própria já em paisagem, troque
+   * aqui e apague o recorte.
+   */
   ogImage: {
-    url: "/images/sobre-astaz-motorista.webp",
+    url: "/images/og-astaz-1200x630.jpg",
     width: 1200,
-    height: 1500,
+    height: 630,
     alt: "Vinícius Dalpra Pieper, de terno, no banco do motorista do veículo executivo da Astaz, visto do banco traseiro de couro caramelo",
   },
 } as const;

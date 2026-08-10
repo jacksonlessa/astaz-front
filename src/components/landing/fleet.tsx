@@ -19,7 +19,7 @@ export function Fleet() {
         <div className="mb-16 text-center">
           <SectionLabel className="block">Frota</SectionLabel>
           <SectionHeading id="fleet-heading" className="mt-4">
-            Categorias pensadas para cada necessidade
+            Frota executiva para cada necessidade
           </SectionHeading>
           <SectionDescription className="mx-auto mt-4">
             Selecionamos veículos que combinam conforto, elegância e

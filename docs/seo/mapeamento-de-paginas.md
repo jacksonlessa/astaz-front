@@ -50,7 +50,9 @@ não voltarem.
 
 ## Conflito resolvido: `/servicos/transporte-executivo` × home
 
-A home tem como título `ASTAZ | Transporte Executivo em Balneário Camboriú`.
+A home tem como título `Transporte Executivo em Balneário Camboriú | ASTAZ`
+(o termo antes da marca desde 10/08/2026 — a primeira parte do título é a de
+maior peso, e "ASTAZ" ainda não é um nome que alguém procura).
 Uma página `/servicos/transporte-executivo` disputaria a mesma busca — e
 perderia, porque a home concentra os links externos e a autoridade do domínio.
 
@@ -142,13 +144,24 @@ serviços; remover "Motorista Particular" (ver conflito resolvido abaixo).
 Orçamento de caracteres: **título ≤ 52** (o template do layout acrescenta
 ` | ASTAZ`, 8 caracteres, totalizando ≤ 60) e **description entre 120 e 158**.
 
+Uma exceção conhecida, em 10/08/2026: `/destinos/aeroporto-florianopolis` ficou
+com 53. Ver o comentário no `metaTitle` em `src/lib/content/destinos.ts` — as
+alternativas eram abreviar o nome da cidade ou usar "Floripa", informal demais
+para a marca. É exceção, não licença: o orçamento continua ≤ 52.
+
+**A ordem dentro do título importa.** Cidade antes de aeroporto, porque é a
+ordem em que a busca é digitada ("transfer balneário camboriú aeroporto
+navegantes"), e sem "de" antes do nome do aeroporto. Os três títulos de destino
+foram reescritos nesse padrão em 10/08/2026; os anteriores anunciavam só o
+sentido aeroporto → cidade, embora as páginas cubram os dois.
+
 | URL | Intenção que responde | Título (sem sufixo) | Prioridade | Status |
 | --- | --- | --- | --- | --- |
 | `/` | transporte executivo balneário camboriú | *(default do layout)* | — | ✅ publicada |
-| `/destinos/aeroporto-navegantes` | transfer aeroporto navegantes bc | Transfer Aeroporto Navegantes a Balneário Camboriú | 🔴 alta | ✅ publicada |
+| `/destinos/aeroporto-navegantes` | transfer aeroporto navegantes bc | Transfer Balneário Camboriú e Aeroporto Navegantes | 🔴 alta | ✅ publicada |
 | `/servicos/transfer-aeroporto` | transfer aeroporto executivo sc *(hub)* | Transfer Executivo para Aeroportos | 🔴 alta | ✅ publicada |
-| `/destinos/beto-carrero` | transporte / transfer para beto carrero | Transfer para o Beto Carrero World | 🔴 alta | ✅ publicada |
-| `/destinos/aeroporto-florianopolis` | transfer aeroporto florianópolis bc | Transfer Aeroporto Florianópolis–Balneário Camboriú | 🟡 média | ✅ publicada |
+| `/destinos/beto-carrero` | transporte / transfer para beto carrero | Transfer de Balneário Camboriú ao Beto Carrero World | 🔴 alta | ✅ publicada |
+| `/destinos/aeroporto-florianopolis` | transfer aeroporto florianópolis bc | Transfer Balneário Camboriú e Aeroporto Florianópolis | 🟡 média | ✅ publicada |
 | `/frota` | frota / veículos disponíveis | Frota Executiva | 🟡 média | ✅ publicada |
 | `/contato` | contato, orçamento | Contato e Orçamento | 🟡 média | ✅ publicada |
 | `/sobre` | quem é a astaz *(confiança, E-E-A-T)* | Sobre o transporte executivo em Balneário Camboriú | 🟢 baixa | ✅ publicada |
@@ -158,7 +171,7 @@ Orçamento de caracteres: **título ≤ 52** (o template do layout acrescenta
 | `/servicos/transporte-corporativo` | transporte corporativo bc | Transporte Corporativo em Balneário Camboriú | 🟡 média | Fase 2 |
 | `/servicos/transporte-idosos` | transporte de idosos para consultas e exames | Transporte para Idosos em Balneário Camboriú | 🟡 média | ✅ publicada *(antecipada da Fase 2)* |
 | `/servicos/transporte-eventos` | transporte para eventos e congressos | Transporte para Eventos e Congressos | 🟢 baixa | Fase 2 |
-| `/servicos/transporte-casamentos` | carro para casamento bc | Transporte para Casamentos | 🟢 baixa | Fase 2 |
+| `/servicos/transporte-casamentos` | carro para casamento bc | Transporte para Casamentos | 🟡 média *(subiu de prioridade em 10/08/2026: ganhou foto própria e vaga na home, à frente de Eventos)* | Fase 2 |
 | `/servicos/city-tour` | city tour balneário camboriú | City Tour em Balneário Camboriú | 🟢 baixa | Fase 2 |
 | `/destinos/itajai` | transporte executivo itajaí | Transporte Executivo e Transfer em Itajaí | 🟡 média | Fase 2 |
 | `/destinos/balneario-camboriu` | ⚠️ risco de canibalizar a home | *a definir* | 🟢 baixa | Fase 2 |

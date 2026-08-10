@@ -43,6 +43,18 @@ export function localBusinessSchema(): JsonLdObject {
     description: businessInfo.description,
     url: siteConfig.url,
     telephone: siteConfig.phone,
+    /**
+     * `image` e `logo` são o que o Google usa para montar o painel da
+     * entidade. Sem eles declarados, a escolha da imagem fica por conta do
+     * buscador — o mesmo problema que `siteConfig.ogImage` resolveu para as
+     * redes sociais, só que no resultado de busca.
+     *
+     * `image` aponta para a foto real da operação (não para o logo): a
+     * especificação pede imagem do negócio, e foto de veículo/motorista é o
+     * que o Google espera de um LocalBusiness de transporte.
+     */
+    image: absoluteUrl(siteConfig.ogImage.url),
+    logo: absoluteUrl("/images/logo-astaz-vertical-branco.svg"),
     priceRange: businessInfo.priceRange,
     address: {
       "@type": "PostalAddress",

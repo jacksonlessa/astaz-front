@@ -73,8 +73,16 @@ export const metadata: Metadata = {
   // Permite que cada página declare `canonical` e OG images com path relativo.
   metadataBase: new URL(siteConfig.url),
   title: {
-    // Usado pela home e por qualquer página que não defina o próprio título.
-    default: `${siteConfig.name} | Transporte Executivo em Balneário Camboriú`,
+    /**
+     * Usado pela home e por qualquer página que não defina o próprio título.
+     *
+     * O termo vem ANTES da marca, e a ordem não é estética: a primeira parte
+     * do title é a de maior peso, e "ASTAZ" é um nome que ninguém procura
+     * ainda. Enquanto a marca não tiver volume de busca própria, gastar essa
+     * posição com ela é desperdiçar o sinal mais forte da página. Quando
+     * "Astaz" virar busca com volume, vale reavaliar.
+     */
+    default: `Transporte Executivo em Balneário Camboriú | ${siteConfig.name}`,
     // Páginas filhas informam só o título próprio; o sufixo entra automático.
     template: `%s | ${siteConfig.name}`,
   },

@@ -73,7 +73,18 @@ export const destinos: readonly Destino[] = [
     breadcrumbLabel: "Aeroporto de Navegantes",
     whatsappMessage:
       "Olá, ASTAZ! Gostaria de um orçamento para transfer entre o Aeroporto de Navegantes e Balneário Camboriú.",
-    metaTitle: "Transfer Aeroporto Navegantes a Balneário Camboriú",
+    /**
+     * A cidade vem antes do aeroporto porque é a ordem em que as pessoas
+     * digitam ("transfer balneário camboriú aeroporto navegantes"), e o "e"
+     * no lugar de "a" declara o que a página realmente cobre: os dois
+     * sentidos, incluindo o <h2> "No sentido inverso". O título anterior
+     * anunciava só aeroporto → cidade.
+     *
+     * Sem "de" antes de Navegantes: 50 caracteres em vez de 53, dentro do
+     * orçamento de ≤ 52 da tabela mestre, e igual à forma usada em
+     * Florianópolis — é assim que a busca é digitada.
+     */
+    metaTitle: "Transfer Balneário Camboriú e Aeroporto Navegantes",
     metaDescription:
       "Transfer executivo do Aeroporto de Navegantes a Balneário Camboriú: 40 km em cerca de 40 minutos, com monitoramento de voo e atendimento agendado 24 horas.",
     intro:
@@ -186,7 +197,7 @@ export const destinos: readonly Destino[] = [
       title: "Agende seu transfer",
       body: "Informe a data, o horário e o número do voo. Nossa equipe retorna com a confirmação e todos os detalhes da recepção.",
     },
-    relacionados: ["aeroporto-florianopolis"],
+    relacionados: ["aeroporto-florianopolis", "beto-carrero"],
     published: true,
   },
   {
@@ -195,7 +206,10 @@ export const destinos: readonly Destino[] = [
     breadcrumbLabel: "Beto Carrero World",
     whatsappMessage:
       "Olá, ASTAZ! Gostaria de um orçamento para transfer de Balneário Camboriú ao Beto Carrero World.",
-    metaTitle: "Transfer para o Beto Carrero World",
+    // Com a cidade de origem: "transfer para o Beto Carrero" é buscado por
+    // quem já está em qualquer lugar de SC, e sem "Balneário Camboriú" o
+    // título não diz de onde a Astaz sai.
+    metaTitle: "Transfer de Balneário Camboriú ao Beto Carrero World",
     metaDescription:
       "Transfer executivo de Balneário Camboriú ao Beto Carrero World, em Penha: 45 km em cerca de 45 minutos, com ida e volta combinadas antes do passeio.",
     intro:
@@ -318,6 +332,14 @@ export const destinos: readonly Destino[] = [
       title: "Agende o transfer para o parque",
       body: "Informe a data da visita, quantas pessoas viajam e as idades das crianças. Definimos junto com você o formato da volta e retornamos com o orçamento.",
     },
+    /**
+     * Os dois aeroportos, e não é link decorativo: quem visita o parque quase
+     * sempre chega de avião, então a próxima dúvida real de quem está nesta
+     * página é como sair do aeroporto. Sem isto, esta era a única página de
+     * destino sem `relacionados` — recebia link de uma página só em todo o
+     * site (o hub `/destinos`).
+     */
+    relacionados: ["aeroporto-navegantes", "aeroporto-florianopolis"],
     published: true,
   },
   {
@@ -326,7 +348,15 @@ export const destinos: readonly Destino[] = [
     breadcrumbLabel: "Aeroporto de Florianópolis",
     whatsappMessage:
       "Olá, ASTAZ! Gostaria de um orçamento para transfer entre o Aeroporto de Florianópolis e Balneário Camboriú.",
-    metaTitle: "Transfer Aeroporto Florianópolis–Balneário Camboriú",
+    // Sem travessão e sem "de" antes de Florianópolis: a busca é feita com
+    // palavras, não com pontuação.
+    //
+    // 53 caracteres, 1 acima do orçamento de ≤ 52 da tabela mestre, e é a
+    // única exceção do site. Cortar mais exigiria abreviar "Florianópolis" ou
+    // usar "Floripa" — informal, contra o Manifesto. O corte do Google é por
+    // pixel, não por caractere, e o que sobra no fim é o sufixo " | ASTAZ",
+    // que é a parte de menor valor do título.
+    metaTitle: "Transfer Balneário Camboriú e Aeroporto Florianópolis",
     metaDescription:
       "Transfer executivo entre o Aeroporto de Florianópolis e Balneário Camboriú: 100 km em cerca de 1h30, com monitoramento de voo e recepção no desembarque.",
     intro:
@@ -445,7 +475,7 @@ export const destinos: readonly Destino[] = [
       title: "Agende o transfer para Florianópolis",
       body: "Informe a data, o horário e o número do voo. Nossa equipe retorna com a confirmação, o horário de saída recomendado de Balneário Camboriú e os detalhes da recepção.",
     },
-    relacionados: ["aeroporto-navegantes"],
+    relacionados: ["aeroporto-navegantes", "beto-carrero"],
     published: true,
   },
 ];

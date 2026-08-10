@@ -11,8 +11,9 @@ import {
   SectionLabel,
 } from "@/components/ui/section-label";
 import { WhatsAppButton } from "@/components/ui/whatsapp-button";
+import { publishedDestinos } from "@/lib/content/destinos";
 import { servicos } from "@/lib/content/servicos";
-import { routes, servicoPath } from "@/lib/routes";
+import { destinoPath, routes, servicoPath } from "@/lib/routes";
 import { breadcrumbSchema } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
@@ -112,6 +113,51 @@ export default function ServicosPage() {
                 </li>
               ))}
             </ul>
+
+            {/*
+              Rotas com página própria.
+
+              Existe por dois motivos. Para quem lê: dos seis serviços acima,
+              quatro ainda não têm página, então o hub terminava numa lista em
+              que a maior parte dos cards não leva a lugar nenhum — este bloco
+              devolve destino real à página. Para o buscador: o hub tinha o
+              conteúdo mais fino do site indexado (~270 palavras) e nenhum link
+              para os destinos, apesar de ser a página que o menu principal
+              aponta.
+            */}
+            <section className="mt-16" aria-labelledby="rotas-heading">
+              <SectionHeading
+                as="h2"
+                id="rotas-heading"
+                className="!text-2xl sm:!text-3xl"
+              >
+                Rotas com página própria
+              </SectionHeading>
+              <SectionDescription className="mt-4">
+                Algumas rotas têm detalhes que mudam o planejamento — tempo de
+                trajeto, horário de saída recomendado e como funciona a
+                recepção. Essas ganharam página própria.
+              </SectionDescription>
+              <ul className="mt-8 grid gap-6 sm:grid-cols-2">
+                {publishedDestinos.map((destino) => (
+                  <li key={destino.slug}>
+                    {/* `relative flex h-full flex-col` é requisito do
+                        CardTitleLink — ver o comentário em card-link.tsx. */}
+                    <article className="group relative flex h-full flex-col rounded-2xl border border-border-subtle bg-surface p-6 transition-colors hover:border-primary/30 sm:p-8">
+                      <h3 className="font-display text-xl text-foreground transition-colors group-hover:text-primary">
+                        <CardTitleLink href={destinoPath(destino.slug)}>
+                          {destino.breadcrumbLabel}
+                        </CardTitleLink>
+                      </h3>
+                      <p className="mt-3 flex-1 text-sm leading-relaxed text-neutral">
+                        {destino.summary}
+                      </p>
+                      <CardLinkArrow>Ver detalhes da rota</CardLinkArrow>
+                    </article>
+                  </li>
+                ))}
+              </ul>
+            </section>
 
             <div className="mt-16 rounded-2xl border border-border-subtle bg-surface p-8 sm:p-12">
               <SectionHeading as="h2" className="!text-2xl sm:!text-3xl">

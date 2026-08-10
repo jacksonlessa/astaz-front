@@ -25,15 +25,31 @@ export function Hero() {
       <div className="relative z-10 w-full section-padding pb-16 sm:pb-24">
         <div className="container-wide mx-auto">
           <div className="max-w-3xl animate-fade-up">
-            <p className="mb-4 text-xs font-semibold uppercase tracking-[0.3em] text-primary">
-              Balneário Camboriú · Transporte Executivo
-            </p>
+            {/*
+              As duas linhas estão DENTRO do <h1> de propósito.
+
+              A linha dourada era um <p> solto acima do título; nessa forma, o
+              único texto que o buscador lia como <h1> era "O caminho entre
+              elegância e destino" — copy de marca, sem nenhum dos termos que
+              as pessoas realmente buscam. O <h1> é o sinal de maior peso do
+              corpo da página, e ele estava gasto.
+
+              Trazendo a linha para dentro, o <h1> passa a começar por
+              "Transporte executivo em Balneário Camboriú" sem que o desenho
+              mude: o tamanho e o peso visual de cada linha continuam os
+              mesmos, porque o estilo está nos <span>, não no <h1>.
+            */}
             <h1
               id="hero-heading"
-              className="font-display text-4xl leading-[1.1] tracking-tight text-foreground sm:text-5xl lg:text-7xl"
+              className="text-foreground"
             >
-              O caminho entre{" "}
-              <span className="text-gradient-gold">elegância</span> e destino
+              <span className="mb-4 block text-xs font-semibold uppercase tracking-[0.3em] text-primary">
+                Transporte executivo em Balneário Camboriú
+              </span>
+              <span className="block font-display text-4xl leading-[1.1] tracking-tight sm:text-5xl lg:text-7xl">
+                O caminho entre{" "}
+                <span className="text-gradient-gold">elegância</span> e destino
+              </span>
             </h1>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-neutral-light sm:text-lg animate-fade-up-delay-1">
               A ASTAZ conduz cada trajeto com requinte, discrição e
