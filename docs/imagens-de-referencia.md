@@ -38,10 +38,41 @@ três verificações que ninguém faz por nós:
 | `public/images/frota-sedan-nissan-sentra.jpg` | Fornecida pelo usuário (foto de catálogo do fabricante/concessionária) | Nissan Sentra, categoria Sedã Executivo. Fundo branco de estúdio — estilo diferente das demais fotos do site, que são ambientadas. Usada na seção Frota da home (`src/components/landing/fleet.tsx`) |
 | `public/images/frota-suv-aion-v.jpg` | Fornecida pelo usuário (foto de catálogo do fabricante/concessionária) | AION V, categoria SUV Premium. Mesma origem e ressalva de estúdio da foto do Sentra acima |
 | `public/images/frota-van-sprinter.jpg` | Fornecida pelo usuário (foto de catálogo do fabricante/concessionária) | Mercedes-Benz Sprinter, categoria Van Executiva. Mesma origem e ressalva de estúdio da foto do Sentra acima |
+| `public/images/transporte-casamentos.webp` | Fornecida pela operação, fundo retocado por IA a pedido de Jackson | Noiva desembarcando de SUV preto com interior caramelo. **Primeira foto de veículo da Astaz em operação** — as três da frota são catálogo. Card de Casamentos na home desde 10/08/2026. Ver a ressalva de direito de imagem abaixo |
 
-Além dessas, `src/lib/site.ts` ainda serve três imagens remotas do Unsplash nos
-cards de Corporativo, Eventos e Sob Demanda. São genéricas e devem sair quando
-houver foto real.
+Além dessas, `src/lib/content/servicos.ts` ainda serve duas imagens remotas do
+Unsplash nos cards de Corporativo e Sob Demanda. São genéricas e devem sair
+quando houver foto real. A de Eventos saiu em 10/08/2026, quando o serviço
+deixou o recorte da home.
+
+### Ressalva da foto de casamento
+
+O rosto da noiva aparece de frente e plenamente identificável, e o uso é peça
+publicitária — o caso exato da regra 1 acima, com a diferença de que aqui a
+autorização é obtenível (é cliente real, não banco de imagem). **Autorizado
+por Jackson (proprietário/operação) em 10/08/2026, via chat.** Se um dia
+surgir dúvida sobre a origem dessa autorização, esse é o registro.
+
+**Recorte**: original vertical 1002×1570 (~2:3); o card da home é 16/10.
+
+**Caminhão e fachada na janela traseira — duas tentativas**:
+
+1. Primeira versão (substituída): a foto original tinha, na janela traseira,
+   um caminhão e uma fachada comercial com texto legível, exatamente atrás do
+   rosto da noiva — nenhum recorte 16/10 conseguia incluir o rosto e excluir
+   essa janela. A solução aplicada foi blur gaussiano com máscara elíptica
+   sobre a região. Tecnicamente resolvia (nenhum caractere legível), mas o
+   resultado visual não agradou — o borrão ficava evidente como edição.
+2. **Versão em uso (10/08/2026)**: Jackson regenerou o fundo com IA a partir
+   do arquivo original, trocando o caminhão/fachada por vegetação e
+   pavimento — sem texto, sem logotipo, sem placa. Resultado já entregue
+   praticamente no aspect ratio do card (1586×992, contra o alvo 16/10 —
+   diferença de ~0,1%): o corte final é só um recorte central de 1px de
+   altura para fechar em 1586×991 (1.6004:1), sem perda de composição.
+   Conferido em zoom close-up: mãos, costura dos bancos, moldura da porta e
+   painel — nenhum artefato típico de geração por IA (dedos extras,
+   texto distorcido, geometria quebrada). Continua a mesma AION V da frota
+   (`frota-suv-aion-v.jpg`) — só o fundo mudou, não o veículo nem a noiva.
 
 ## Candidatas
 

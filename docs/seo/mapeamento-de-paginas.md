@@ -271,11 +271,13 @@ páginas, e por um tempo ela não apontava para quase nenhuma. Revisão feita em
   sem link, mesma lógica de gating do hub — não promete navegação que não
   existe.
 - ✅ **Títulos batem com os serviços reais.** Os 4 cards em destaque na home
-  (Transfer Aeroporto, Transporte Corporativo, Transporte para Eventos,
-  Transporte para Idosos) são um recorte de `servicos.ts`, não mais um array
-  paralelo desatualizado. `servicosFeaturedOnHome` é o filtro
-  (`featuredOnHome: true`); Transporte para Casamentos e City Tour ficam de
-  fora do recorte da home (continuam em `/servicos`).
+  são um recorte de `servicos.ts`, não mais um array paralelo desatualizado.
+  `servicosFeaturedOnHome` é o filtro (`featuredOnHome: true`); City Tour fica
+  de fora do recorte da home (continua em `/servicos`).
+  Desde 10/08/2026 o recorte é Transfer Aeroporto, Transporte Corporativo,
+  Transporte para Idosos e **Transporte para Casamentos** — trocou o lugar de
+  Transporte para Eventos, que cedeu a vaga por não ter foto própria (ver
+  item abaixo e [imagens-de-referencia.md](../imagens-de-referencia.md)).
 - ✅ **Home linka para as páginas de serviço publicadas.** `/servicos/transfer-aeroporto`
   e `/servicos/transporte-idosos` agora recebem link direto do card; o link de
   rodapé da seção trocou de "destino" para "Todos os serviços" → `/servicos`

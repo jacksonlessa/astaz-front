@@ -105,12 +105,13 @@ export const servicos: readonly Servico[] = [
       "Transporte para Shows",
     ],
     published: false,
-    featuredOnHome: true,
-    // TODO: foto real. Placeholder de banco até existir imagem própria — ver
-    // docs/imagens-de-referencia.md.
-    image:
-      "https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&w=1200&q=80",
-    imageAlt: "Mesa elegante para evento",
+    /**
+     * Fora do recorte da home desde 10/08/2026: o card ilustrado precisa de
+     * foto, e a única que existia era um Unsplash genérico de mesa posta.
+     * Cedeu a vaga para Casamentos, que ganhou foto real. Volta quando houver
+     * foto própria de congresso/feira — ver docs/imagens-de-referencia.md.
+     */
+    featuredOnHome: false,
   },
   {
     slug: "transporte-casamentos",
@@ -122,7 +123,13 @@ export const servicos: readonly Servico[] = [
       "Veículos impecáveis e horários coordenados para noivos, padrinhos e convidados, do primeiro traslado ao último.",
     gbpServices: ["Transporte para Casamentos"],
     published: false,
-    featuredOnHome: false,
+    featuredOnHome: true,
+    // Foto real da operação — cliente em veículo da frota, não banco de imagem.
+    // Uso condicionado à autorização de imagem da retratada; ver
+    // docs/imagens-de-referencia.md.
+    image: "/images/transporte-casamentos.webp",
+    imageAlt:
+      "Noiva de vestido longo sentada no banco traseiro de um SUV executivo preto, com a porta aberta e interior em couro caramelo",
   },
   {
     slug: "transporte-idosos",
