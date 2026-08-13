@@ -11,6 +11,9 @@
  * como doorway page — o risco central deste projeto.
  */
 
+import { getServico } from "@/lib/content/servicos";
+import { servicoPath } from "@/lib/routes";
+
 export type DestinoBlock =
   | { type: "prose"; title: string; paragraphs: readonly string[] }
   | {
@@ -62,6 +65,26 @@ export type Destino = {
    * si em vez de disputarem a mesma busca isoladas.
    */
   relacionados?: readonly string[];
+  /**
+   * Serviço-mãe desta rota, em `content/servicos.ts`. Existe porque a
+   * autoridade interna só descia: os destinos linkavam entre si e para a
+   * navegação global, mas nenhum subia de volta para o hub do serviço, que é a
+   * página mais densa do site e recebia link editorial de duas páginas só.
+   *
+   * É campo opcional, e não regra por slug: destino que não pertence a um
+   * serviço (um parque, por exemplo) simplesmente não o declara, e nada é
+   * renderizado. A copy vem junto porque texto não mora em componente — e
+   * porque uma frase genérica aqui erraria: cada rota tem um motivo diferente
+   * para mandar o leitor ao hub.
+   */
+  servicoRelacionado?: {
+    /** `slug` de um serviço publicado em `content/servicos.ts`. */
+    slug: string;
+    /** Frase de contexto exibida antes do link. */
+    nota: string;
+    /** Texto do link. Âncora descritiva — nunca "clique aqui". */
+    linkLabel: string;
+  };
   /** Enquanto false, a rota não é gerada e não entra no sitemap. */
   published: boolean;
 };
@@ -196,6 +219,11 @@ export const destinos: readonly Destino[] = [
     cta: {
       title: "Agende seu transfer",
       body: "Informe a data, o horário e o número do voo. Nossa equipe retorna com a confirmação e todos os detalhes da recepção.",
+    },
+    servicoRelacionado: {
+      slug: "transfer-aeroporto",
+      nota: "Navegantes é o aeroporto mais próximo de Balneário Camboriú, mas não é o único que atendemos: o serviço cobre também Florianópolis, Joinville e Curitiba.",
+      linkLabel: "Conheça o serviço de transfer para aeroportos",
     },
     relacionados: ["aeroporto-florianopolis", "beto-carrero"],
     published: true,
@@ -478,6 +506,11 @@ export const destinos: readonly Destino[] = [
       title: "Agende o transfer para Florianópolis",
       body: "Informe a data, o horário e o número do voo. Nossa equipe retorna com a confirmação, o horário de saída recomendado de Balneário Camboriú e os detalhes da recepção.",
     },
+    servicoRelacionado: {
+      slug: "transfer-aeroporto",
+      nota: "Quem embarca pela capital costuma comparar aeroportos antes de decidir a rota. Atendemos Florianópolis, Navegantes, Joinville e Curitiba, com a mesma recepção no desembarque.",
+      linkLabel: "Conheça o serviço de transfer para aeroportos",
+    },
     relacionados: ["aeroporto-navegantes", "beto-carrero"],
     published: true,
   },
@@ -497,4 +530,24 @@ export function getDestinosRelacionados(destino: Destino) {
   return (destino.relacionados ?? [])
     .map(getDestino)
     .filter((item): item is Destino => Boolean(item?.published));
+}
+
+/**
+ * O serviço-mãe do destino, já resolvido e conferido. Devolve `null` quando o
+ * destino não declara `servicoRelacionado` ou quando o serviço apontado ainda
+ * não está publicado — mesma proteção de `getDestinosRelacionados`: nenhum link
+ * interno pode apontar para uma rota que não existe.
+ */
+export function getServicoRelacionado(destino: Destino) {
+  const { servicoRelacionado } = destino;
+  if (!servicoRelacionado) return null;
+
+  const servico = getServico(servicoRelacionado.slug);
+  if (!servico?.published) return null;
+
+  return {
+    path: servicoPath(servico.slug),
+    nota: servicoRelacionado.nota,
+    linkLabel: servicoRelacionado.linkLabel,
+  };
 }

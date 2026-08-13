@@ -17,6 +17,7 @@ import { WhatsAppButton } from "@/components/ui/whatsapp-button";
 import {
   getDestino,
   getDestinosRelacionados,
+  getServicoRelacionado,
   publishedDestinos,
 } from "@/lib/content/destinos";
 import { destinoPath, routes } from "@/lib/routes";
@@ -55,6 +56,7 @@ export default async function DestinoPage({ params }: PageProps) {
   if (!destino?.published) notFound();
 
   const relacionados = getDestinosRelacionados(destino);
+  const servicoRelacionado = getServicoRelacionado(destino);
 
   return (
     <>
@@ -151,6 +153,24 @@ export default async function DestinoPage({ params }: PageProps) {
             </dl>
 
             <DestinoBlocks blocks={destino.blocks} />
+
+            {/*
+              Link de volta ao serviço-mãe. Fica no meio do texto, e não num
+              bloco próprio no rodapé da página, porque é assim que ele conta
+              como link editorial — ver achado 5.4 do relatório de 13/08/2026.
+            */}
+            {servicoRelacionado ? (
+              <p className="mt-16 max-w-3xl text-base leading-relaxed text-neutral">
+                {servicoRelacionado.nota}{" "}
+                <Link
+                  href={servicoRelacionado.path}
+                  className="text-primary underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 rounded-sm"
+                >
+                  {servicoRelacionado.linkLabel}
+                </Link>
+                .
+              </p>
+            ) : null}
 
             <section className="mt-16">
               <SectionHeading as="h2" className="!text-2xl sm:!text-3xl">
