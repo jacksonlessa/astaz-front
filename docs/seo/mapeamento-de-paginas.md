@@ -227,7 +227,7 @@ Ordem de execução:
 | 4 | Banner de consentimento + `/politica-de-privacidade` | ✅ feito em 06/08/2026 |
 | 5 | Meta Pixel | ✅ feito em 06/08/2026 — confirmar no painel do GTM que a tag do Pixel está condicionada ao consentimento (`ad_storage`/`ad_user_data`) |
 | 6 | Logo e favicon | ✅ feito em 06/08/2026 (header, footer e `opengraph-image`) |
-| 7 | Fotos reais (frota, desembarque, serviços) | operação |
+| 7 | Fotos reais (frota, desembarque, serviços) | operação — ✅ frota entregue (as três dos veículos); faltam desembarque e os cards de serviço sem foto própria |
 
 `opengraph-image` do item 6, aliás, também já saiu do zero: `siteConfig.ogImage`
 (`src/lib/site.ts`) alimenta `openGraph.images` e `twitter.images` no
@@ -235,7 +235,9 @@ Ordem de execução:
 
 Com os itens 1 a 6 fechados (ou pendentes só de configuração de painel), o
 único bloqueio real que resta na Fase 1 é o item 7 — fotos reais depende
-inteiramente da operação, não de código.
+inteiramente da operação, não de código. E ele encolheu: as três fotos dos
+veículos chegaram e já estão em `/frota` e na home. O que falta é foto de
+desembarque e foto própria para os cards de serviço ainda sem imagem.
 
 ### 1. Imagens quebradas e provisórias
 
@@ -247,28 +249,31 @@ Levantamento de 06/08/2026, conferido contra `https://www.astaz.com.br`.
 | --- | --- | --- |
 | `/images/transfer-aeroporto.webp` | hero de `/servicos/transfer-aeroporto`, com `priority` | O arquivo nunca existiu em `public/images/` — a página principal de captação abria com 404 no lugar da capa. **Resolvido** reapontando para `hero-transfer-aeroporto.webp`, com o `alt` reescrito para descrever a foto real. Continua `imageIsPlaceholder: true` até haver foto do desembarque |
 
-**Imagens de banco genéricas (7)** — carregam, mas são fotos remotas do
-Unsplash, de veículos que a Astaz não tem. Nenhuma passou pelas verificações
-descritas em [imagens-de-referencia.md](../imagens-de-referencia.md):
+**Imagens de banco genéricas** — o levantamento original listou 7, todas fotos
+remotas do Unsplash, de veículos que a Astaz não tem. Nenhuma passou pelas
+verificações descritas em [imagens-de-referencia.md](../imagens-de-referencia.md).
+Situação em 13/08/2026: **restou uma**.
 
-| Arquivo | Onde | Card / bloco |
-| --- | --- | --- |
-| `src/lib/site.ts` | home → Serviços | Corporativo |
-| `src/lib/site.ts` | home → Serviços | Eventos & Ocasiões |
-| `src/lib/site.ts` | home → Serviços | Sob Demanda |
-| `src/components/landing/fleet.tsx` | home → Frota | Sedã Executivo |
-| `src/components/landing/fleet.tsx` | home → Frota | SUV Premium |
-| `src/components/landing/fleet.tsx` | home → Frota | Van Executiva |
-| `src/components/landing/experience.tsx` | home → Experiência | interior do veículo |
+| Arquivo | Onde | Card / bloco | Situação |
+| --- | --- | --- | --- |
+| `src/lib/content/servicos.ts` | home → Serviços | Corporativo | ⚠️ **única pendente** — segue apontando para `images.unsplash.com` |
+| `src/lib/content/servicos.ts` | home → Serviços | Eventos & Ocasiões | ✅ o card saiu do recorte da home em 10/08/2026 (cedeu a vaga para Casamentos, que tem foto real) |
+| `src/lib/site.ts` | home → Serviços | Sob Demanda | ✅ o array solto de `site.ts` deixou de existir; a home consome `servicosFeaturedOnHome` |
+| `src/lib/content/frota.ts` | home → Frota | Sedã Executivo | ✅ `frota-sedan-nissan-sentra.jpg` — foto real |
+| `src/lib/content/frota.ts` | home → Frota | SUV Premium | ✅ `frota-suv-aion-v.jpg` — foto real |
+| `src/lib/content/frota.ts` | home → Frota | Van Executiva | ✅ `frota-van-sprinter.jpg` — foto real |
+| `src/components/landing/experience.tsx` | home → Experiência | interior do veículo | ✅ reaproveita `interiorAstaz` de `content/sobre.ts` — foto real |
 
 Duas observações que valem mais que a lista:
 
-- As três imagens de frota e a de experiência estão **hardcoded no componente**,
-  contra a regra de conteúdo do projeto. Ao substituí-las, o caminho certo é
-  movê-las para `src/lib/content/frota.ts` e `src/lib/site.ts`.
-- **`/frota` não tem uma única foto.** É a página de conversão do site, e o
-  detalhamento abaixo já registra que foto de banco ali destrói a credibilidade
-  da página inteira. Foto real dos veículos é o insumo que só a operação tem.
+- ✅ **As imagens de frota saíram do componente.** Estavam hardcoded em
+  `fleet.tsx`, contra a regra de conteúdo do projeto; hoje vêm de
+  `src/lib/content/frota.ts`, e a home e `/frota` consomem a mesma fonte —
+  não há caminho de imagem duplicado entre os dois.
+- ✅ **`/frota` tem as três fotos reais dos veículos** (Nissan Sentra, AION V e
+  Sprinter), fornecidas pela operação. Era o insumo que faltava na página de
+  conversão do site, onde foto de banco destruiria a credibilidade da página
+  inteira.
 
 **Placeholders assumidos (2)** — já marcados com `imageIsPlaceholder: true` e
 registrados em [imagens-de-referencia.md](../imagens-de-referencia.md).
@@ -365,8 +370,10 @@ oficial da identidade (pasta `Identidade Visual - Astaz/Logotipo/SVG (vetor)`).
   motorista (`sobre-astaz-motorista.webp`) — não é o arquivo especial
   `opengraph-image.tsx` do App Router, é a meta tag `og:image` populada por
   metadata. Resolve o link do WhatsApp saindo sem imagem.
-- **Pendente**: o mesmo ajuste de logo no `Footer`
-  (`src/components/landing/footer.tsx`, que ainda tem o lettering antigo).
+- ✅ **Logo do rodapé**: `Footer` (`src/components/landing/footer.tsx`) também
+  usa `public/images/logo-astaz-vertical-branco.svg`, com o mesmo `<img>`
+  estático do header. O lettering em Libre Caslon não existe mais em lugar
+  nenhum do site.
 
 ### 4. GTM com Google Analytics e Meta Pixel
 
@@ -495,9 +502,11 @@ natural de BC — quem busca Florianópolis geralmente tem um motivo específico
 **Intenção**: comparação — a pessoa já quer contratar e está avaliando veículo.
 Página de **conversão**, não de captação.
 
-**Só você sabe**: modelos reais, ano, capacidade de passageiros e **fotos reais
-dos veículos**. Foto de banco de imagem aqui destrói a credibilidade da página
-inteira. Capacidade de bagagem não entra: é alinhada no orçamento.
+**Só você sabe**: modelos reais, ano e capacidade de passageiros. ✅ As **fotos
+reais dos veículos** chegaram e estão publicadas (Nissan Sentra, AION V e
+Sprinter, em `src/lib/content/frota.ts`) — foto de banco aqui destruiria a
+credibilidade da página inteira. Capacidade de bagagem não entra: é alinhada no
+orçamento.
 
 ### `/contato` ✅ publicada em 07/08/2026
 
