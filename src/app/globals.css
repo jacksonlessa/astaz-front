@@ -8,7 +8,15 @@
   --color-tertiary: #1e1e1e;
   --color-neutral: #a0a0a0;
   --color-neutral-light: #c8c8c8;
-  --color-neutral-dark: #6a6a6a;
+  /*
+   * Contraste sobre `--color-secondary` (#121212): 5,08:1, acima do mínimo de
+   * 4,5:1 da WCAG AA para texto normal. Era #6a6a6a, que dava 3,46:1 e
+   * reprovava no breadcrumb (`text-xs`) de todas as páginas internas e em
+   * parágrafos de corpo de `/destinos/*`, `/frota`, `/sobre`,
+   * `/servicos/transporte-idosos` e `/politica-de-privacidade`. Não escurecer
+   * de novo sem refazer a conta.
+   */
+  --color-neutral-dark: #858585;
   --color-surface: #161616;
   --color-border: rgba(197, 160, 89, 0.18);
   --color-border-subtle: rgba(255, 255, 255, 0.08);
