@@ -86,9 +86,9 @@ Sem Docker, CI/CD ou banco de dados configurados hoje. Deploy previsto na Vercel
 
 | Variável | Descrição |
 | --- | --- |
-| `NEXT_PUBLIC_GTM_ID` | ID do contêiner do Google Tag Manager (`GTM-XXXXXXX`). GA4 e Meta Pixel são configurados **dentro** do contêiner do GTM — não existem variáveis próprias para eles. Sem esta variável, `<GoogleTagManager />` não é renderizado e o site funciona normalmente sem medição. |
+| `NEXT_PUBLIC_GTM_ID` | ID do contêiner do Google Tag Manager (`GTM-XXXXXXX`). GA4 e Meta Pixel são configurados **dentro** do contêiner do GTM — não existem variáveis próprias para eles. Sem esta variável, `<GoogleTagManager />` não é renderizado e o site funciona normalmente sem medição. Precisa estar cadastrada **também na Vercel, no ambiente Production** — em produção, a ausência dela significa zero medição, sem nenhum sinal de erro: o build passa, a página carrega igual e só o GA4 fica vazio. |
 
-Ao adicionar uma variável nova, documente aqui e no `.env.example` no mesmo commit.
+Ao adicionar uma variável nova, documente aqui e no `.env.example` no mesmo commit. Como `NEXT_PUBLIC_*` é embutida no bundle durante o build, cadastrar a variável na Vercel só tem efeito no próximo deploy — ver o item 5 de [.claude/commands/deploy.md](.claude/commands/deploy.md).
 
 ## O que NÃO Fazer
 
