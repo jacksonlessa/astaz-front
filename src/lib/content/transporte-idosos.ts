@@ -30,7 +30,16 @@
 
 export const transporteIdososIntro = {
   eyebrow: "Serviço",
-  title: "Transporte para Idosos",
+  /**
+   * Alimenta o `<h1>` da página, e por isso traz a cidade: a intenção
+   * registrada no mapeamento é local, o `<title>` já é "Transporte para Idosos
+   * em Balneário Camboriú" e o `h1` é o sinal on-page de maior peso — os dois
+   * precisam contar a mesma história.
+   *
+   * O rótulo curto continua em `servicos.ts` (`title`), que é o que aparece no
+   * card do hub e no fim do breadcrumb, onde a cidade só faria repetição.
+   */
+  title: "Transporte para Idosos em Balneário Camboriú",
   /**
    * Abre falando com quem decide, não com quem viaja — é o filho ou a filha
    * organizando o deslocamento, muitas vezes de outra cidade. A dúvida nº 1
