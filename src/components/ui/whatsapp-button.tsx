@@ -55,7 +55,7 @@ export function WhatsAppButton({
       href={getWhatsAppUrl(message)}
       target="_blank"
       rel="noopener noreferrer"
-      onClick={() => trackWhatsAppClick(pathname, message)}
+      onClick={() => trackWhatsAppClick(pathname, message, { ctaType: "button" })}
       className={`inline-flex items-center justify-center rounded-full font-semibold tracking-wide transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-secondary ${variantStyles[variant]} ${sizeStyles[size]} ${className}`}
     >
       <WhatsAppIcon className="size-4 shrink-0" />
@@ -81,7 +81,7 @@ export function WhatsAppIconButton({
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
-      onClick={() => trackWhatsAppClick(pathname, message)}
+      onClick={() => trackWhatsAppClick(pathname, message, { ctaType: "button" })}
       className={`inline-flex items-center justify-center rounded-full border border-primary/30 bg-primary/10 p-2.5 text-primary transition-all duration-300 hover:bg-primary/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2 focus-visible:ring-offset-secondary ${className}`}
     >
       <WhatsAppIcon className="size-5" />
