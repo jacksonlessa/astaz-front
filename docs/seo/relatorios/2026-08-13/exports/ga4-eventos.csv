@@ -1,0 +1,13 @@
+# ----------------------------------------
+# Eventos: Nome do evento
+# Conta: 99partidas
+# Propriedade: astaz
+# ----------------------------------------
+# 
+# Todos os usuários
+# Data de início: 20260805
+# Data de término: 20260813
+Nome do evento,Contagem de eventos,Total de usuários,Contagem de eventos por usuário ativo,Receita total
+gtm.js,107,7,15.285714285714286,0
+session_start,10,7,1.4285714285714286,0
+first_visit,7,7,1,0
