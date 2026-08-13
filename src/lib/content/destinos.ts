@@ -348,15 +348,18 @@ export const destinos: readonly Destino[] = [
     breadcrumbLabel: "Aeroporto de Florianópolis",
     whatsappMessage:
       "Olá, ASTAZ! Gostaria de um orçamento para transfer entre o Aeroporto de Florianópolis e Balneário Camboriú.",
-    // Sem travessão e sem "de" antes de Florianópolis: a busca é feita com
-    // palavras, não com pontuação.
-    //
-    // 53 caracteres, 1 acima do orçamento de ≤ 52 da tabela mestre, e é a
-    // única exceção do site. Cortar mais exigiria abreviar "Florianópolis" ou
-    // usar "Floripa" — informal, contra o Manifesto. O corte do Google é por
-    // pixel, não por caractere, e o que sobra no fim é o sufixo " | ASTAZ",
-    // que é a parte de menor valor do título.
-    metaTitle: "Transfer Balneário Camboriú e Aeroporto Florianópolis",
+    /**
+     * Sem "de" antes de Florianópolis, e cidade antes do aeroporto: é a ordem
+     * em que a busca é digitada.
+     *
+     * O "e" virou travessão — a mesma forma já usada em versões anteriores
+     * deste título — para caber no orçamento. Com "e" eram 53 caracteres, 61
+     * com o sufixo " | ASTAZ", acima do teto de 60; assim são 51 (59 com o
+     * sufixo), e o título deixa de ser a única exceção do site. Abreviar
+     * "Florianópolis" ou usar "Floripa" continua fora de questão: informal
+     * demais para a marca.
+     */
+    metaTitle: "Transfer Balneário Camboriú–Aeroporto Florianópolis",
     metaDescription:
       "Transfer executivo entre o Aeroporto de Florianópolis e Balneário Camboriú: 100 km em cerca de 1h30, com monitoramento de voo e recepção no desembarque.",
     intro:
