@@ -203,6 +203,16 @@ export default function TransporteIdososPage() {
               <p className="mt-6 max-w-3xl text-base leading-relaxed text-neutral">
                 {compromissosRecorrentes.body}
               </p>
+              <p className="mt-4 max-w-3xl text-base leading-relaxed text-neutral">
+                {compromissosRecorrentes.nota}{" "}
+                <Link
+                  href={routes.contato}
+                  className="text-primary underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 rounded-sm"
+                >
+                  {compromissosRecorrentes.notaLinkLabel}
+                </Link>
+                .
+              </p>
             </section>
 
             <section className="mt-16" aria-labelledby="destinos-heading">

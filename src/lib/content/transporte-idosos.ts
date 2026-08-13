@@ -128,6 +128,15 @@ export const mobilidadeReduzida = {
 export const compromissosRecorrentes = {
   title: "Compromissos recorrentes",
   body: "Consultas, exames e sessões de fisioterapia costumam se repetir. Por isso o serviço também é contratado por semana, por mês ou por pacote de sessões, combinado no orçamento.",
+  /**
+   * Saída contextual para `/contato`. Esta página não tinha link editorial
+   * nenhum para a rota de conversão — quem chegava aqui só saía pelo menu.
+   * O bloco de agenda recorrente é o lugar natural: é quem tem uma sequência
+   * de sessões para organizar que ganha com o formulário, e não com uma
+   * mensagem escrita do zero.
+   */
+  nota: "Quem já tem as datas em mãos pode enviar tudo de uma vez: o formulário reúne endereço, horários e observações em uma mensagem só.",
+  notaLinkLabel: "Solicitar um orçamento",
 } as const;
 
 /**
