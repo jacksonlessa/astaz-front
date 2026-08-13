@@ -144,10 +144,14 @@ serviços; remover "Motorista Particular" (ver conflito resolvido abaixo).
 Orçamento de caracteres: **título ≤ 52** (o template do layout acrescenta
 ` | ASTAZ`, 8 caracteres, totalizando ≤ 60) e **description entre 120 e 158**.
 
-Uma exceção conhecida, em 10/08/2026: `/destinos/aeroporto-florianopolis` ficou
-com 53. Ver o comentário no `metaTitle` em `src/lib/content/destinos.ts` — as
-alternativas eram abreviar o nome da cidade ou usar "Floripa", informal demais
-para a marca. É exceção, não licença: o orçamento continua ≤ 52.
+✅ **Sem exceções desde 13/08/2026.** `/destinos/aeroporto-florianopolis` foi a
+única que já esteve fora: a reescrita de 10/08 deixou o título em 53 caracteres
+(61 com o sufixo), e este documento chegou a registrar o mesmo título com dois
+valores diferentes, nenhum deles igual ao código. O título atual é
+`Transfer Balneário Camboriú–Aeroporto Florianópolis`, **51 caracteres**, 59 com
+o sufixo — o travessão no lugar do "e" resolveu sem abreviar o nome da capital
+nem recorrer a "Floripa", informal demais para a marca. Ver o comentário no
+`metaTitle` em `src/lib/content/destinos.ts`.
 
 **A ordem dentro do título importa.** Cidade antes de aeroporto, porque é a
 ordem em que a busca é digitada ("transfer balneário camboriú aeroporto
@@ -161,7 +165,7 @@ sentido aeroporto → cidade, embora as páginas cubram os dois.
 | `/destinos/aeroporto-navegantes` | transfer aeroporto navegantes bc | Transfer Balneário Camboriú e Aeroporto Navegantes | 🔴 alta | ✅ publicada |
 | `/servicos/transfer-aeroporto` | transfer aeroporto executivo sc *(hub)* | Transfer Executivo para Aeroportos | 🔴 alta | ✅ publicada |
 | `/destinos/beto-carrero` | transporte / transfer para beto carrero | Transfer de Balneário Camboriú ao Beto Carrero World | 🔴 alta | ✅ publicada |
-| `/destinos/aeroporto-florianopolis` | transfer aeroporto florianópolis bc | Transfer Balneário Camboriú e Aeroporto Florianópolis | 🟡 média | ✅ publicada |
+| `/destinos/aeroporto-florianopolis` | transfer aeroporto florianópolis bc | Transfer Balneário Camboriú–Aeroporto Florianópolis | 🟡 média | ✅ publicada |
 | `/frota` | frota / veículos disponíveis | Frota Executiva | 🟡 média | ✅ publicada |
 | `/contato` | contato, orçamento | Contato e Orçamento | 🟡 média | ✅ publicada |
 | `/sobre` | quem é a astaz *(confiança, E-E-A-T)* | Sobre o transporte executivo em Balneário Camboriú | 🟢 baixa | ✅ publicada |
@@ -183,10 +187,12 @@ sentido aeroporto → cidade, embora as páginas cubram os dois.
 | `/eventos/fenarreco-brusque` | transporte fenarreco brusque | Transporte para a Fenarreco de Brusque | sazonal | Fase 3 |
 | `/faq` | dúvidas gerais | Perguntas Frequentes | 🟢 baixa | Fase 2 |
 
-✅ **Títulos** — conferidos em 06/08/2026: todas as páginas publicadas estão
-dentro do orçamento. O maior é `/destinos/aeroporto-florianopolis`, com 51
-caracteres (59 com o sufixo), depois de encurtado para
-`Transfer Aeroporto Florianópolis–Balneário Camboriú`.
+✅ **Títulos** — reconferidos em 13/08/2026 contra o código: todas as páginas
+publicadas estão dentro do orçamento. O maior é
+`/destinos/aeroporto-florianopolis`, com 51 caracteres (59 com o sufixo), como
+registrado acima. Ao conferir de novo, medir o valor que está em
+`src/lib/content/*.ts` — a contagem anterior deste parágrafo descrevia um
+título que a reescrita de 10/08 já havia substituído.
 
 ⚠️ **`/destinos/balneario-camboriu`** — a home já é a página de BC. Só criar se
 tiver um recorte próprio (ex.: *receptivo para quem chega a BC*). Caso
