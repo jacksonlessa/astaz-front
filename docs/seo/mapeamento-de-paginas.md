@@ -202,11 +202,23 @@ contrário, cortar.
 
 Área de cobertura atual, espelhada em `businessInfo.areaServed`: Balneário
 Camboriú, Camboriú, Itajaí, Navegantes, Itapema, Bombinhas, Penha, Brusque,
-Blumenau, Joinville, São Francisco do Sul, Florianópolis. ✅ site e GBP alinhados.
+Blumenau, Joinville, São Francisco do Sul, Florianópolis, Curitiba, São José
+dos Pinhais. ✅ site e GBP alinhados (14 cidades, conferido em 14/08/2026).
+
+As duas últimas são as únicas fora de Santa Catarina. Entraram porque o
+Aeroporto Afonso Pena (CWB) fica em São José dos Pinhais e a rota existe de
+verdade — quase sempre no sentido aeroporto → Balneário Camboriú.
 
 **Regra**: nenhuma cidade pode ser citada como atendida numa página se não
 estiver em `areaServed` — e nada entra em `areaServed` antes de entrar no GBP.
 Site e perfil precisam contar a mesma história.
+
+Cada cidade da cobertura tem uma descrição de uma linha em
+`src/lib/content/regiao.ts`, exibida no bloco "Região atendida" de
+`/destinos`. O `Record` é tipado pela própria `areaServed`: cidade nova na
+cobertura quebra o build até ganhar descrição. Ali não entram distância nem
+tempo de trajeto — o bloco não tem origem definida, então número de rota só
+em página de destino, vindo de briefing.
 
 ---
 

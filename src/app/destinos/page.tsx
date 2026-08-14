@@ -14,6 +14,7 @@ import {
 import { WhatsAppButton } from "@/components/ui/whatsapp-button";
 import { publishedDestinos } from "@/lib/content/destinos";
 import { paginasMeta } from "@/lib/content/paginas";
+import { regiaoAtendida } from "@/lib/content/regiao";
 import { destinoPath, routes } from "@/lib/routes";
 import { breadcrumbSchema } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
@@ -105,18 +106,44 @@ export default function DestinosPage() {
                 Região atendida
               </SectionHeading>
               <SectionDescription className="mt-4">
-                Além dos destinos acima, atendemos deslocamentos em todo o
-                litoral catarinense e no Vale do Itajaí.
+                Além dos destinos acima, atendemos o litoral catarinense e o
+                Vale do Itajaí — e a região de Curitiba, por causa dos voos que
+                chegam ao Afonso Pena.
               </SectionDescription>
-              <ul className="mt-8 flex flex-wrap gap-3">
-                {businessInfo.areaServed.map((cidade) => (
-                  <li
-                    key={cidade}
-                    className="rounded-full border border-border-subtle px-4 py-2 text-sm text-neutral"
-                  >
-                    {cidade}
-                  </li>
-                ))}
+              {/*
+                A ordem vem de `businessInfo.areaServed` (geográfica, do centro
+                da operação para fora), não da ordem das chaves em
+                `regiaoAtendida` — a cobertura declarada continua sendo a fonte
+                única. O nome só vira link quando a cidade tem destino
+                publicado; enquanto a página não existe, fica em texto puro.
+              */}
+              <ul className="mt-8 grid gap-x-8 gap-y-7 sm:grid-cols-2 lg:grid-cols-3">
+                {businessInfo.areaServed.map((cidade) => {
+                  const { descricao, destinoSlug } = regiaoAtendida[cidade];
+                  const destino = publishedDestinos.find(
+                    (item) => item.slug === destinoSlug,
+                  );
+
+                  return (
+                    <li key={cidade}>
+                      <h3 className="font-display text-lg text-foreground">
+                        {destino ? (
+                          <Link
+                            href={destinoPath(destino.slug)}
+                            className="rounded-sm text-primary transition-colors hover:text-primary-light focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50"
+                          >
+                            {cidade}
+                          </Link>
+                        ) : (
+                          cidade
+                        )}
+                      </h3>
+                      <p className="mt-2 text-sm leading-relaxed text-neutral">
+                        {descricao}
+                      </p>
+                    </li>
+                  );
+                })}
               </ul>
               <div className="mt-10">
                 <WhatsAppButton>Consultar outro destino</WhatsAppButton>
