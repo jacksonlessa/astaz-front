@@ -110,7 +110,7 @@ família na chegada; se há formato recorrente (mensal, semanal).
 
 ## Serviços do GBP → páginas do site
 
-O Google Business Profile tem **19 serviços cadastrados**; o site terá **6
+O Google Business Profile tem **20 serviços cadastrados**; o site terá **6
 páginas**. Isso não é inconsistência: no GBP, serviço funciona como etiqueta de
 palavra-chave e quantidade ajuda. No site, cada página precisa responder uma
 intenção que nenhuma outra cobre — quantidade prejudica.
@@ -125,7 +125,7 @@ garantir que nenhuma etiqueta do perfil fique sem página correspondente.
 | `/servicos/transporte-eventos` | Transporte para Eventos · Transporte para Congressos · Transporte para Feiras · Transporte para Shows |
 | `/servicos/transporte-casamentos` | Transporte para Casamentos |
 | `/servicos/transporte-idosos` | Transporte para Idosos *(cadastrado no GBP em ago/2026)* |
-| `/servicos/city-tour` | — *(não cadastrado no GBP; vale adicionar)* |
+| `/servicos/city-tour` | City Tour *(cadastrado no GBP em ago/2026)* |
 | `/destinos/beto-carrero` | Transfer para Beto Carrero |
 | `/` *(home)* | Transporte Executivo · Táxi Executivo — termos genéricos, cobertos pelo título da home |
 
@@ -134,8 +134,12 @@ adotada: `/servicos/transporte-eventos` fica com congressos, feiras e shows;
 `/servicos/transporte-corporativo` fica com a agenda executiva do dia a dia
 (reuniões, visitas técnicas, deslocamentos entre compromissos).
 
-**Ações no GBP**: adicionar "City Tour" e "Transporte de Idosos" à lista de
-serviços; remover "Motorista Particular" (ver conflito resolvido abaixo).
+**Ações no GBP — todas concluídas em ago/2026**: "Motorista Particular" removido
+(ver conflito resolvido abaixo), "Transporte para Idosos" adicionado (13/08) e
+"City Tour" adicionado (14/08). Todas as 20 etiquetas do perfil têm página
+correspondente em `gbpServices` — mas **City Tour é a única cujo perfil anuncia
+um serviço que o site ainda não explica**: a página está `published: false`. Ver
+a prioridade na tabela mestre (Fase 2).
 
 ---
 

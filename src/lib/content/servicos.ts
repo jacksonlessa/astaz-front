@@ -1,10 +1,10 @@
 /**
  * Serviços da Astaz — fonte única de verdade das páginas de `/servicos`.
  *
- * O Google Business Profile lista 19 serviços, mas ali "serviço" funciona como
+ * O Google Business Profile lista 20 serviços, mas ali "serviço" funciona como
  * etiqueta de palavra-chave: quanto mais, melhor. No site a lógica é oposta —
  * cada página precisa responder uma intenção de busca que nenhuma outra cobre.
- * Por isso os 19 do GBP se consolidam nos 6 abaixo, e o campo `gbpServices`
+ * Por isso os 20 do GBP se consolidam nos 6 abaixo, e o campo `gbpServices`
  * registra quais etiquetas cada página absorve.
  *
  * Ver `docs/seo/mapeamento-de-paginas.md` antes de adicionar um serviço novo.
@@ -168,7 +168,7 @@ export const servicos: readonly Servico[] = [
       "City tour privativo em Balneário Camboriú e no litoral catarinense, com roteiro flexível, veículo executivo e motorista à disposição.",
     summary:
       "Roteiros privativos por Balneário Camboriú e pelo litoral catarinense, no seu ritmo e com paradas à sua escolha.",
-    gbpServices: [],
+    gbpServices: ["City Tour"],
     published: false,
     featuredOnHome: false,
   },
