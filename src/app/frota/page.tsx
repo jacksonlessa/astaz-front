@@ -12,15 +12,14 @@ import {
 } from "@/components/ui/section-label";
 import { WhatsAppButton } from "@/components/ui/whatsapp-button";
 import { categoriasFrota, itensFrota } from "@/lib/content/frota";
+import { paginasMeta } from "@/lib/content/paginas";
 import { getServico } from "@/lib/content/servicos";
 import { routes, servicoPath } from "@/lib/routes";
 import { breadcrumbSchema } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Frota Executiva",
-  description:
-    "Sedã, SUV e van executiva na frota da Astaz: de 4 a 20 passageiros, bebê conforto sob solicitação e fretamento para grupos e eventos.",
+  ...paginasMeta.frota,
   path: routes.frota,
 });
 

@@ -679,6 +679,7 @@ que vem mediria a mudança do meu chute, não a do site.
 | **Indexação** | | |
 | URLs indexáveis | 11 | |
 | URLs no sitemap | 11 | |
+| URLs no `llms.txt` | — *(criado em 14/08)* | |
 | Páginas indexadas (GSC) | **2** | |
 | Páginas não indexadas | 10 | |
 | **Busca** | | |

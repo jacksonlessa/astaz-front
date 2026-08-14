@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/section-label";
 import { WhatsAppButton } from "@/components/ui/whatsapp-button";
 import { publishedDestinos } from "@/lib/content/destinos";
+import { paginasMeta } from "@/lib/content/paginas";
 import { servicos } from "@/lib/content/servicos";
 import { destinoPath, routes, servicoPath } from "@/lib/routes";
 import { breadcrumbSchema } from "@/lib/schema";
@@ -19,9 +20,7 @@ import { buildMetadata } from "@/lib/seo";
 import { siteConfig } from "@/lib/site";
 
 export const metadata = buildMetadata({
-  title: "Serviços de Transporte Executivo",
-  description:
-    "Transporte executivo em Balneário Camboriú: aeroportos, agendas corporativas, eventos, casamentos, city tour e deslocamentos para idosos.",
+  ...paginasMeta.servicos,
   path: routes.servicos,
   // O `noIndex` saiu com a publicação de `/servicos/transfer-aeroporto`: o hub
   // agora linka uma filha real e passa a ter função própria de distribuição.

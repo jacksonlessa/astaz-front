@@ -40,6 +40,31 @@ Mensal. Quinzenal em site novo captura ruído, não tendência.
 4. Reescreva `relatorio.md`. **Toda métrica ganha a coluna de variação** contra
    a edição anterior — número absoluto sozinho não informa.
 
+## Conferência de `llms.txt`
+
+O `/llms.txt` é **gerado no build** a partir de `publishedRoutes` e dos módulos
+de `src/lib/content/` (ver `src/lib/llms.ts`) — a mesma fonte do `sitemap.xml`.
+Não há lista de URLs escrita à mão, e rota publicada que não resolva título e
+descrição **derruba o build** em vez de sumir do arquivo em silêncio.
+
+Por isso a conferência de cada edição não é ler o arquivo, e sim reconciliar
+três contagens que têm de ser idênticas:
+
+```bash
+awk '/publishedRoutes: readonly/,/^\] as const;/' src/lib/routes.ts | grep -c "path:"
+curl -s https://www.astaz.com.br/sitemap.xml | grep -c '<loc>'
+curl -s https://www.astaz.com.br/llms.txt | grep -c '^- \['
+```
+
+Divergência é bug de código, não item de conteúdo. O que continua sendo revisão
+editorial são as `metaDescription` das páginas — o `llms.txt` herda essas mesmas
+strings, então revisá-las cobre os dois de uma vez.
+
+> `llms.txt` é uma convenção proposta (llmstxt.org), não um padrão adotado por
+> Google ou OpenAI, e não há confirmação pública de que os crawlers deles leiam
+> o arquivo. Fica registrado no relatório como número de reconciliação, não como
+> item de SEO técnico ao lado de canonical e sitemap.
+
 ## Regras que o relatório respeita
 
 - Nenhum número sem fonte declarada (GSC, GA4, GBP, código ou coleta manual).

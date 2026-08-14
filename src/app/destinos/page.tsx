@@ -13,15 +13,14 @@ import {
 } from "@/components/ui/section-label";
 import { WhatsAppButton } from "@/components/ui/whatsapp-button";
 import { publishedDestinos } from "@/lib/content/destinos";
+import { paginasMeta } from "@/lib/content/paginas";
 import { destinoPath, routes } from "@/lib/routes";
 import { breadcrumbSchema } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
 import { businessInfo } from "@/lib/site";
 
 export const metadata = buildMetadata({
-  title: "Destinos Atendidos",
-  description:
-    "Transfers executivos partindo de Balneário Camboriú para aeroportos, cidades e destinos turísticos do litoral de Santa Catarina.",
+  ...paginasMeta.destinos,
   path: routes.destinos,
 });
 

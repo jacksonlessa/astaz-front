@@ -6,6 +6,7 @@ import "./globals.css";
 import { CookieConsent } from "@/components/landing/cookie-consent";
 import { JsonLd } from "@/components/seo/json-ld";
 import { CONSENT_STORAGE_KEY } from "@/lib/consent";
+import { paginasMeta } from "@/lib/content/paginas";
 import { localBusinessSchema, websiteSchema } from "@/lib/schema";
 import { siteConfig } from "@/lib/site";
 
@@ -75,14 +76,10 @@ export const metadata: Metadata = {
   title: {
     /**
      * Usado pela home e por qualquer página que não defina o próprio título.
-     *
-     * O termo vem ANTES da marca, e a ordem não é estética: a primeira parte
-     * do title é a de maior peso, e "ASTAZ" é um nome que ninguém procura
-     * ainda. Enquanto a marca não tiver volume de busca própria, gastar essa
-     * posição com ela é desperdiçar o sinal mais forte da página. Quando
-     * "Astaz" virar busca com volume, vale reavaliar.
+     * O texto vive em `content/paginas.ts` porque o `llms.txt` também o
+     * consome — ver a nota de motivo naquele arquivo.
      */
-    default: `Transporte Executivo em Balneário Camboriú | ${siteConfig.name}`,
+    default: `${paginasMeta.home.title} | ${siteConfig.name}`,
     // Páginas filhas informam só o título próprio; o sufixo entra automático.
     template: `%s | ${siteConfig.name}`,
   },

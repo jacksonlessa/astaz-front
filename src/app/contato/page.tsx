@@ -12,14 +12,13 @@ import {
 import { QuoteForm } from "@/components/ui/quote-form";
 import { WhatsAppButton } from "@/components/ui/whatsapp-button";
 import { contatoContent, orcamentoPresets } from "@/lib/content/orcamento";
+import { paginasMeta } from "@/lib/content/paginas";
 import { routes } from "@/lib/routes";
 import { breadcrumbSchema } from "@/lib/schema";
 import { buildMetadata } from "@/lib/seo";
 
 export const metadata = buildMetadata({
-  title: "Contato e Orçamento",
-  description:
-    "Solicite um orçamento de transporte executivo em Balneário Camboriú: preencha data, origem e destino e continue direto no WhatsApp.",
+  ...paginasMeta.contato,
   path: routes.contato,
 });
 

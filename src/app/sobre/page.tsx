@@ -11,6 +11,7 @@ import {
   SectionLabel,
 } from "@/components/ui/section-label";
 import { WhatsAppButton } from "@/components/ui/whatsapp-button";
+import { paginasMeta } from "@/lib/content/paginas";
 import {
   fechamentoSobre,
   interiorAstaz,
@@ -28,11 +29,7 @@ import { buildMetadata } from "@/lib/seo";
 import { businessInfo } from "@/lib/site";
 
 export const metadata = buildMetadata({
-  // O layout adiciona "| ASTAZ" — repetir a marca aqui empilharia o nome duas
-  // vezes no resultado de busca e gastaria o espaço que a cidade ocupa melhor.
-  title: "Sobre o transporte executivo em Balneário Camboriú",
-  description:
-    "Transporte executivo em Balneário Camboriú desde 2022. Mais de 2.000 viagens, agenda confirmada na véspera e voo acompanhado até o embarque.",
+  ...paginasMeta.sobre,
   path: routes.sobre,
   image: sobreIntro.image,
 });
