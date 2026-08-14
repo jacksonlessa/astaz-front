@@ -11,7 +11,7 @@ em produção em `https://www.astaz.com.br`
 | Fonte | Período | Observação |
 | --- | --- | --- |
 | Google Search Console | 28/07 a 11/08/2026 (15 dias) | Primeira data com dado é 28/07. O GSC tem ~2 dias de atraso |
-| Google Analytics 4 | 05/08 a 13/08/2026 (9 dias) | Medição começou em 06/08 |
+| Google Analytics 4 | 05/08 a 13/08/2026 (9 dias) | ⚠️ **Tráfego local, não de produção** — o contêiner não carregava no site publicado até 13/08 (ver 5.1). A medição real começa em 13/08/2026 |
 | Google Business Profile | estado em 13/08/2026 | Sem série histórica exportada |
 | Código e produção | commit `8206dc5` | — |
 
@@ -28,6 +28,14 @@ os dados chegaram, e são mais reveladores do que o volume sugeria. A segunda é
 que **os dois achados mais graves do relatório não estavam no site**: estão na
 medição e no índice do Google.
 
+> **Esta edição foi revisada no mesmo dia.** A investigação do achado 5.1
+> mostrou que o diagnóstico inicial estava incompleto: o problema não era só uma
+> tag mal configurada, era o contêiner do GTM **não existir em produção**. As
+> seções 1, 5.1, 6, 10, 11 e 12 foram reescritas com essa descoberta, e a
+> correção foi aplicada e verificada em 13/08/2026. Fica registrado por escrito
+> porque o baseline muda de sentido: os números de GA4 desta edição não são
+> tráfego real.
+
 Onde um número é **estimado** e não medido, ele vem marcado com **≈** e o método
 está aberto na [seção 11](#11-estimativas--método-aberto). Estimativa nunca
 entra na tabela de comparação da seção 12 como se fosse medida.
@@ -41,12 +49,16 @@ estruturados e o redirecionamento de domínio foram conferidos no HTML de
 produção e não têm defeito. **O problema é que quase nada disso chegou a ser
 exercitado**, por três motivos que se somam:
 
-1. **O GA4 não está medindo.** Não existe evento `page_view`: em 9 dias, o
-   relatório de páginas mostra **0 visualizações** em todas as URLs. No lugar
-   dele, chegam 107 eventos chamados `gtm.js`. Consequência: 100% do tráfego é
-   atribuído a "Direct", e os **5 cliques orgânicos que o GSC registrou no mesmo
-   período aparecem como zero sessões orgânicas** no GA4. O `whatsapp_click`
-   ausente é um sintoma disso, não o problema todo.
+1. **O GA4 nunca mediu o site publicado.** Não é "mediu mal": o contêiner do GTM
+   **não carregava em produção**. A variável `NEXT_PUBLIC_GTM_ID` só existia no
+   `.env.local` da máquina de desenvolvimento — que está no `.gitignore` — e
+   nunca foi cadastrada na Vercel. Sem ela, o componente
+   `<GoogleTagManager />` simplesmente não renderiza, por decisão de projeto.
+   Todo o dado da seção 6 é, portanto, **tráfego de `npm run dev`**, não de
+   visitante real. Empilhado em cima disso havia um segundo defeito: a única tag
+   do contêiner era do tipo "evento do GA4" enviando a variável `{{Event}}` como
+   nome — o que produzia `gtm.js` no lugar de `page_view`. **Os dois foram
+   corrigidos em 13/08/2026** (ver 5.1).
 
 2. **9 das 11 páginas indexáveis estão fora do índice do Google.** Só `/` e
    `/destinos` estão indexadas. Nenhuma página de destino ou de serviço — as que
@@ -106,6 +118,14 @@ não como contagem absoluta de conteúdo.
 "nav" = a página está no menu/rodapé e recebe link de todas as outras; o número
 só aparece para páginas cujos links são todos editoriais, que é o que de fato
 sinaliza importância ao buscador.</sub>
+
+> **A tabela acima é o retrato da manhã de 13/08 e fica congelada assim** — é
+> contra ela que setembro compara. Três células **já mudaram no mesmo dia**, por
+> correções aplicadas depois da auditoria: o título de
+> `/destinos/aeroporto-florianopolis` caiu de 61 para **59** (5.6), e os links
+> editoriais de `/servicos/transfer-aeroporto` subiram de 2 para **4**, com os
+> dois destinos de aeroporto passando a apontar para o hub (5.4). Registrado aqui
+> para que a variação de setembro não seja creditada ao mês errado.
 
 **Cobertura de intenção** (contra a tabela mestre do
 [mapeamento](../../mapeamento-de-paginas.md)):
@@ -250,39 +270,67 @@ Florianópolis é público plausível.
 
 ### 🔴 Crítico
 
-**5.1 — O GA4 não registra `page_view`; a medição inteira está comprometida**
+**5.1 — O GA4 nunca mediu o site publicado** ✅ *corrigido em 13/08/2026*
 
-Em 9 dias, os únicos eventos que chegaram foram:
+Dois defeitos empilhados, descobertos nesta ordem inversa à da gravidade.
 
-| Evento | Contagem |
-| --- | ---: |
-| `gtm.js` | 107 |
-| `session_start` | 10 |
-| `first_visit` | 7 |
+**Defeito A — o contêiner não carregava em produção (causa raiz).**
+Verificado no DOM do site ao vivo: **nenhum script do `googletagmanager`**,
+`window.google_tag_manager` vazio, e um `dataLayer` com um único item — o
+consent default que o próprio site empurra. A extensão Tag Assistant acusava
+"Nenhuma tag do Google foi encontrada", e estava certa.
 
-Não existe `page_view`, e por isso o relatório "Páginas e telas" mostra
-**0 visualizações em todas as 9 URLs visitadas**. O nome `gtm.js` é o evento que
-o próprio GTM empurra no `dataLayer` quando carrega — ele estar chegando ao GA4
-como *nome de evento* indica que a tag configurada no contêiner está enviando a
-variável `{{Event}}` como nome, em vez de ser uma tag de configuração do Google
-com o disparo de pageview ativo.
+A causa é a variável `NEXT_PUBLIC_GTM_ID`. Ela existia apenas no `.env.local`
+da máquina de desenvolvimento, que está no `.gitignore`, e **nunca foi
+cadastrada nas variáveis de ambiente da Vercel**. O layout raiz faz
+`{gtmId ? <GoogleTagManager gtmId={gtmId} /> : null}` — sem a variável, nada é
+renderizado. É comportamento intencional e documentado no `CLAUDE.md`; o erro
+foi de configuração de deploy, não de código.
 
-Os efeitos em cascata, todos visíveis nos dados:
+**Defeito B — a tag do contêiner enviava o nome errado do evento.**
+A única tag configurada era do tipo "Google Analytics: evento do GA4", disparando
+em *All Pages*, com o campo de nome do evento preenchido com a variável
+`{{Event}}`. Essa variável resolve para `gtm.js` no carregamento da página — o
+que explica os 107 eventos com esse nome. Não existia **nenhuma** Tag do Google
+no contêiner, e por isso nada enviava `page_view`.
 
-- **Atribuição destruída**: 10 sessões, 100% `(direct) / (none)`. Nenhuma sessão
-  orgânica. No mesmo intervalo, o GSC registrou **5 cliques vindos da busca** —
-  ou seja, ≈ 5 sessões orgânicas que o GA4 não viu.
-- **Relatório de páginas inutilizável**: sem `page_view`, nenhuma métrica de
-  conteúdo funciona.
-- **`whatsapp_click` inexistente**: confirmado no painel. O código dispara o
-  evento (testado), mas o acionador e a tag correspondente nunca foram criados
-  no GTM. A única conversão do site não é medida.
+**Como se manifestou junto**: os dados da seção 6 vinham de sessões locais
+(`npm run dev`), onde o `.env.local` fornece o ID e o contêiner carregava — com
+o defeito B ativo. Daí `gtm.js` em vez de `page_view`, e 100% do tráfego
+atribuído a "Direct".
 
-*Correção*: no GTM, revisar a tag do GA4 que dispara em "All Pages" — ela precisa
-ser a tag do Google (configuração) com envio de pageview, não uma tag de evento
-com nome dinâmico. Depois, criar o acionador de evento personalizado
-`whatsapp_click`, a tag de evento GA4 correspondente e marcá-lo como evento
-principal. Tudo no painel; nada disso é código.
+**Correções aplicadas em 13/08/2026**, nesta ordem:
+
+1. Criada a **Tag do Google** (`G-DKP3RR8H95`, acionador *Initialization – All
+   Pages*) e removida a tag de evento com `{{Event}}`. Publicado na versão 5 do
+   contêiner.
+2. Cadastrada `NEXT_PUBLIC_GTM_ID=GTM-KQMGLBGM` na Vercel e refeito o deploy.
+   *(Variáveis `NEXT_PUBLIC_*` são embutidas no build — cadastrar sem redeploy
+   não teria efeito.)*
+
+**Verificação em produção**, no nível da requisição de rede: o contêiner
+`GTM-KQMGLBGM` carrega, `G-DKP3RR8H95` inicializa, e sai uma requisição de
+coleta com `en=page_view`, `tid=G-DKP3RR8H95` e
+`dl=https://www.astaz.com.br/`. **A medição do site publicado existe a partir
+de 13/08/2026.**
+
+**O `whatsapp_click` também entrou no ar em 13/08/2026.** Criadas as 4 variáveis
+de camada de dados (`cta_page`, `cta_message`, `cta_type`, `cta_form`), o
+acionador de evento personalizado e a tag de evento do GA4; contêiner publicado.
+Verificado no Tempo real: o evento chega, com `cta_page` e `cta_message`
+presentes em 100% das ocorrências.
+
+`cta_type` e `cta_form` não aparecem nos cliques de botão — **isso é o
+comportamento esperado**, não falha: em `src/lib/analytics.ts` os dois só entram
+quando o chamador passa o argumento `extra`, e hoje só o `QuoteForm` faz isso
+(`ctaType: "form"`). Ver a sugestão em 5.12.
+
+**Único passo restante**: marcar `whatsapp_click` como **evento principal**. Não
+é esquecimento — é impossível hoje. A estrela só existe para eventos já listados
+em **Administrador → Exibição de dados → Eventos**, e essa lista atrasa até 24 h
+(verificado: às 13/08 ela ainda mostrava apenas `first_visit`, `gtm.js` e
+`session_start`). *(Nesta versão do GA4 não existe a opção de criar um evento
+principal digitando um nome que ainda não disparou.)*
 
 **5.2 — 9 de 11 páginas indexáveis fora do índice**
 
@@ -297,7 +345,7 @@ em 06/08; falta a consolidação acontecer.
 
 ### 🟡 Importante
 
-**5.4 — A autoridade interna só desce; nada sobe de volta ao hub**
+**5.4 — A autoridade interna só desce; nada sobe de volta ao hub** ✅ *corrigido em 13/08/2026*
 
 `/servicos/transfer-aeroporto` — a página mais densa do site (1.393 palavras,
 prioridade 🔴) — recebe link de apenas duas páginas: a home e `/servicos`. As
@@ -316,7 +364,7 @@ filhos não ranqueia para o termo genérico nem passa contexto para baixo.
 (`/contato`, com 189 palavras, é menor — mas ali é adequado: é página
 transacional, o formulário é o conteúdo.)
 
-**5.6 — Título de `/destinos/aeroporto-florianopolis` estourou o orçamento**
+**5.6 — Título de `/destinos/aeroporto-florianopolis` estourou o orçamento** ✅ *corrigido em 13/08/2026*
 
 61 caracteres com o sufixo, contra o teto de 60. A reescrita de 10/08 (que
 inverteu a ordem para "cidade antes de aeroporto", decisão correta) trouxe o
@@ -331,7 +379,7 @@ O card "Transporte Corporativo" ainda aponta para uma URL do Unsplash
 (`src/lib/content/servicos.ts:90`). É o único hotlink para domínio de terceiro
 que restou, e está na única página que hoje traz tráfego.
 
-**5.8 — `<h1>` de `/servicos/transporte-idosos` perdeu a cidade**
+**5.8 — `<h1>` de `/servicos/transporte-idosos` perdeu a cidade** ✅ *corrigido em 13/08/2026*
 
 O `<title>` é "Transporte para Idosos em Balneário Camboriú"; o `<h1>` é apenas
 "Transporte para Idosos". A intenção registrada é local, e o `h1` é o sinal
@@ -373,7 +421,7 @@ Com nota 92 e CLS zero, isso é afinação e não emergência. O próximo passo 
 não é adivinhar: é abrir a seção de **diagnóstico** do relatório da home no PSI,
 que aponta o elemento de LCP nominalmente.
 
-**5.10 — Contraste abaixo do mínimo de acessibilidade em todas as páginas internas**
+**5.10 — Contraste abaixo do mínimo de acessibilidade em todas as páginas internas** ✅ *corrigido em 13/08/2026*
 
 As notas de acessibilidade caem conforme se afasta da home: 96 → 93 → **89**.
 O padrão tem uma explicação exata no código.
@@ -398,6 +446,19 @@ com margem e preserva a hierarquia visual de texto secundário.
 Isso não é achado de SEO — acessibilidade não é fator de ranqueamento direto.
 Entra aqui porque as regras do projeto tratam acessibilidade como obrigatória, e
 porque é uma falha objetiva, medida e de correção trivial.
+
+**5.12 — O clique de botão não se identifica como botão**
+
+`trackWhatsAppClick` aceita um `cta_type` com os valores `"button" | "form"`,
+mas **nada no código passa `"button"`**: `whatsapp-button.tsx` chama a função com
+dois argumentos apenas, enquanto `quote-form.tsx` passa `ctaType: "form"`.
+
+Na prática funciona — dá para inferir "botão" pela *ausência* do parâmetro — mas
+inferir por ausência é frágil e some no primeiro relatório do GA4 que agrupe por
+`cta_type`. Passar `{ ctaType: "button" }` nas duas chamadas de
+`whatsapp-button.tsx` custa um argumento e torna o dado autoexplicativo.
+
+Achado novo, nascido da verificação do próprio evento em produção.
 
 **5.11 — Sem dados de campo (CrUX): INP e os Core Web Vitals reais não existem**
 
@@ -459,15 +520,46 @@ Aquisição: **100% `(direct) / (none)`**. Cidade: **100% Balneário Camboriú**
 Dispositivo: 7 usuários desktop, 3 mobile. Da contagem total de eventos, **97 de
 124 estão na home**.
 
-Sete usuários, todos na cidade-sede, todos diretos, concentrados na home, em
-desktop, na mesma semana em que o site foi editado — **≈ a maior parte desse
-tráfego é a própria operação testando o site**, não visitante real. Com a
-atribuição quebrada (5.1), não dá para separar com certeza; é leitura por
-convergência de indícios, não medição.
+> ⚠️ **Estes números não descrevem visitantes do site.** Como o contêiner não
+> carregava em produção (5.1), tudo o que o GA4 registrou veio de sessões locais
+> de desenvolvimento. Não é uma suspeita: um dos títulos de página vistos no
+> Tempo real era uma versão de `<title>` que **só existe na árvore de trabalho
+> local**, nunca publicada. Sete usuários, todos na cidade-sede, todos diretos,
+> concentrados na home, em desktop, na semana em que o site estava sendo
+> editado — o perfil bate exatamente com `npm run dev`.
 
-**Conclusão prática: os dados de GA4 desta edição não são utilizáveis para
-decisão.** Servem para uma coisa só — provar que a instrumentação está quebrada,
-o que já é o suficiente para tornar a correção a ação nº 1.
+Isso também explica a contradição com o GSC: os **5 cliques orgânicos** do
+mesmo intervalo apareceram como zero sessões orgânicas não porque a atribuição
+estivesse errada, mas porque **não havia medição nenhuma no site publicado**.
+
+**Conclusão prática: não há dado de GA4 utilizável nesta edição.** O valor deste
+bloco é ter revelado a falha — e a comparação de setembro parte de zero real,
+não dos números acima. Eles ficam registrados como o que são: ruído de
+desenvolvimento.
+
+**A medição de produção começa em 13/08/2026**, com a correção descrita em 5.1.
+A primeira edição com dado real de comportamento será a de setembro.
+
+### 6.1 Conversão — instrumentada em 13/08/2026
+
+**Não há histórico de conversão nesta edição**, e não haveria mesmo: o
+`whatsapp_click` passou a existir no dia do fechamento. Fica registrado o valor
+de partida — **zero** — e a data em que a contagem começa.
+
+O que foi verificado funcionando em produção, no Tempo real do GA4:
+
+| Evento | Origem | Verificação |
+| --- | --- | --- |
+| `whatsapp_click` | tag própria no GTM | ✅ chegando, com `cta_page` e `cta_message` em 100% das ocorrências |
+| `click` | medição otimizada do GA4 | clique de saída para `wa.me` |
+| `form_start` | medição otimizada do GA4 | primeira interação com o `QuoteForm` |
+
+Os dois últimos vieram de graça com a medição otimizada e servem de **conferência
+cruzada**: se um dia `whatsapp_click` divergir muito de `click`, a diferença
+aponta problema de instrumentação, não mudança de comportamento.
+
+Falta só marcar `whatsapp_click` como evento principal — bloqueado pelo atraso
+de até 24 h do GA4, não por ação pendente (ver 5.1).
 
 ---
 
@@ -491,10 +583,15 @@ como saber quanto do contato atual vem do Maps.
 | --- | --- |
 | Remover "Motorista Particular" | ✅ feito |
 | Adicionar "Transporte de Idosos" | ✅ feito — cadastrado como "Transporte para Idosos", que é **melhor**: bate literalmente com o `<h1>` e o `<title>` da página |
-| Adicionar "City Tour" | ❌ pendente |
+| Adicionar "City Tour" | ✅ feito em 14/08/2026, depois do fechamento — o perfil passou a ter **20** serviços |
 
-Os 19 serviços do perfil cobrem todas as etiquetas mapeadas em `gbpServices`,
-com a única exceção do City Tour. Consistência entre perfil e site está boa.
+Com o City Tour cadastrado, as 20 etiquetas do perfil têm página correspondente
+em `gbpServices`. Consistência entre perfil e site está completa — com uma
+ressalva que nasce da própria correção: `/servicos/city-tour` continua
+`published: false`, ou seja, **o perfil agora anuncia um serviço que o site não
+explica em lugar nenhum**. Não é regressão (o card já existia no hub
+`/servicos`), mas move a página de "Fase 2, prioridade baixa" para candidata
+natural do próximo lote de publicação.
 
 ---
 
@@ -603,10 +700,10 @@ de aceitar que a home cubra isso sozinha.
 
 | # | Ação | Onde | Destrava |
 | --- | --- | --- | --- |
-| 1 | **Corrigir a tag do GA4 no GTM** para enviar `page_view` (hoje chega `gtm.js`); depois criar acionador + tag de `whatsapp_click` e marcá-lo como evento principal | painel | Toda a seção 6. Sem isso, setembro repete "dados não utilizáveis" |
+| 1 | ✅ **Feito em 13/08**: `NEXT_PUBLIC_GTM_ID` cadastrada na Vercel + redeploy, e Tag do Google criada no GTM. **Resta**: concluir a tag de evento do `whatsapp_click`, publicar o contêiner e marcá-lo como evento principal no GA4 (a estrela só aparece até 24 h após o primeiro disparo) | painel | Toda a seção 6. A medição de produção passou a existir; falta a conversão |
 | 2 | **Exportar a coluna de motivo** das páginas não indexadas no GSC e, se for "Rastreada — não indexada", pedir indexação manual das 3 páginas de destino | painel | Decide se 5.2 é espera ou problema |
-| 3 | **Reforçar o perfil no Google**: pedir avaliações (meta: de 9 para 25 até 13/09), preencher a **data de abertura** para destravar o selo "mais de 3 anos no mercado", subir fotos e adicionar o serviço "City Tour" | operação | Única alavanca de pacote local disponível hoje (seção 9) |
-| 4 | **Lote de correções de código**, detalhado abaixo | código | 5.4, 5.6, 5.8 e 5.10 — todas pequenas, todas verificáveis |
+| 3 | **Reforçar o perfil no Google**: pedir avaliações (meta: de 9 para 25 até 13/09), preencher a **data de abertura** para destravar o selo "mais de 3 anos no mercado" e subir fotos. ✅ **Serviço "City Tour" adicionado em 14/08** — resta a página correspondente (ver seção 7) | operação | Única alavanca de pacote local disponível hoje (seção 9) |
+| 4 | ✅ **Feito em 13/08**: lote de correções de código — contraste, link interno, título e `<h1>`, mais os dois pontos vencidos do mapeamento. **Resta**: `cta_type` (5.12) e as duas correções de documentação de deploy que deixaram passar o incidente do GTM | código | 5.4, 5.6, 5.8 e 5.10 fechados |
 | 5 | **Publicar `/servicos/transporte-corporativo`** | código + foto | Cobre uma intenção 🟡 e elimina o último Unsplash da home (5.7 e 5.9) |
 
 O lote da nº 4, em ordem de valor:
@@ -650,15 +747,17 @@ e por isso anonimizadas. O piso de 60% assume que parte do anônimo é não-marc
 o teto de 85% assume que quase todo o CTR alto é marca. **Substituir por medição
 real quando houver volume acima do limiar de privacidade do GSC.**
 
-**≈ 5 sessões orgânicas perdidas pelo GA4** — o GSC registrou 5 cliques entre
-05 e 11/08; o GA4 registrou 0 sessões orgânicas no mesmo intervalo. Cliques do
-GSC e sessões do GA4 não são a mesma unidade (abandono antes do carregamento,
-bloqueadores), então o número real é *no máximo* 5.
+**≈ 5 sessões orgânicas não medidas** — o GSC registrou 5 cliques entre 05 e
+11/08 e o GA4 registrou 0 sessões orgânicas no mesmo intervalo. A causa deixou
+de ser estimativa: **não havia medição no site publicado** (5.1). Cliques do GSC
+e sessões do GA4 não são a mesma unidade (abandono antes do carregamento,
+bloqueadores), então o número real de visitas perdidas é *no máximo* 5.
 
-**≈ a maior parte do tráfego do GA4 é a própria operação** — convergência de
-indícios, não medição: 7 usuários, 100% em Balneário Camboriú, 100% direto,
-majoritariamente desktop, 97 de 124 eventos na home, na mesma semana de edição
-do site. Não há como separar com a atribuição quebrada.
+> **Uma estimativa desta edição foi promovida a fato.** A leitura de que "a
+> maior parte do tráfego do GA4 é a própria operação" estava listada aqui como
+> inferência por convergência de indícios. A investigação de 5.1 confirmou algo
+> mais forte: **100% daquele tráfego era local**, porque o contêiner não existia
+> em produção. Saiu das estimativas e virou a seção 6.
 
 **Não estimado, de propósito**: os Core Web Vitals de campo. As notas de
 **laboratório** do PageSpeed foram todas medidas à mão, nas três URLs (5.9), e
@@ -692,11 +791,13 @@ que vem mediria a mudança do meu chute, não a do site.
 | URLs com ao menos 1 clique | 1 | |
 | Consultas visíveis no GSC | 3 | |
 | Cliques de não-marca *(visíveis)* | 0 | |
-| **Analytics** | | |
-| Sessões (GA4) | 10 | |
+| **Analytics** *(a coluna de 13/08 é tráfego local — ver seção 6)* | | |
+| Contêiner do GTM carrega em produção? | **não** → ✅ sim, desde 13/08 | |
+| Sessões (GA4) | 10 *(dev)* | |
 | Sessões orgânicas (GA4) | 0 | |
 | Visualizações de página (GA4) | 0 | |
-| `whatsapp_click` | não existe | |
+| `whatsapp_click` | 0 *(instrumentado em 13/08)* | |
+| Marcado como evento principal? | ainda não *(atraso do GA4)* | |
 | **Local** | | |
 | Avaliações no GBP | **9** | |
 | Nota média | 5,0 | |
@@ -710,7 +811,7 @@ que vem mediria a mudança do meu chute, não a do site.
 | Páginas de serviço publicadas | 2 de 6 | |
 | Destinos publicados | 3 de 8 | |
 | Links editoriais → `/servicos/transfer-aeroporto` | 2 | |
-| Achados 🔴 / 🟡 | 3 / 8 | |
+| Achados 🔴 / 🟡 | 3 / 9 | |
 | Imagens de banco ou placeholder | 5 | |
 | **Performance e acessibilidade** *(PSI celular, laboratório)* | | |
 | Desempenho — `/` · transfer-aeroporto · navegantes | **92 · 98 · 96** | |

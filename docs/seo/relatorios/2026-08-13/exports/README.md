@@ -115,9 +115,10 @@ Menu **Desempenho**, período máximo disponível (6 meses):
 Nada disso exporta; é conferência visual:
 
 - Categoria principal e categorias secundárias
-- Quantidade de serviços cadastrados (**esperado: 19**) e se as três ações
-  pendentes do mapeamento foram feitas: **adicionar** "City Tour" e "Transporte
-  de Idosos", **remover** "Motorista Particular"
+- Quantidade de serviços cadastrados (**esperado: 20**). As três ações do
+  mapeamento foram concluídas em ago/2026 — "Motorista Particular" removido,
+  "Transporte para Idosos" e "City Tour" adicionados; a conferência agora é
+  só de contagem e de etiquetas novas que tenham aparecido
 - Número de avaliações e nota média
 - Quantidade de fotos e data da última publicada
 - Área de atendimento cadastrada — precisa bater **cidade a cidade** com

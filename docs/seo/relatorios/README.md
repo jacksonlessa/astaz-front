@@ -81,4 +81,4 @@ strings, então revisá-las cobre os dois de uma vez.
 
 | Data | Tipo | Observação |
 | --- | --- | --- |
-| [2026-08-13](2026-08-13/relatorio.md) | Baseline | Ponto de partida: 17 cliques, 2 de 11 páginas indexadas, GA4 sem `page_view`, 9 avaliações no GBP. |
+| [2026-08-13](2026-08-13/relatorio.md) | Baseline | Ponto de partida: 17 cliques, 2 de 11 páginas indexadas, 9 avaliações no GBP. Revelou que o GTM não carregava em produção — corrigido no mesmo dia; a medição real começa aqui. |
