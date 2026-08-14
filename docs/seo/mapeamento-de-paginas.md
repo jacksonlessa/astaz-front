@@ -580,7 +580,8 @@ critérios de seleção de motorista, formação/certificações, foto real da e
 - [ ] Título ≤ 52 caracteres, description entre 120 e 158
 - [ ] Um único `<h1>`, contendo a intenção principal
 - [ ] Entrada adicionada em `publishedRoutes` (`src/lib/routes.ts`) — sem isso
-      não entra no sitemap
+      não entra no sitemap — **com `lastModified` na data de hoje**
+      (e, ao reescrever uma página já publicada, atualize a data dela)
 - [ ] `BreadcrumbList` via `breadcrumbSchema()`
 - [ ] `FAQPage` **apenas** se as perguntas aparecem na tela
 - [ ] Recebe link de pelo menos uma outra página (página órfã não ranqueia)

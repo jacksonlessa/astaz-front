@@ -37,6 +37,33 @@ Regras de dependência:
 - Seções em `landing/` podem importar de `ui/` e `lib/site.ts`, nunca o inverso.
 - Nenhuma copy, telefone, cidade ou dado de negócio deve ser hardcoded em componentes — tudo vem de `src/lib/site.ts`.
 
+## Ao alterar o conteúdo de uma página: atualize o `lastModified`
+
+Cada entrada de `publishedRoutes` (`src/lib/routes.ts`) tem um campo
+`lastModified` no formato `AAAA-MM-DD`, mantido **à mão**. Ele alimenta o
+`<lastmod>` do `sitemap.xml`.
+
+**Mudou o conteúdo de uma página? Atualize a data dela no mesmo commit.**
+
+O que conta como mudança de conteúdo:
+
+| Atualiza a data | Não atualiza |
+| --- | --- |
+| Texto, título, meta description, FAQ | Refatoração que só move string de arquivo |
+| Blocos novos, seções removidas | Ajuste de token de cor ou de espaçamento |
+| Imagem trocada por outra que muda o sentido | Mudança de build, dependência ou tipagem |
+| Link interno acrescentado ou removido | Correção de acessibilidade sem mudar texto |
+
+Na dúvida, o critério é: **o visitante leria algo diferente?** Se não, a data
+fica como está.
+
+Nunca gere essa data com `new Date()`. O `sitemap.ts` já fez isso, e o efeito
+foi carimbar o instante do build nas 11 URLs a cada deploy — um deploy que só
+cadastrou variável de ambiente reescreveu a data de páginas intocadas havia uma
+semana. O Google usa `lastmod` só enquanto ele for confiável; sitemap que
+anuncia "tudo mudou" toda semana faz o buscador ignorar o campo, e o sinal some
+justo quando é necessário.
+
 ## Convenções de Código
 
 Resumo: TypeScript strict, sem `any`, imports via alias `@/*`, componentes com export nomeado em PascalCase, Server Components por padrão. Ver detalhes em:
@@ -97,3 +124,4 @@ Ao adicionar uma variável nova, documente aqui e no `.env.example` no mesmo com
 - Não marcar componentes como `"use client"` sem necessidade real de estado, efeitos ou APIs de browser.
 - Não commitar arquivos `.env*` ou segredos.
 - Não remover os atributos de acessibilidade existentes (`aria-label`, `focus-visible`).
+- Não gerar `lastmod` do sitemap com `new Date()` — a data vem de `publishedRoutes`, mantida à mão (ver seção acima).
